@@ -1,7 +1,9 @@
 package com.pizza.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,12 +21,17 @@ public class FoodItem {
 
   @ManyToMany(fetch = FetchType.LAZY,
     cascade = {
-      CascadeType.PERSIST,
-      CascadeType.MERGE
+      CascadeType.PERSIST
     },
     mappedBy = "foodItems")
   private Set<PizzaStore> pizzaStores = new HashSet<>();
 
+  @ManyToMany(fetch = FetchType.LAZY,
+    cascade = {
+      CascadeType.PERSIST
+    },
+    mappedBy = "foodItems")
+  private List<PizzaStore> shoppingCarts = new ArrayList<>();
 
   public FoodItem() {
   }
