@@ -1,6 +1,8 @@
 package com.pizza.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "FoodItems")
@@ -14,6 +16,15 @@ public class FoodItem {
 
   @Column(name = "name")
   private String name;
+
+  @ManyToMany(fetch = FetchType.LAZY,
+    cascade = {
+      CascadeType.PERSIST,
+      CascadeType.MERGE
+    },
+    mappedBy = "foodItems")
+  private Set<PizzaStore> pizzaStores = new HashSet<>();
+
 
   public FoodItem() {
   }
