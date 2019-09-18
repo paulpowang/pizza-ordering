@@ -9,7 +9,7 @@ import java.util.List;
 public class ShoppingCart {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "ShoppingCardId")
+  @Column(name = "ShoppingCartId")
   private Long shoppingCartId;
 
   @Column(name = "FoodName")
@@ -32,6 +32,9 @@ public class ShoppingCart {
     joinColumns = { @JoinColumn(name = "ShoppingCartId") },
     inverseJoinColumns = { @JoinColumn(name = "FoodItemID") })
   List<FoodItem> foodItems = new ArrayList<>();
+
+  @OneToOne(mappedBy = "shoppingCart", cascade = CascadeType.PERSIST)
+  private Order order;
 
   public ShoppingCart() {
   }
