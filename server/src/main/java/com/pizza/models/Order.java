@@ -22,6 +22,14 @@ public class Order {
   @MapsId
   private ShipmentDetails shipmentDetails;
 
+  @ManyToOne
+  @JoinColumn(name = "creditCardNumber", nullable = false)
+  private CreditCardDetail creditCardDetail;
+
+  @ManyToOne
+  @JoinColumn(name = "userCredentialId", nullable = false)
+  private UserCredential userCredential;
+
   public Long getOrderId() {
     return orderId;
   }
