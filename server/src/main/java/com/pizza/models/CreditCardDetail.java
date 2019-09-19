@@ -20,8 +20,12 @@ public class CreditCardDetail {
   @Column(name = "Balance")
   private Double balance;
 
-  @OneToMany(mappedBy = "creditCardDetails")
+  @OneToMany(mappedBy = "creditCardDetail")
   List<Order> orders;
+
+  @ManyToOne
+  @JoinColumn(name="userCredentialId", nullable=false)
+  private UserCredential userCredential;
 
   public String getCreditCardNumber() {
     return creditCardNumber;

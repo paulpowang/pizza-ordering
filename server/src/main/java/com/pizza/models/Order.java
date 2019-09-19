@@ -1,3 +1,4 @@
+//Need to fix the columns for this class
 package com.pizza.models;
 
 import javax.persistence.*;
@@ -14,12 +15,12 @@ public class Order {
   @Column(name = "CreditCardDetails")
   private Long creditCardDetails;
 
-  @OneToOne
-  @MapsId
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn (name = "shoppingCartId")
   private ShoppingCart shoppingCart;
 
-  @OneToOne
-  @MapsId
+  @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn (name = "shippingID")
   private ShipmentDetails shipmentDetails;
 
   @ManyToOne

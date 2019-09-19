@@ -37,6 +37,10 @@ import javax.persistence.*;
     @OneToOne(mappedBy = "shipmentDetails", cascade = CascadeType.PERSIST)
     private Order order;
 
+    @ManyToOne
+    @JoinColumn(name="userCredentialId", nullable=false)
+    private UserCredential userCredential;
+
     public Long getShippingId() {
       return shippingId;
     }

@@ -30,6 +30,14 @@ public class UserCredential {
   @OneToMany(mappedBy = "userCredential")
   List<Order> orders;
 
+  @OneToMany(mappedBy =  "userCredential")
+  List<CreditCardDetail> creditCardDetails;
+
+  @OneToMany(mappedBy =  "userCredential")
+  List<ShipmentDetails> shipmentDetails;
+
+//  @OneToMany
+
   public Long getUserCredentialId() {
     return userCredentialId;
   }
