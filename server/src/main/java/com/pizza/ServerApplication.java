@@ -1,4 +1,4 @@
-package com.pizza.server;
+package com.pizza;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,11 +6,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EntityScan(basePackages="com.pizza.models")
 public class ServerApplication {
 
-	public static void main(String[] args) {
-	  SpringApplication.run(ServerApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(ServerApplication.class, args);
+  }
 
 }
