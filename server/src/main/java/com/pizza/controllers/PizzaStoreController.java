@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pizza.models.PizzaStore;
 import com.pizza.repositories.PizzaStoreRepository;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://locaxlhost:4200")
 @RestController
 @RequestMapping("/api")
-public class PizzaStoreController 
+public class PizzaStoreController
 {
 	@Autowired
 	PizzaStoreRepository repository;
@@ -57,9 +57,9 @@ public class PizzaStoreController
 	@PostMapping(value = "/stores")
 	public ResponseEntity<PizzaStore> postStore(@RequestBody PizzaStore pizzaStore) {
 		try {
-			PizzaStore _store = repository.save(new PizzaStore(pizzaStore.getStoreName(), 
-																	pizzaStore.getCity(), 
-																	pizzaStore.getState(), 
+			PizzaStore _store = repository.save(new PizzaStore(pizzaStore.getStoreName(),
+																	pizzaStore.getCity(),
+																	pizzaStore.getState(),
 																	pizzaStore.getZipCode(),
 																	pizzaStore.getFoodItems()));
 			return new ResponseEntity<>(_store, HttpStatus.CREATED);

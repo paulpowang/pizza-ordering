@@ -31,7 +31,7 @@ public class ShoppingCart {
   @JoinTable(name = "ShoppingCarts_has_FoodItems",
     joinColumns = { @JoinColumn(name = "ShoppingCartId") },
     inverseJoinColumns = { @JoinColumn(name = "FoodItemID") })
-  List<FoodItem> foodItems = new ArrayList<>();
+    List<FoodItem> foodItems = new ArrayList<>();
 
   @OneToOne(mappedBy = "shoppingCart", cascade = CascadeType.PERSIST)
   private Order order;

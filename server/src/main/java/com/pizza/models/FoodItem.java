@@ -31,7 +31,7 @@ public class FoodItem {
       CascadeType.PERSIST
     },
     mappedBy = "foodItems")
-  private List<PizzaStore> shoppingCarts = new ArrayList<>();
+  private List<ShoppingCart> shoppingCarts = new ArrayList<>();
 
   public FoodItem() {
   }
@@ -68,11 +68,11 @@ public class FoodItem {
     this.pizzaStores = pizzaStores;
   }
 
-  public List<PizzaStore> getShoppingCarts() {
+  public List<ShoppingCart> getShoppingCarts() {
     return shoppingCarts;
   }
 
-  public void setShoppingCarts(List<PizzaStore> shoppingCarts) {
+  public void setShoppingCarts(List<ShoppingCart> shoppingCarts) {
     this.shoppingCarts = shoppingCarts;
   }
 }
