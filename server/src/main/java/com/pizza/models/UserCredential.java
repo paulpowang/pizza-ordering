@@ -36,8 +36,6 @@ public class UserCredential {
   @OneToMany(mappedBy =  "userCredential")
   List<ShipmentDetails> shipmentDetails;
 
-//  @OneToMany
-
   public Long getUserCredentialId() {
     return userCredentialId;
   }
@@ -76,5 +74,29 @@ public class UserCredential {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
+  }
+
+  public List<CreditCardDetail> getCreditCardDetails() {
+    return creditCardDetails;
+  }
+
+  public void setCreditCardDetails(List<CreditCardDetail> creditCardDetails) {
+    this.creditCardDetails = creditCardDetails;
+  }
+
+  public List<ShipmentDetails> getShipmentDetails() {
+    return shipmentDetails;
+  }
+
+  public void setShipmentDetails(List<ShipmentDetails> shipmentDetails) {
+    this.shipmentDetails = shipmentDetails;
   }
 }

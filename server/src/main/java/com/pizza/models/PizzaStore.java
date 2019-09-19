@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Database entity for PizzaStores. Has many-to-many relationship with
+ * FoodItems, joined by the table PizzaStores_has_FoodItems.
+ */
 @Entity
 @Table(name = "PizzaStores")
 public class PizzaStore {
@@ -20,6 +24,9 @@ public class PizzaStore {
 
   @Column(name = "state")
   private String state;
+
+  @Column(name = "ZipCode")
+  private String zipCode;
 
   @ManyToMany(fetch = FetchType.LAZY,
     cascade = {
@@ -60,5 +67,21 @@ public class PizzaStore {
 
   public void setState(String state) {
     this.state = state;
+  }
+
+  public Long getStoreId() {
+    return storeId;
+  }
+
+  public void setStoreId(Long storeId) {
+    this.storeId = storeId;
+  }
+
+  public Set<FoodItem> getFoodItems() {
+    return foodItems;
+  }
+
+  public void setFoodItems(Set<FoodItem> foodItems) {
+    this.foodItems = foodItems;
   }
 }

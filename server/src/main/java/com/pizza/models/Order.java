@@ -1,4 +1,3 @@
-//Need to fix the columns for this class
 package com.pizza.models;
 
 import javax.persistence.*;
@@ -6,14 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Orders")
 public class Order {
-
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "OrderID")
   private Long orderId;
-
-  @Column(name = "CreditCardDetails")
-  private Long creditCardDetails;
 
   @OneToOne(cascade = CascadeType.PERSIST)
   @JoinColumn (name = "shoppingCartId")
@@ -39,11 +34,35 @@ public class Order {
     this.orderId = orderId;
   }
 
-  public Long getCreditCardDetails() {
-    return creditCardDetails;
+  public ShoppingCart getShoppingCart() {
+    return shoppingCart;
   }
 
-  public void setCreditCardDetails(Long creditCardDetails) {
-    this.creditCardDetails = creditCardDetails;
+  public void setShoppingCart(ShoppingCart shoppingCart) {
+    this.shoppingCart = shoppingCart;
+  }
+
+  public ShipmentDetails getShipmentDetails() {
+    return shipmentDetails;
+  }
+
+  public void setShipmentDetails(ShipmentDetails shipmentDetails) {
+    this.shipmentDetails = shipmentDetails;
+  }
+
+  public CreditCardDetail getCreditCardDetail() {
+    return creditCardDetail;
+  }
+
+  public void setCreditCardDetail(CreditCardDetail creditCardDetail) {
+    this.creditCardDetail = creditCardDetail;
+  }
+
+  public UserCredential getUserCredential() {
+    return userCredential;
+  }
+
+  public void setUserCredential(UserCredential userCredential) {
+    this.userCredential = userCredential;
   }
 }

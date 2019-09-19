@@ -82,6 +82,22 @@ public class ShoppingCart {
     return totalPrice;
   }
 
+  public List<FoodItem> getFoodItems() {
+    return foodItems;
+  }
+
+  public void setFoodItems(List<FoodItem> foodItems) {
+    this.foodItems = foodItems;
+  }
+
+  public Order getOrder() {
+    return order;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
+
   public void setTotalPrice(double totalPrice) {
     this.totalPrice = totalPrice;
   }

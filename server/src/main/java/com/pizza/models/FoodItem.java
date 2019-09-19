@@ -59,4 +59,20 @@ public class FoodItem {
   public void setName(String name) {
     this.name = name;
   }
+
+  public Set<PizzaStore> getPizzaStores() {
+    return pizzaStores;
+  }
+
+  public void setPizzaStores(Set<PizzaStore> pizzaStores) {
+    this.pizzaStores = pizzaStores;
+  }
+
+  public List<PizzaStore> getShoppingCarts() {
+    return shoppingCarts;
+  }
+
+  public void setShoppingCarts(List<PizzaStore> shoppingCarts) {
+    this.shoppingCarts = shoppingCarts;
+  }
 }

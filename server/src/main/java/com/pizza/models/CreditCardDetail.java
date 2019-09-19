@@ -58,4 +58,20 @@ public class CreditCardDetail {
   public void setBalance(Double balance) {
     this.balance = balance;
   }
+
+  public List<Order> getOrders() {
+    return orders;
+  }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
+  }
+
+  public UserCredential getUserCredential() {
+    return userCredential;
+  }
+
+  public void setUserCredential(UserCredential userCredential) {
+    this.userCredential = userCredential;
+  }
 }
