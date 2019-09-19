@@ -23,4 +23,9 @@ public class FoodItemController {
     repository.save(foodItem);
     return "Item saved successfully";
   }
+
+  @GetMapping(path = "/byStoreID/{id}", produces = "application/json")
+  public @ResponseBody Iterable getFoodItemById(@PathVariable long id) {
+    return repository.findByPizzaStores_StoreId(id);
+  }
 }
