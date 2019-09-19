@@ -11,11 +11,11 @@ public class CreditCardDetail {
   @Column(name = "CreditCardNumber")
   private String creditCardNumber;
 
-  @Column(name = "ValidFrom")
-  private Date validFrom;
+  @Column(name = "CardHolderName")
+  private String cardHolderName;
 
   @Column(name = "ValidTo")
-  private Date validTo;
+  private String validTo;
 
   @Column(name = "Balance")
   private Double balance;
@@ -35,19 +35,19 @@ public class CreditCardDetail {
     this.creditCardNumber = creditCardNumber;
   }
 
-  public Date getValidFrom() {
-    return validFrom;
+  public String getCardHolderName() {
+    return cardHolderName;
   }
 
-  public void setValidFrom(Date validFrom) {
-    this.validFrom = validFrom;
+  public void setCardHolderName(String cardHolderName) {
+    this.cardHolderName = cardHolderName;
   }
 
-  public Date getValidTo() {
+  public String getValidTo() {
     return validTo;
   }
 
-  public void setValidTo(Date validTo) {
+  public void setValidTo(String validTo) {
     this.validTo = validTo;
   }
 

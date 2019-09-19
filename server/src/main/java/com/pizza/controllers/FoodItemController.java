@@ -3,6 +3,8 @@ package com.pizza.controllers;
 import com.pizza.models.FoodItem;
 import com.pizza.repositories.FoodItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,9 +21,13 @@ public class FoodItemController {
 
 
   @PostMapping(path = "/add", produces = "application/text")
-  public @ResponseBody String addFoodItem(@RequestBody FoodItem foodItem) {
-    repository.save(foodItem);
-    return "Item saved successfully";
+  public ResponseEntity<FoodItem> addFoodItem(@ModelAttribute FoodItem foodItem) {
+    try {
+      repository.save(foodItem);
+      return new ResponseEntity<FoodItem>(foodItem, HttpStatus.CREATED);
+    } catch (Exception e) {
+      return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+    }
   }
 
   @GetMapping(path = "/byStoreID/{id}", produces = "application/json")
