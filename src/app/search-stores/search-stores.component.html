@@ -1,0 +1,18 @@
+<h3>Find By Postal Code</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="zipCode">Zip Code</label>
+      <input type="text" class="form-control" id="zipCode" required [(ngModel)]="zipCode" name="zipCode">
+    </div>
+ 
+    <div class="btn-group">
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+  </form>
+</div>
+<ul>
+  <li *ngFor="let store of stores">
+    <h4>{{store.storeName}} {{store.postalCode}}</h4>
+  </li>
+</ul>
