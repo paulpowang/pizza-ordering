@@ -1,7 +1,10 @@
 package com.pizza.models;
 
 import javax.persistence.*;
-import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 import java.util.List;
 
 @Entity
@@ -20,9 +23,11 @@ public class CreditCardDetail {
   @Column(name = "Balance")
   private Double balance;
 
+  @JsonIgnore
   @OneToMany(mappedBy = "creditCardDetail")
   List<Order> orders;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name="userCredentialId", nullable=false)
   private UserCredential userCredential;
