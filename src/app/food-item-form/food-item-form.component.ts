@@ -10,8 +10,8 @@ import { FoodItem } from '../models/food-item';
 })
 export class FoodItemFormComponent implements OnInit {
   @Input() storeId: number;
-  allFoodItems: Array<FoodItem>;
-  @Output() shoppingCartItems: Array<FoodItem>;
+  allFoodItems: Array<FoodItem> = [];
+  @Output() shoppingCartItems: Array<FoodItem> = [];
 
   constructor(private foodItemsService: FoodItemsService) {}
 
@@ -20,4 +20,9 @@ export class FoodItemFormComponent implements OnInit {
       this.allFoodItems = array.map(obj => new FoodItem(obj));
     });
   }
+
+  addToCart(foodItem: FoodItem) {
+    this.shoppingCartItems.push(foodItem);
+    console.log(this.shoppingCartItems);
+  } 
 }
