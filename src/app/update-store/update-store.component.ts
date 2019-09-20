@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
  
 import { Store } from '../models/store';
@@ -15,11 +14,12 @@ export class UpdateStoreComponent implements OnInit {
   @Input() store: Store;
  
   submitted = false;
+  deleted = false;
  
   constructor(
     private route: ActivatedRoute,
     private storeService: StoreService,
-    private location: Location
+    private router: Router
   ) {}
  
   ngOnInit() {
@@ -54,7 +54,22 @@ export class UpdateStoreComponent implements OnInit {
   onSubmit() {
     this.updateStore();
   }
- 
 
+  delete()
+  {
+    this.storeService.deleteStore(this.store.storeId)
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => console.log('ERROR: ' + error));
 
+    this.deleted = true;
+  }
+
+  navigateToStore()
+  {
+    this.router.navigate(['/stores/store']);
+    this.deleted = false;
+  }
 }
