@@ -1,0 +1,8 @@
+<form class="card-container">
+  <div *ngFor="let foodItem of foodItems" class="card">
+    <div class="container">
+      <h4>{{ foodItem.name }}</h4>
+      <p>{{ foodItem.price }}</p>
+    </div>
+  </div>
+</form>
