@@ -32,7 +32,7 @@ export class StoreService {
   }
  
   getStoresByZipCode(zipCode: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/zipCode/${zipCode}`);
+    return this.http.get(`${this.baseUrl}/zipcode/${zipCode}`);
   }
  
   deleteAll(): Observable<any> {
