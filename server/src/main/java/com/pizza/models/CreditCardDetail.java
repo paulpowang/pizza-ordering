@@ -1,6 +1,9 @@
 package com.pizza.models;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
@@ -12,12 +15,14 @@ public class CreditCardDetail {
   private String creditCardNumber;
 
   @Column(name = "CardHolderName")
+  @NotNull
   private String cardHolderName;
 
   @Column(name = "ValidTo")
+  @NotNull
   private String validTo;
 
-  @Column(name = "Balance")
+  @Column(name = "Balance", columnDefinition = "number(10,2) default 0.0")
   private Double balance;
 
   @OneToMany(mappedBy = "creditCardDetail")
