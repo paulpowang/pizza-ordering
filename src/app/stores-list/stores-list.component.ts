@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
  
-import { StoreService } from '../store.service';
-import { Store } from '../store';
+import { StoreService } from '../services/store.service';
+import { Store } from '../models/store';
  
 @Component({
   selector: 'app-stores-list',

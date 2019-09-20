@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
  
-import { Store } from '../store';
-import { StoreService } from '../store.service';
+import { Store } from '../models/store';
+import { StoreService } from '../services/store.service';
  
 @Component({
   selector: 'app-create-store',

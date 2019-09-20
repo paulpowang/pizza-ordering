@@ -1,15 +1,16 @@
-<div *ngIf="store">
+<button *ngIf="store" style="text-align:left">
+<div>
     <div>
-      <label>Name:</label> {{store.storeName}}
+      <label>Name:</label> <br/>
+      {{store.storeName}}
     </div>
     <div>
-      <label>City:</label> {{store.city}}
+      <label>Address:</label> <br/>
+      {{store.city}}, {{store.state}}
     </div>
     <div>
-        <label>State:</label> {{store.state}}
+      <label>Postal Code:</label> <br/>
+      {{store.zipCode}}
     </div>
-    <div>
-      <label>Postal Code:</label> {{store.zipCode}}
-    </div>
-    <hr />
 </div>
+</button>

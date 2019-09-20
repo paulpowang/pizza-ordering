@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
  
-import { StoreService } from '../store.service';
-import { Store } from '../store';
+import { StoreService } from '../services/store.service';
+import { Store } from '../models/store';
 import { StoresListComponent } from '../stores-list/stores-list.component';
  
 @Component({
