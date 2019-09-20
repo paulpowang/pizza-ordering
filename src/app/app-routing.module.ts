@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'store', pathMatch: 'full' },
   { path: 'store', component: StoresListComponent },
   { path: 'add', component: CreateStoreComponent },
-  { path: 'findbypostalcode', component: SearchStoresComponent },
+  { path: 'findbyzipcode', component: SearchStoresComponent },
   { path: 'update', component: UpdateStoreComponent },
 ];
  

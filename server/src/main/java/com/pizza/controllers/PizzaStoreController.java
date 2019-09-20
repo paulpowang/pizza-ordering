@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pizza.models.PizzaStore;
 import com.pizza.repositories.PizzaStoreRepository;
 
-@CrossOrigin(origins = "http://locaxlhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class PizzaStoreController

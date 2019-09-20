@@ -25,9 +25,9 @@ export class UpdateStoreComponent implements OnInit {
 
   updateStore() {
 
-    this.storeService.updateStore(this.store.id,
+    this.storeService.updateStore(this.store.storeId,
       { storeName: this.store.storeName, city: this.store.city, 
-        state: this.store.state, postalCode: this.store.postalCode })
+        state: this.store.state, zipCode: this.store.zipCode })
       .subscribe(
         data => {
           console.log(data);

@@ -19,8 +19,8 @@ export class StoreDetailsComponent implements OnInit {
   }
  
     updateStore(isActive: boolean) {
-    this.storeService.updateStore(this.store.id,
-      { name: this.store.storeName, city: this.store.city, state: this.store.state, postalCode: this.store.postalCode })
+    this.storeService.updateStore(this.store.storeId,
+      { storeName: this.store.storeName, city: this.store.city, state: this.store.state, zipCode: this.store.zipCode })
       .subscribe(
         data => {
           console.log(data);
@@ -30,7 +30,7 @@ export class StoreDetailsComponent implements OnInit {
   }
  
   deleteStore() {
-    this.storeService.deleteStore(this.store.id)
+    this.storeService.deleteStore(this.store.storeId)
       .subscribe(
         data => {
           console.log(data);

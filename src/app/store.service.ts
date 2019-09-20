@@ -31,8 +31,8 @@ export class StoreService {
     return this.http.get(this.baseUrl);
   }
  
-  getStoresByPostalCode(postalCode: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/postalCode/${postalCode}`);
+  getStoresByZipCode(zipCode: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/zipCode/${zipCode}`);
   }
  
   deleteAll(): Observable<any> {

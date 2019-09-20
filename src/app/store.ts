@@ -1,7 +1,10 @@
+import { FoodItem } from './foodItem';
+
 export class Store {
-    id: number;
+    storeId: number;
     storeName: string;
     city: string;
     state: string;
-    postalCode: string;
+    zipCode: string;
+    foodItems: Set<FoodItem>;
 }

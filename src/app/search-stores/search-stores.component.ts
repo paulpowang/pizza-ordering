@@ -10,18 +10,18 @@ import { StoreService } from '../store.service';
 })
 export class SearchStoresComponent implements OnInit {
  
-  postalCode: string;
+  zipCode: string;
   stores: Store[];
  
   constructor(private dataService: StoreService) { }
  
   ngOnInit() {
-    this.postalCode = "";
+    this.zipCode = "";
   }
  
   private searchStores() {
     this.stores = [];
-    this.dataService.getStoresByPostalCode(this.postalCode)
+    this.dataService.getStoresByZipCode(this.zipCode)
       .subscribe(stores => this.stores = stores);
   }
  
