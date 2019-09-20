@@ -1,8 +1,8 @@
 package com.pizza.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
+import javax.validation.constraints.NotNull;
+
 import java.util.List;
 import java.util.Set;
 
@@ -14,9 +14,11 @@ public class FoodItem {
   private Long foodItemId;
 
   @Column(name = "price")
+  @NotNull
   private Double price;
 
   @Column(name = "name")
+  @NotNull
   private String name;
 
   @ManyToMany(fetch = FetchType.LAZY,
@@ -24,14 +26,14 @@ public class FoodItem {
       CascadeType.PERSIST
     },
     mappedBy = "foodItems")
-  private Set<PizzaStore> pizzaStores = new HashSet<>();
+  private Set<PizzaStore> pizzaStores;
 
   @ManyToMany(fetch = FetchType.LAZY,
     cascade = {
       CascadeType.PERSIST
     },
     mappedBy = "foodItems")
-  private List<ShoppingCart> shoppingCarts = new ArrayList<>();
+  private List<ShoppingCart> shoppingCarts;
 
   public FoodItem() {
   }

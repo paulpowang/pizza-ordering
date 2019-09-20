@@ -25,6 +25,7 @@ public class UserCredential {
   private Date loginStatus;
 
   @Column(name = "Email")
+  @NotNull
   private String email;
 
   @OneToMany(mappedBy = "userCredential")
