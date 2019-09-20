@@ -10,6 +10,7 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
 import { StoresListComponent } from './stores-list/stores-list.component';
 import { SearchStoresComponent } from './search-stores/search-stores.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
+import { FoodItemsFormComponent } from './food-items-form/food-items-form.component';
  
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UpdateStoreComponent } from './update-store/update-store.component';
     StoreDetailsComponent,
     StoresListComponent,
     SearchStoresComponent,
-    UpdateStoreComponent
+    UpdateStoreComponent,
+    FoodItemsFormComponent
   ],
   imports: [
     BrowserModule,
