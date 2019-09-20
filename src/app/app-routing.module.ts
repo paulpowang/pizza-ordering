@@ -5,13 +5,18 @@ import { StoresListComponent } from './stores-list/stores-list.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { SearchStoresComponent } from './search-stores/search-stores.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
+import { StoresPageComponent} from './stores-page/stores-page.component'
  
 const routes: Routes = [
-  { path: '', redirectTo: 'store', pathMatch: 'full' },
-  { path: 'store', component: StoresListComponent },
-  { path: 'add', component: CreateStoreComponent },
-  { path: 'findbyzipcode', component: SearchStoresComponent },
-  { path: 'update', component: UpdateStoreComponent },
+  { path: 'stores', 
+    component: StoresPageComponent ,
+    children: [
+      { path: 'store', component: StoresListComponent},
+      { path: 'add', component: CreateStoreComponent },
+      { path: 'findbyzipcode', component: SearchStoresComponent},
+      { path: 'store/:id', component: UpdateStoreComponent},
+    ],
+  }
 ];
  
 @NgModule({

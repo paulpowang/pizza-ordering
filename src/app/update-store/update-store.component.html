@@ -3,8 +3,8 @@
   <form (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-        <label for="id">ID</label>
-        <input type="text" class="form-control" id="id" required [(ngModel)]="store.id" name="id">
+      <label for="storeId">ID</label>
+      <input type="text" class="form-control" id="storeId" required [(ngModel)]="store.storeId" name="storeId">
     </div>
 
     <div class="form-group">
@@ -23,8 +23,8 @@
     </div>
 
     <div class="form-group">
-        <label for="postalCode">Postal Code</label>
-        <input type="text" class="form-control" id="postalCode" required [(ngModel)]="store.postalCode" name="postalCode">
+        <label for="zipCode">Postal Code</label>
+        <input type="text" class="form-control" id="zipCode" required [(ngModel)]="store.zipCode" name="zipCode">
     </div>
  
     <button type="submit" class="btn btn-success">Submit</button>

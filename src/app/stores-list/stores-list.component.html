@@ -1,6 +1,8 @@
 <h3>Stores</h3>
 <div *ngFor="let store of stores | async" style="width: 300px;">
-  <app-store-details [store]='store'></app-store-details>
+  <a routerLink="{{store.storeId}}">
+        <app-store-details [store]='store'></app-store-details>
+  </a>
 </div>
  
 <div>
