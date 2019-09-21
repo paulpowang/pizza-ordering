@@ -7,4 +7,13 @@ export class Store {
   state: string;
   zipCode: string;
   foodItems: Set<FoodItem>;
+
+  setFields({ storeId, storeName, city, state, zipCode, foodItems }: any) {
+    this.storeId = storeId || null;
+    this.storeName = storeName || null;
+    this.city = city || null;
+    this.state = state || null;
+    this.zipCode = zipCode || null;
+    this.foodItems = foodItems || null;
+  }
 }

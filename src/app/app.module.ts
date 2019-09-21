@@ -1,30 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateStoreComponent } from './create-store/create-store.component';
-import { StoreDetailsComponent } from './store-details/store-details.component';
-import { StoresListComponent } from './stores-list/stores-list.component';
 import { SearchStoresComponent } from './search-stores/search-stores.component';
-import { UpdateStoreComponent } from './update-store/update-store.component';
-import { StoresPageComponent } from './stores-page/stores-page.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CreateStoreComponent,
-    StoreDetailsComponent,
-    StoresListComponent,
-    SearchStoresComponent,
-    UpdateStoreComponent,
-    StoresPageComponent,
-    FoodItemFormComponent,
+  declarations: [AppComponent, SearchStoresComponent, FoodItemFormComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatButtonModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  exports: [FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

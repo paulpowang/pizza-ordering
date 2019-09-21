@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Store } from '../models/store';
 import { StoreService } from '../services/store.service';
@@ -11,18 +13,34 @@ import { StoreService } from '../services/store.service';
 export class SearchStoresComponent implements OnInit {
   zipCode: string;
   stores: Store[];
+  zipcodeForm: FormControl = new FormControl('');
+  selectedStore: object;
 
-  constructor(private dataService: StoreService) {}
+  constructor(private dataService: StoreService, private router: Router) {}
 
   ngOnInit() {
     this.zipCode = '';
     this.stores = [];
   }
 
-  searchStores(zipCode: string) {
+  searchStores(zipCode: string): void {
+    if (!zipCode) return;
     this.stores = [];
     this.dataService.getStoresByZipCode(zipCode).subscribe({
-      next: stores => (this.stores = stores || []),
+      next: (arrayOfData: Array<object>) => {
+        if (arrayOfData) {
+          this.stores = arrayOfData.map((obj: any) => {
+            let store = new Store();
+            store.setFields(obj);
+            return store;
+          });
+        }
+        console.log(this.stores);
+      },
     });
+  }
+
+  submit(formData: any) {
+    console.log(formData);
   }
 }
