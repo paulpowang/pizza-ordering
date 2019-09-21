@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
  
 import { StoreService } from '../services/store.service';
 import { Store } from '../models/store';
-import { StoresListComponent } from '../stores-list/stores-list.component';
- 
+import { StoresListCustomerComponent } from '../stores-list-customer/stores-list-customer.component';
+
 @Component({
   selector: 'app-store-details',
   templateUrl: './store-details.component.html',
@@ -13,7 +13,7 @@ export class StoreDetailsComponent implements OnInit {
  
   @Input() store: Store;
  
-  constructor(private storeService: StoreService, private listComponent: StoresListComponent) { }
+  constructor(private storeService: StoreService, private listComponent: StoresListCustomerComponent) { }
  
   ngOnInit() {
   }

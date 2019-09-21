@@ -3,6 +3,8 @@ package com.pizza.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 import java.util.Set;
 
@@ -33,6 +35,7 @@ public class FoodItem {
       CascadeType.PERSIST
     },
     mappedBy = "foodItems")
+  @JsonIgnore
   private List<ShoppingCart> shoppingCarts;
 
   public FoodItem() {

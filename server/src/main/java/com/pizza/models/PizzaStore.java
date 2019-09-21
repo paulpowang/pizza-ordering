@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Database entity for PizzaStores. Has many-to-many relationship with
  * FoodItems, joined by the table PizzaStores_has_FoodItems.
@@ -45,6 +47,7 @@ public class PizzaStore
   @JoinTable(name = "PizzaStores_has_FoodItems",
   joinColumns = { @JoinColumn(name = "PizzaStoreID") },
   inverseJoinColumns = { @JoinColumn(name = "FoodItemID") })
+  @JsonIgnore
   private Set<FoodItem> foodItems = new HashSet<>();
 
   public PizzaStore() {

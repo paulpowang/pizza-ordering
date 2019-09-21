@@ -12,11 +12,18 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SearchStoresComponent } from './search-stores/search-stores.component';
+import { StoresListCustomerComponent } from './stores-list-customer/stores-list-customer.component';
+
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
+import { StoreDetailsComponent } from './store-details/store-details.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchStoresComponent, FoodItemFormComponent],
+  declarations: [
+    AppComponent, 
+    StoresListCustomerComponent, 
+    FoodItemFormComponent,
+    StoreDetailsComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
