@@ -15,6 +15,7 @@ export class SearchStoresComponent implements OnInit {
   stores: Store[];
   zipcodeForm: FormControl = new FormControl('');
   selectedStore: object;
+  errorMessage: string;
 
   constructor(private dataService: StoreService, private router: Router) {}
 
@@ -42,5 +43,13 @@ export class SearchStoresComponent implements OnInit {
 
   submit(formData: any) {
     console.log(formData);
+  }
+
+  validateStoreSelection(selectedStore: Store): boolean {
+    if (!selectedStore) {
+      this.errorMessage = 'Please select a store';
+      return false;
+    }
+    return true;
   }
 }
