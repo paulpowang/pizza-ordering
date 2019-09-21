@@ -1,18 +1,26 @@
-<h3>Find By Postal Code</h3>
+<h3>Find a Store By Zip Code</h3>
 <div style="width: 300px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="zipCode">Zip Code</label>
-      <input type="text" class="form-control" id="zipCode" required [(ngModel)]="zipCode" name="zipCode">
+      <input
+        type="text"
+        class="form-control"
+        id="zipCode"
+        required
+        [(ngModel)]="zipCode"
+        (input)="searchStores($event.target.value)"
+        name="zipCode"
+      />
     </div>
- 
-    <div class="btn-group">
+    <!-- <div class="btn-group">
       <button type="submit" class="btn btn-success">Submit</button>
-    </div>
+    </div> -->
   </form>
 </div>
-<ul>
+<ul *ngIf="stores.length != 0">
   <li *ngFor="let store of stores">
-    <h4>{{store.storeName}} {{store.postalCode}}</h4>
+    <h4>{{ store.storeName }} {{ store.postalCode }}</h4>
   </li>
 </ul>
+<p #elseBlock>No Locations Available For This Zip Code</p>

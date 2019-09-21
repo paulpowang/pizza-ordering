@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { FoodItemsService } from '../services/food-items.service';
 import { FoodItem } from '../models/food-item';
@@ -9,9 +9,10 @@ import { FoodItem } from '../models/food-item';
   styleUrls: ['./food-item-form.component.css'],
 })
 export class FoodItemFormComponent implements OnInit {
-  @Input() storeId: number;
+  @Input('storeId') storeId: number;
   allFoodItems: Array<FoodItem> = [];
-  @Output() shoppingCartItems: Array<FoodItem> = [];
+  shoppingCartItems: Array<FoodItem> = [];
+  @Output() shoppingCartEmitter = new EventEmitter<Array<FoodItem>>();
 
   constructor(private foodItemsService: FoodItemsService) {}
 
@@ -23,6 +24,9 @@ export class FoodItemFormComponent implements OnInit {
 
   addToCart(foodItem: FoodItem) {
     this.shoppingCartItems.push(foodItem);
-    console.log(this.shoppingCartItems);
-  } 
+  }
+
+  submitShoppingCart(): void {
+    this.shoppingCartEmitter.emit(this.shoppingCartItems);
+  }
 }
