@@ -38,26 +38,15 @@ public class CreditCardDetail {
   @JoinColumn(name="userCredentialId", nullable=true)
   private UserCredential userCredential;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+  public long getCreditCardId() {
+    return creditCardId;
+  }
 
+  public void setCreditCardId(long creditCardId) {
+    this.creditCardId = creditCardId;
+  }
 
-
-public long getCreditCardId() {
-	return creditCardId;
-}
-
-public void setCreditCardId(long creditCardId) {
-	this.creditCardId = creditCardId;
-}
-
-public String getCreditCardNumber() {
-=======
   public Long getCreditCardNumber() {
->>>>>>> Adding a ShoppingCartItems table to associate a
-=======
-  public Long getCreditCardNumber() {
->>>>>>> 67abdf5c2ec9bb1dc3cba8ae32e497ad0aeee579
     return creditCardNumber;
   }
 
