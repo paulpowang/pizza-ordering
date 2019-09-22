@@ -32,7 +32,7 @@ public class ShoppingCart {
 
   @OneToMany(cascade = CascadeType.ALL,
     orphanRemoval = true,
-    mappedBy = "shoppingCartItemId")
+    mappedBy = "shoppingCart")
   private List<ShoppingCartItem> shoppingCartItems;
 
   public ShoppingCart() {
@@ -94,14 +94,6 @@ public class ShoppingCart {
   public void setTotalPrice(double totalPrice) {
     this.totalPrice = totalPrice;
   }
-
-public List<ShoppingCartItem> getShoppingCartItems() {
-	return shoppingCartItems;
-}
-
-public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
-	this.shoppingCartItems = shoppingCartItems;
-}
 
 }
 
