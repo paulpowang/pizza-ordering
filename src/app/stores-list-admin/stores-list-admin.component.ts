@@ -11,16 +11,13 @@ import { StoreService } from '../services/store.service';
   templateUrl: './stores-list-admin.component.html',
   styleUrls: ['./stores-list-admin.component.css'],
 })
-export class StoresListAdminComponent implements OnInit {
+export class StoresListAdminComponent  implements OnInit {
   zipCode: string;
   zipcodeForm: FormControl = new FormControl('');
-  selectedStore: object;
-  errorMessage: string;
   stores: Observable<Store[]>;
 
   constructor(private router: Router,
-              private storeService: StoreService
-            ) {}
+              private storeService: StoreService) {}
 
   ngOnInit() {
     this.zipCode = '';
@@ -35,18 +32,6 @@ export class StoresListAdminComponent implements OnInit {
     }
   
     this.stores =  this.storeService.getStoresByZipCode(zipCode);
-  }
-
-  submit(formData: any) {
-    console.log(formData);
-  }
-
-  validateStoreSelection(selectedStore: Store): boolean {
-    if (!selectedStore) {
-      this.errorMessage = 'Please select a store';
-      return false;
-    }
-    return true;
   }
 
   reloadData() {

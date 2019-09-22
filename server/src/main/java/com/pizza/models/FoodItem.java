@@ -2,7 +2,6 @@ package com.pizza.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
@@ -28,6 +27,7 @@ public class FoodItem {
       CascadeType.PERSIST
     },
     mappedBy = "foodItems")
+  @JsonIgnore
   private Set<PizzaStore> pizzaStores;
 
   @ManyToMany(fetch = FetchType.LAZY,
@@ -40,7 +40,7 @@ public class FoodItem {
 
   public FoodItem() {
   }
-
+  
   public Long getFoodItemId() {
     return foodItemId;
   }

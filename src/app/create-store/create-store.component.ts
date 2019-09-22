@@ -10,7 +10,7 @@ import { StoreService } from '../services/store.service';
 })
 export class CreateStoreComponent implements OnInit {
  
-  store: Store = new Store();
+  store: Store = new Store(null);
   submitted = false;
  
   constructor(private storeService: StoreService) { }
@@ -20,7 +20,7 @@ export class CreateStoreComponent implements OnInit {
  
   newStore(): void {
     this.submitted = false;
-    this.store = new Store();
+    this.store = new Store(null);
   }
  
   save() {
@@ -31,7 +31,7 @@ export class CreateStoreComponent implements OnInit {
           this.submitted = true;
         },
         error => console.log(error));
-    this.store = new Store();
+    this.store = new Store(null);
   }
  
   onSubmit() {
