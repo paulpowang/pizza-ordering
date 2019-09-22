@@ -16,8 +16,6 @@ public class CreditCardService {
 	@Autowired
 	private CreditCardRepository repository;
 	
-	List<CreditCardDetail> list = new ArrayList<>();
-	
 	// return all credit card
 	public List<CreditCardDetail> getAllTheCreditCards(){
 		List<CreditCardDetail> list = new ArrayList<>();
@@ -49,6 +47,9 @@ public class CreditCardService {
 		Optional<CreditCardDetail> optionalCard =  repository.findById(id);
 		CreditCardDetail card1 = optionalCard.get();
 		card1.setCreditCardNumber(card.getCreditCardNumber());
+		card1.setCardHolderName(card.getCardHolderName());
+		card1.setValidTo(card.getValidTo());
+		card1.setBalance(card.getBalance());
 		repository.save(card1);
 	}
 	
