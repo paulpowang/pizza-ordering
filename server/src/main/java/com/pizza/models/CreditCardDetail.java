@@ -10,9 +10,10 @@ import java.util.List;
 @Entity
 @Table(name = "CreditCardDetails")
 public class CreditCardDetail {
+
   @Id
   @Column(name = "CreditCardNumber")
-  private String creditCardNumber;
+  private Long creditCardNumber;
 
   @Column(name = "CardHolderName")
   private String cardHolderName;
@@ -32,11 +33,11 @@ public class CreditCardDetail {
   @JoinColumn(name="userCredentialId", nullable=false)
   private UserCredential userCredential;
 
-  public String getCreditCardNumber() {
+  public Long getCreditCardNumber() {
     return creditCardNumber;
   }
 
-  public void setCreditCardNumber(String creditCardNumber) {
+  public void setCreditCardNumber(Long creditCardNumber) {
     this.creditCardNumber = creditCardNumber;
   }
 
@@ -79,4 +80,5 @@ public class CreditCardDetail {
   public void setUserCredential(UserCredential userCredential) {
     this.userCredential = userCredential;
   }
+
 }
