@@ -1,37 +1,32 @@
 package com.pizza.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "FoodItems")
 public class FoodItem {
   @Id @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "foodItemId")
+  @Column(name = "FoodItemId")
   private Long foodItemId;
 
-  @Column(name = "price")
+  @Column(name = "Price")
   private Double price;
 
-  @Column(name = "name")
+  @Column(name = "Name")
   private String name;
 
   @ManyToMany(fetch = FetchType.LAZY,
-    cascade = {
-      CascadeType.PERSIST
-    },
+    cascade = { CascadeType.PERSIST },
     mappedBy = "foodItems")
-  private Set<PizzaStore> pizzaStores = new HashSet<>();
+  private List<PizzaStore> pizzaStores;
 
-  @ManyToMany(fetch = FetchType.LAZY,
-    cascade = {
-      CascadeType.PERSIST
-    },
-    mappedBy = "foodItems")
-  private List<ShoppingCart> shoppingCarts = new ArrayList<>();
+  @JsonIgnore
+  @OneToMany(cascade = { CascadeType.PERSIST},
+    mappedBy = "shoppingCartItemId")
+  private List<ShoppingCartItem> shoppingCartItems;
 
   public FoodItem() {
   }
@@ -60,19 +55,12 @@ public class FoodItem {
     this.name = name;
   }
 
-  public Set<PizzaStore> getPizzaStores() {
+  public List<PizzaStore> getPizzaStores() {
     return pizzaStores;
   }
 
-  public void setPizzaStores(Set<PizzaStore> pizzaStores) {
+  public void setPizzaStores(List<PizzaStore> pizzaStores) {
     this.pizzaStores = pizzaStores;
   }
 
-  public List<ShoppingCart> getShoppingCarts() {
-    return shoppingCarts;
-  }
-
-  public void setShoppingCarts(List<ShoppingCart> shoppingCarts) {
-    this.shoppingCarts = shoppingCarts;
-  }
 }
