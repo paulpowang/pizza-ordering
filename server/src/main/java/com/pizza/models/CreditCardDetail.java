@@ -10,14 +10,14 @@ import java.util.List;
 @Entity
 @Table(name = "CreditCardDetails")
 public class CreditCardDetail {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "CreditCardId")
 	private long creditCardId;
 
   @Column(name = "CreditCardNumber")
-  private String creditCardNumber;
+  private Long creditCardNumber;
 
   @Column(name = "CardHolderName")
   private String cardHolderName;
@@ -38,8 +38,9 @@ public class CreditCardDetail {
   @JoinColumn(name="userCredentialId", nullable=true)
   private UserCredential userCredential;
 
-  
-  
+<<<<<<< HEAD
+
+
 
 public long getCreditCardId() {
 	return creditCardId;
@@ -50,10 +51,13 @@ public void setCreditCardId(long creditCardId) {
 }
 
 public String getCreditCardNumber() {
+=======
+  public Long getCreditCardNumber() {
+>>>>>>> Adding a ShoppingCartItems table to associate a
     return creditCardNumber;
   }
 
-  public void setCreditCardNumber(String creditCardNumber) {
+  public void setCreditCardNumber(Long creditCardNumber) {
     this.creditCardNumber = creditCardNumber;
   }
 
@@ -96,4 +100,5 @@ public String getCreditCardNumber() {
   public void setUserCredential(UserCredential userCredential) {
     this.userCredential = userCredential;
   }
+
 }
