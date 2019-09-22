@@ -10,7 +10,12 @@ import java.util.List;
 @Entity
 @Table(name = "CreditCardDetails")
 public class CreditCardDetail {
-  @Id
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "CreditCardId")
+	private long creditCardId;
+
   @Column(name = "CreditCardNumber")
   private String creditCardNumber;
 
@@ -27,12 +32,24 @@ public class CreditCardDetail {
   @OneToMany(mappedBy = "creditCardDetail")
   List<Order> orders;
 
+  //Changed nullable to true for now, or creditcard cannot be created
   @JsonIgnore
   @ManyToOne
-  @JoinColumn(name="userCredentialId", nullable=false)
+  @JoinColumn(name="userCredentialId", nullable=true)
   private UserCredential userCredential;
 
-  public String getCreditCardNumber() {
+  
+  
+
+public long getCreditCardId() {
+	return creditCardId;
+}
+
+public void setCreditCardId(long creditCardId) {
+	this.creditCardId = creditCardId;
+}
+
+public String getCreditCardNumber() {
     return creditCardNumber;
   }
 
