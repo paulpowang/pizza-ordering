@@ -32,7 +32,7 @@ public class ShoppingCart {
 
   @OneToMany(cascade = CascadeType.ALL,
     orphanRemoval = true,
-    mappedBy = "shoppingCartItemId")
+    mappedBy = "shoppingCart")
   private List<ShoppingCartItem> shoppingCartItems;
 
   public ShoppingCart() {
