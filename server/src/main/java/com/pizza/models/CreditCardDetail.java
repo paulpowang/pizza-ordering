@@ -17,7 +17,7 @@ public class CreditCardDetail {
 	private long creditCardId;
 
   @Column(name = "CreditCardNumber")
-  private Long creditCardNumber;
+  private String creditCardNumber;
 
   @Column(name = "CardHolderName")
   private String cardHolderName;
@@ -46,11 +46,11 @@ public class CreditCardDetail {
     this.creditCardId = creditCardId;
   }
 
-  public Long getCreditCardNumber() {
+  public String getCreditCardNumber() {
     return creditCardNumber;
   }
 
-  public void setCreditCardNumber(Long creditCardNumber) {
+  public void setCreditCardNumber(String creditCardNumber) {
     this.creditCardNumber = creditCardNumber;
   }
 
