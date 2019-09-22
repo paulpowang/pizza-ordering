@@ -95,6 +95,14 @@ public class ShoppingCart {
     this.totalPrice = totalPrice;
   }
 
+public List<ShoppingCartItem> getShoppingCartItems() {
+	return shoppingCartItems;
+}
+
+public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
+	this.shoppingCartItems = shoppingCartItems;
+}
+
 }
 
 
