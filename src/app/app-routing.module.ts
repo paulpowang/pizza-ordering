@@ -8,29 +8,19 @@ import { UpdateStoreComponent } from './update-store/update-store.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
 
 const routes: Routes = [
-  {
-    path: 'storesCustomer',
-    component: StoresListCustomerComponent,
-  },
-  {
-    path: 'storesCustomer/:id',
-    component: FoodItemFormComponent,
-  },
+  {path: 'storesCustomer',
+   component: StoresListCustomerComponent,},
+  {path: 'storesCustomer/:id',
+   component: FoodItemFormComponent,},
+  {path: 'storesAdmin',
+   component: StoresListAdminComponent,},
+  {path: 'storesAdmin/createStore',
+   component: CreateStoreComponent,},
+  {path: 'storesAdmin/:id',
+   component: UpdateStoreComponent,},  
+  {path: '**',
+  redirectTo: 'storesCustomer',},
   
-  {
-    path: 'storesAdmin',
-    component: StoresListAdminComponent,
-  },
-  {
-    path: 'storesAdmin/:id',
-    component: UpdateStoreComponent,
-  },  
-  /*
-  {
-    path: '**',
-    redirectTo: 'storesCustomer',
-  },
-  */
 ];
 
 @NgModule({

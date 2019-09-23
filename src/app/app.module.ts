@@ -18,6 +18,7 @@ import { StoresListAdminComponent } from './stores-list-admin/stores-list-admin.
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
+import { CreateStoreComponent } from './create-store/create-store.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { UpdateStoreComponent } from './update-store/update-store.component';
     StoresListAdminComponent, 
     FoodItemFormComponent,
     StoreDetailsComponent,
-    UpdateStoreComponent
+    UpdateStoreComponent,
+    CreateStoreComponent
   ],
   imports: [
     BrowserModule,

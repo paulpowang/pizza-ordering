@@ -8,7 +8,7 @@ export class Store {
   zipCode: string;
   foodItems: Set<FoodItem>;
 
-  constructor({ storeId, storeName, city, state, zipCode, foodItems }: any) {
+  setFields({ storeId, storeName, city, state, zipCode, foodItems }: any) {
     this.storeId = storeId || null;
     this.storeName = storeName || null;
     this.city = city || null;
