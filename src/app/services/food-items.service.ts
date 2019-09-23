@@ -11,7 +11,7 @@ export class FoodItemsService {
   constructor(private http: HttpClient) {}
 
   getFoodItemsByStoreId(storeId: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/byStoreId/${storeId}`);
+    return this.http.get(`${this.baseUrl}/byStoreID/${storeId}`);
   }
 
   getAllFoodItems(): Observable<any> {

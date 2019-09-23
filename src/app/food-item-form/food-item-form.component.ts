@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { FoodItemsService } from '../services/food-items.service';
 import { FoodItem } from '../models/food-item';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-food-item-form',
@@ -14,10 +15,14 @@ export class FoodItemFormComponent implements OnInit {
   shoppingCartItems: Array<FoodItem> = [];
   @Output() shoppingCartEmitter = new EventEmitter<Array<FoodItem>>();
 
-  constructor(private foodItemsService: FoodItemsService) {}
+  constructor(
+      private foodItemsService: FoodItemsService,
+      private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.foodItemsService.getAllFoodItems().subscribe((array: Array<any>) => {
+    const id = +this.route.snapshot.paramMap.get('id');
+
+    this.foodItemsService.getFoodItemsByStoreId(id).subscribe((array: Array<any>) => {
       this.allFoodItems = array.map(obj => new FoodItem(obj));
     });
   }

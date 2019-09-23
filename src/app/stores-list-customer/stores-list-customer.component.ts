@@ -1,44 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { Store } from '../models/store';
 import { StoreService } from '../services/store.service';
 
 @Component({
-  selector: 'app-search-stores',
-  templateUrl: './search-stores.component.html',
-  styleUrls: ['./search-stores.component.css'],
+  selector: 'app-stores-list-customer',
+  templateUrl: './stores-list-customer.component.html',
+  styleUrls: ['./stores-list-customer.component.css'],
 })
-export class SearchStoresComponent implements OnInit {
+export class StoresListCustomerComponent  implements OnInit {
   zipCode: string;
-  stores: Store[];
   zipcodeForm: FormControl = new FormControl('');
   selectedStore: object;
   errorMessage: string;
+  stores: Observable<Store[]>;
 
-  constructor(private dataService: StoreService, private router: Router) {}
+  constructor(private router: Router,
+              private storeService: StoreService
+            ) {}
 
   ngOnInit() {
     this.zipCode = '';
-    this.stores = [];
+    this.reloadData();
   }
 
   searchStores(zipCode: string): void {
-    if (!zipCode) return;
-    this.stores = [];
-    this.dataService.getStoresByZipCode(zipCode).subscribe({
-      next: (arrayOfData: Array<object>) => {
-        if (arrayOfData) {
-          this.stores = arrayOfData.map((obj: any) => {
-            let store = new Store();
-            store.setFields(obj);
-            return store;
-          });
-        }
-        console.log(this.stores);
-      },
-    });
+    if (!zipCode)
+    {
+      this.reloadData();
+      return;
+    }
+  
+    this.stores =  this.storeService.getStoresByZipCode(zipCode);
   }
 
   submit(formData: any) {
@@ -51,5 +47,9 @@ export class SearchStoresComponent implements OnInit {
       return false;
     }
     return true;
+  }
+
+  reloadData() {
+    this.stores = this.storeService.getStoresList();
   }
 }

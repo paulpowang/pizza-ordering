@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
- 
+import { Routes, RouterModule, Router } from '@angular/router';
 import { Store } from '../models/store';
 import { StoreService } from '../services/store.service';
  
@@ -13,7 +13,9 @@ export class CreateStoreComponent implements OnInit {
   store: Store = new Store();
   submitted = false;
  
-  constructor(private storeService: StoreService) { }
+  constructor(
+      private storeService: StoreService,
+      private router: Router,) { }
  
   ngOnInit() {
   }
@@ -36,5 +38,10 @@ export class CreateStoreComponent implements OnInit {
  
   onSubmit() {
     this.save();
+    setTimeout(() => 
+    {
+      this.router.navigate(['/storesAdmin']);
+    },
+    250);
   }
 }

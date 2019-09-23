@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+
 /**
  * Database entity for PizzaStores. Has many-to-many relationship with
  * FoodItems, joined by the table PizzaStores_has_FoodItems.
