@@ -1,50 +1,36 @@
 package com.pizza.models;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "CreditCardDetails")
 public class CreditCardDetail {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "CreditCardId")
-	private long creditCardId;
-
+  @Id
   @Column(name = "CreditCardNumber")
   private String creditCardNumber;
 
   @Column(name = "CardHolderName")
+  @NotNull
   private String cardHolderName;
 
   @Column(name = "ValidTo")
+  @NotNull
   private String validTo;
 
-  @Column(name = "Balance")
+  @Column(name = "Balance", columnDefinition = "number(10,2) default 0.0")
   private Double balance;
 
-  @JsonIgnore
   @OneToMany(mappedBy = "creditCardDetail")
   List<Order> orders;
 
-  //Changed nullable to true for now, or creditcard cannot be created
-  @JsonIgnore
   @ManyToOne
-  @JoinColumn(name="userCredentialId", nullable=true)
+  @JoinColumn(name="userCredentialId", nullable=false)
   private UserCredential userCredential;
-
-  public long getCreditCardId() {
-    return creditCardId;
-  }
-
-  public void setCreditCardId(long creditCardId) {
-    this.creditCardId = creditCardId;
-  }
 
   public String getCreditCardNumber() {
     return creditCardNumber;
@@ -93,5 +79,4 @@ public class CreditCardDetail {
   public void setUserCredential(UserCredential userCredential) {
     this.userCredential = userCredential;
   }
-
 }

@@ -20,9 +20,8 @@ public class FoodItemController {
     return repository.findAll();
   }
 
-
   @PostMapping(path = "/add", produces = "application/text")
-  public ResponseEntity<FoodItem> addFoodItem(@ModelAttribute FoodItem foodItem) {
+  public ResponseEntity<FoodItem> addFoodItem(@RequestBody FoodItem foodItem) {
     try {
       repository.save(foodItem);
       return new ResponseEntity<FoodItem>(foodItem, HttpStatus.CREATED);
@@ -32,7 +31,7 @@ public class FoodItemController {
   }
 
   @GetMapping(path = "/byStoreID/{id}", produces = "application/json")
-  public @ResponseBody Iterable getFoodItemById(@PathVariable long id) {
+  public @ResponseBody Iterable getFoodItemById(@PathVariable Long id) {
     return repository.findByPizzaStores_StoreId(id);
   }
 }

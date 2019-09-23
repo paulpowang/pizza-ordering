@@ -1,48 +1,75 @@
-<h3>Store Details</h3>
-<div [hidden]="submitted" [hidden] ="deleted" style="width: 300px;">
-  <form (ngSubmit)="onSubmit()">
+<div class="row">
 
-    <div class="form-group">
-      <label for="storeId">ID</label>
-      <input readonly = true; type="text" class="form-control" id="storeId" 
-      required [ngModel]="store?.storeId" (ngModelChange)="store.storeId = $event" name="storeId">
-    </div>
+  <!-- Column 1 -->
+  <div class="column">
 
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" 
-      [ngModel]="store?.storeName" (ngModelChange)="store.storeName = $event" name="name">
-    </div>
- 
-    <div class="form-group">
-      <label for="city">City</label>
-      <input type="text" class="form-control" id="city" 
-      required [ngModel]="store?.city" (ngModelChange)="store.city = $event" name="city">
-    </div>
+    <h3>Store Details</h3>
 
-    <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" class="form-control" id="state" 
-        required [ngModel]="store?.state" (ngModelChange)="store.state = $event" name="state">
-    </div>
+      <form (ngSubmit)="updateStore()">
+        <div class="form-group">
+          <label for="storeId">ID</label>
+          <input readonly = true; type="text" class="form-control" id="storeId" 
+          required [ngModel]="store?.storeId" (ngModelChange)="store.storeId = $event" name="storeId">
+        </div>
 
-    <div class="form-group">
-        <label for="zipCode">Postal Code</label>
-        <input type="text" class="form-control" id="zipCode" 
-        required [ngModel]="store?.zipCode" (ngModelChange)="store.zipCode = $event" name="zipCode">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" 
+          [ngModel]="store?.storeName" (ngModelChange)="store.storeName = $event" name="name">
+        </div>
+  
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" 
+          required [ngModel]="store?.city" (ngModelChange)="store.city = $event" name="city">
+        </div>
+
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" class="form-control" id="state" 
+          required [ngModel]="store?.state" (ngModelChange)="store.state = $event" name="state">
+        </div>
+
+        <div class="form-group">
+          <label for="zipCode">Zip Code</label>
+          <input type="text" class="form-control" id="zipCode" 
+          required [ngModel]="store?.zipCode" (ngModelChange)="store.zipCode = $event" name="zipCode">
+        </div>
+  
+        <button type="submit" class="btn btn-success">Update</button>
+        <button (click)="delete()">Delete</button>
+      </form>
+  </div>
+
+  <!-- Column 2 -->
+  <div class="column">
+
+    <h3>Items in Store</h3>
+    <div class="card-container">
+      <a (click)="addToAll(foodItem)" *ngFor="let foodItem of storeFoodItems" class="card">
+        <div class="description-container">
+          <h4>{{ foodItem.name }}</h4>
+          <p>{{ foodItem.price | currency: 'USD' }}</p>
+        </div>
+      </a>
     </div>
- 
-    <button type="submit" class="btn btn-success">Update</button>
-  </form>
-    <button (click)="delete()">Delete</button>
+    
+  </div>
+
+  <!-- Column 3 -->
+  <div class="column">
+    
+      <h3>Items bank</h3>
+      <div class="card-container">
+          <a (click)="addToStore(foodItem)" *ngFor="let foodItem of allFoodItems" class="card">
+            <div class="description-container">
+              <h4>{{ foodItem.name }}</h4>
+              <p>{{ foodItem.price | currency: 'USD' }}</p>
+            </div>
+          </a>
+        </div>
+
+  </div>
+
 </div>
- 
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
-  <button class="btn btn-success" (click)="newStore()">Update</button>
-</div>
 
-<div [hidden]="!deleted">
-  <h4>You deleted successfully!</h4>
-  <button class="btn btn-success" (click)="navigateToStore()">Ok</button>
-</div>

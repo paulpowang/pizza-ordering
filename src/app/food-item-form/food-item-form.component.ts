@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { FoodItemsService } from '../services/food-items.service';
 import { FoodItem } from '../models/food-item';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-food-item-form',
@@ -9,20 +10,28 @@ import { FoodItem } from '../models/food-item';
   styleUrls: ['./food-item-form.component.css'],
 })
 export class FoodItemFormComponent implements OnInit {
-  @Input() storeId: number;
+  @Input('storeId') storeId: number;
   allFoodItems: Array<FoodItem> = [];
-  @Output() shoppingCartItems: Array<FoodItem> = [];
+  shoppingCartItems: Array<FoodItem> = [];
+  @Output() shoppingCartEmitter = new EventEmitter<Array<FoodItem>>();
 
-  constructor(private foodItemsService: FoodItemsService) {}
+  constructor(
+      private foodItemsService: FoodItemsService,
+      private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.foodItemsService.getAllFoodItems().subscribe((array: Array<any>) => {
+    const id = +this.route.snapshot.paramMap.get('id');
+
+    this.foodItemsService.getFoodItemsByStoreId(id).subscribe((array: Array<any>) => {
       this.allFoodItems = array.map(obj => new FoodItem(obj));
     });
   }
 
   addToCart(foodItem: FoodItem) {
     this.shoppingCartItems.push(foodItem);
-    console.log(this.shoppingCartItems);
-  } 
+  }
+
+  submitShoppingCart(): void {
+    this.shoppingCartEmitter.emit(this.shoppingCartItems);
+  }
 }
