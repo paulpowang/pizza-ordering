@@ -1,12 +1,14 @@
 package com.pizza.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "ShoppingCarts")
+@Table(name = "ShoppingCart")
 public class ShoppingCart {
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "ShoppingCartId")
@@ -24,26 +26,25 @@ public class ShoppingCart {
   @Column(name = "TotalPrice")
   private double totalPrice;
 
-  @ManyToMany(fetch = FetchType.LAZY,
-    cascade = {
-      CascadeType.PERSIST
-    })
-  @JoinTable(name = "ShoppingCarts_has_FoodItems",
-    joinColumns = { @JoinColumn(name = "ShoppingCartId") },
-    inverseJoinColumns = { @JoinColumn(name = "FoodItemID") })
-    List<FoodItem> foodItems = new ArrayList<>();
-
   @OneToOne(mappedBy = "shoppingCart", cascade = CascadeType.PERSIST)
+  @JsonIgnore
   private Order order;
+
+  @OneToMany(cascade = CascadeType.ALL,
+    orphanRemoval = true,
+    mappedBy = "shoppingCart")
+  private List<ShoppingCartItem> shoppingCartItems;
 
   public ShoppingCart() {
   }
 
-  public ShoppingCart(String foodName, double unitPrice, int quantity, double totalPrice) {
+  public ShoppingCart(String foodName, double unitPrice, int quantity, double totalPrice, Order order, List<ShoppingCartItem> shoppingCartItems) {
     this.foodName = foodName;
     this.unitPrice = unitPrice;
     this.quantity = quantity;
     this.totalPrice = totalPrice;
+    this.order = order;
+    this.shoppingCartItems = shoppingCartItems;
   }
 
   public Long getShoppingCartId() {
@@ -82,14 +83,6 @@ public class ShoppingCart {
     return totalPrice;
   }
 
-  public List<FoodItem> getFoodItems() {
-    return foodItems;
-  }
-
-  public void setFoodItems(List<FoodItem> foodItems) {
-    this.foodItems = foodItems;
-  }
-
   public Order getOrder() {
     return order;
   }
@@ -101,6 +94,7 @@ public class ShoppingCart {
   public void setTotalPrice(double totalPrice) {
     this.totalPrice = totalPrice;
   }
+
 }
 
 
