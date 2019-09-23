@@ -13,6 +13,7 @@ import { UpdateStoreComponent } from './update-store/update-store.component';
 import { StoresPageComponent } from './stores-page/stores-page.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CreateUsercredentialComponent } from './create-usercredential/create-us
     FoodItemFormComponent,
     CreateUsercredentialComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
