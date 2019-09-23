@@ -63,7 +63,6 @@ public class UserCredentialController {
 
   @GetMapping("/signup/{id}")
   public boolean getStoreById(@PathVariable("id") String userCredentialId) {
-    System.out.println(userCredentialId);
     Optional<UserCredential> storeData = repository.findById(userCredentialId);
     boolean found = storeData.isPresent();
     System.out.println(found);
@@ -91,12 +90,10 @@ public class UserCredentialController {
   @PostMapping(value = "/signup")
 
   public ResponseEntity<UserCredential> postUser(@RequestBody UserCredential usercredential) {
-    System.out.println("function here mapping called");
     try {
       UserCredential users= repository.save(new UserCredential(usercredential.getUserCredentialId(),
         usercredential.getUserType(),
         usercredential.getPassword()));
-      System.out.println(users.getUserType());
       return new ResponseEntity<>(users, HttpStatus.CREATED);
     } catch (Exception e) {
       return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
