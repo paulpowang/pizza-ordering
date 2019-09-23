@@ -4,8 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,15 +26,7 @@ public class FoodItem {
   @ManyToMany(fetch = FetchType.LAZY,
     cascade = { CascadeType.PERSIST },
     mappedBy = "foodItems")
-  private Set<PizzaStore> pizzaStores;
-
-  @JsonIgnore
-  @ManyToMany(fetch = FetchType.LAZY,
-    cascade = {
-      CascadeType.PERSIST
-    },
-    mappedBy = "foodItems")
-  private List<ShoppingCart> shoppingCarts;
+  private List<PizzaStore> pizzaStores = new ArrayList<>();
 
   public FoodItem() {
   }

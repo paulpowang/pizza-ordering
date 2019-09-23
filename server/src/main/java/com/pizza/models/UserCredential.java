@@ -50,6 +50,12 @@ public class UserCredential {
     this.shipmentDetails = shipmentDetails;
   }
 
+  public UserCredential(String userCredentialId, @NotNull String userType, @NotNull String password) {
+    this.userCredentialId = userCredentialId;
+    this.userType = userType;
+    this.password = password;
+  }
+
   public String getUserCredentialId() {
     return userCredentialId;
   }
