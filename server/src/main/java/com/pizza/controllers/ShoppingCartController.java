@@ -14,34 +14,34 @@ import com.pizza.service.ShoppingCartService;
 @RestController
 @RequestMapping("/api")
 public class ShoppingCartController {
-	
+
 	@Autowired
 	private ShoppingCartService service;
-	
-	
+
+
 	// Get
 	@RequestMapping(value="/shoppingcarts", method = RequestMethod.GET)
 	public List<ShoppingCart> getShoppingCarts(){
 		return service.getAllTheShoppingCarts();
 	}
-	
+
 	@RequestMapping(value="/shoppingcarts/{id}")
 	public ShoppingCart getShoppingCartById(@PathVariable int id) {
 		return service.getShoppingCartDetail(id);
 	}
-	
+
 	//POST
 	@RequestMapping(value="/shoppingcarts/save", method = RequestMethod.POST)
 	public void saveShoppingCartDetail(@RequestBody ShoppingCart card) {
 		service.saveShoppingCartDetail(card);;
 	}
-	
+
 	//PUT
-	@RequestMapping(value="/shoppingcarts/update/{id}", method = RequestMethod.PUT)
-	public void updateShoppingCartDetail(@PathVariable long id, @RequestBody ShoppingCart card) {
-		service.updateShoppingCartDetail(id, card);;
-	}
-	
+//	@RequestMapping(value="/shoppingcarts/update/{id}", method = RequestMethod.PUT)
+//	public void updateShoppingCartDetail(@PathVariable long id, @RequestBody ShoppingCart card) {
+//		service.updateShoppingCartDetail(id, card);;
+//	}
+
 	//Delete
 	@RequestMapping(value="/shoppingcarts/delete/{id}", method = RequestMethod.DELETE)
 	public void deleteShoppingCartDetail(@PathVariable int id) {

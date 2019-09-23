@@ -1,7 +1,9 @@
 package com.pizza.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,13 +48,13 @@ public class PizzaStore
   @JoinTable(name = "PizzaStores_has_FoodItems",
   joinColumns = { @JoinColumn(name = "PizzaStoreID") },
   inverseJoinColumns = { @JoinColumn(name = "FoodItemID") })
-  private Set<FoodItem> foodItems = new HashSet<>();
+  private List<FoodItem> foodItems = new ArrayList<>();
 
   public PizzaStore() {
     super();
   }
 
-  public PizzaStore(String storeName, String city, String state, String zipCode, Set<FoodItem> foodItems)
+  public PizzaStore(String storeName, String city, String state, String zipCode, List<FoodItem> foodItems)
   {
     super();
     this.storeName = storeName;
@@ -110,11 +112,11 @@ public class PizzaStore
     this.zipCode = zipCode;
   }
 
-  public Set<FoodItem> getFoodItems() {
+  public List<FoodItem> getFoodItems() {
     return foodItems;
   }
 
-  public void setFoodItems(Set<FoodItem> foodItems) {
+  public void setFoodItems(List<FoodItem> foodItems) {
     this.foodItems = foodItems;
   }
 

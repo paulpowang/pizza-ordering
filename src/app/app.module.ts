@@ -19,16 +19,19 @@ import { FoodItemFormComponent } from './food-item-form/food-item-form.component
 import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
+import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 
 @NgModule({
   declarations: [
-    AppComponent, 
-    StoresListCustomerComponent, 
-    StoresListAdminComponent, 
+    AppComponent,
+    StoresListCustomerComponent,
+    StoresListAdminComponent,
     FoodItemFormComponent,
     StoreDetailsComponent,
     UpdateStoreComponent,
-    CreateStoreComponent
+    CreateStoreComponent,
+    FoodItemFormComponent,
+    CreateUsercredentialComponent,
   ],
   imports: [
     BrowserModule,
