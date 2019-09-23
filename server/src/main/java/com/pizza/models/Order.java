@@ -19,11 +19,11 @@ public class Order {
   private ShipmentDetails shipmentDetails;
 
   @ManyToOne
-  @JoinColumn(name = "creditCardNumber", nullable = false)
+  @JoinColumn(name = "creditCardNumber")
   private CreditCardDetail creditCardDetail;
 
   @ManyToOne
-  @JoinColumn(name = "userCredentialId", nullable = false)
+  @JoinColumn(name = "userCredentialId")
   private UserCredential userCredential;
 
   public Long getOrderId() {

@@ -27,6 +27,12 @@ public class ShoppingCartItem {
   public ShoppingCartItem() {
   }
 
+  public ShoppingCartItem(int quantity, FoodItem foodItem, ShoppingCart shoppingCart) {
+    this.quantity = quantity;
+    this.foodItem = foodItem;
+    this.shoppingCart = shoppingCart;
+  }
+
   public Long getShoppingCartItemId() {
     return shoppingCartItemId;
   }

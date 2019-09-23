@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "ShoppingCart")
+@Table(name = "ShoppingCarts")
 public class ShoppingCart {
 
   @Id
@@ -47,6 +47,13 @@ public class ShoppingCart {
     this.order = order;
   }
 
+  public List<ShoppingCartItem> getShoppingCartItems() {
+    return shoppingCartItems;
+  }
+
+  public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
+    this.shoppingCartItems = shoppingCartItems;
+  }
 }
 
 
