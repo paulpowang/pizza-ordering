@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pizza.models.CreditCardDetail;
 import com.pizza.service.CreditCardService;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class CreditCardController {
