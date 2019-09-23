@@ -12,6 +12,7 @@ import { SearchStoresComponent } from './search-stores/search-stores.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { StoresPageComponent } from './stores-page/stores-page.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
+import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FoodItemFormComponent } from './food-item-form/food-item-form.component
     UpdateStoreComponent,
     StoresPageComponent,
     FoodItemFormComponent,
+    CreateUsercredentialComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
