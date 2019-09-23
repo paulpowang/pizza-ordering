@@ -44,11 +44,52 @@ export class UpdateStoreComponent implements OnInit {
     // Gets all food items 
     this.foodItemsService.getAllFoodItems().subscribe((array: Array<any>) => {
       this.allFoodItems = array.map(obj => new FoodItem(obj));
+
+      this.removeStoreItemsFromAll()
     });
   }
 
-  updateStore() {
+  addToAll(foodItem: FoodItem)
+  {
+    let index: number = this.storeFoodItems.indexOf(foodItem);
+    if (index !== -1) 
+    {
+      this.storeFoodItems.splice(index, 1);    
+    }
 
+    this.allFoodItems.push(foodItem);
+  }
+
+  addToStore(foodItem: FoodItem)
+  {
+    let index: number = this.allFoodItems.indexOf(foodItem);
+    if (index !== -1) 
+    {
+      this.allFoodItems.splice(index, 1);    
+    }
+
+    this.storeFoodItems.push(foodItem);
+  }
+
+  removeStoreItemsFromAll()
+  {
+    let index: number = 0;
+    for (let food of this.storeFoodItems) 
+    {
+      index = -1;
+      for(let allFood of this.allFoodItems)
+      {
+        index = index + 1;
+        if (food.foodItemId === allFood.foodItemId)
+        {
+            this.allFoodItems.splice(index, 1);    
+        }
+      }
+    }
+  }
+
+  updateStore() 
+  {
     this.storeService.updateStore(this.store.storeId,
       { storeName: this.store.storeName, city: this.store.city, 
         state: this.store.state, zipCode: this.store.zipCode, foodItems: this.storeFoodItems})

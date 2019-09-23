@@ -40,7 +40,7 @@
         <button (click)="delete()">Delete</button>
       </form>
 
-
+      <button (click)="removeStoreItemsFromAll()">Test</button>
   </div>
 
   <!-- Column 2 -->
@@ -48,7 +48,7 @@
 
     <h3>Items in Store</h3>
     <div class="card-container">
-      <a (click)="addToCart(foodItem)" *ngFor="let foodItem of storeFoodItems" class="card">
+      <a (click)="addToAll(foodItem)" *ngFor="let foodItem of storeFoodItems" class="card">
         <div class="description-container">
           <h4>{{ foodItem.name }}</h4>
           <p>{{ foodItem.price | currency: 'USD' }}</p>
@@ -63,7 +63,7 @@
     
       <h3>Items bank</h3>
       <div class="card-container">
-          <a (click)="addToCart(foodItem)" *ngFor="let foodItem of allFoodItems" class="card">
+          <a (click)="addToStore(foodItem)" *ngFor="let foodItem of allFoodItems" class="card">
             <div class="description-container">
               <h4>{{ foodItem.name }}</h4>
               <p>{{ foodItem.price | currency: 'USD' }}</p>
