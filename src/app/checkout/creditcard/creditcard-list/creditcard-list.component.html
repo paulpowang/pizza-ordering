@@ -1,10 +1,15 @@
 <h2>Credit Card List</h2>
-<div *ngFor="let card of creditcards| async">
+<div *ngFor="let card of creditcards| async" style="width: 300px;">
     <div>
         {{card.creditCardNumber}} <br>
         {{card.cardHolderName}} <br>
         {{card.validTo}}
     </div>
+    <button mat-raised-button color="primary" (click)="editCreditcard(card.creditCardId)">Edit Creditcard</button>
+
         
 
 </div>
+<nav>
+        <button mat-raised-button color="primary" (click)="addCreditcard()">Add Creditcard</button>
+    </nav>
