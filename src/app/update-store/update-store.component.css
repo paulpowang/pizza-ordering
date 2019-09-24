@@ -32,7 +32,7 @@ label {
 .column 
 {
   float: left;
-  width: 33.33%;
+  width: 50%;
 }
   
 /* Clear floats after the columns */
@@ -51,8 +51,8 @@ label {
   justify-content: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 10em;
-  height: 8em;
+  width: 100px;
+  height: 100px;
   text-align: center;
 }
   
@@ -72,3 +72,15 @@ label {
   margin: 3em;
 }
   
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  float: left;
+  width: 50%;
+}
+
+.example-full-width {
+  width: 100%;
+}

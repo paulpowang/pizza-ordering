@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 import { FoodItem } from '../models/food-item';
 import { Store } from '../models/store';
 
 import { StoreService } from '../services/store.service';
 import { FoodItemsService } from '../services/food-items.service';
+import { Location } from '@angular/common';
 
  
 @Component({
@@ -27,6 +27,7 @@ export class UpdateStoreComponent implements OnInit {
     private foodItemsService: FoodItemsService,
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location
   ) {}
  
   ngOnInit() {
@@ -106,7 +107,7 @@ export class UpdateStoreComponent implements OnInit {
     {
       this.router.navigate(['/storesAdmin']);
     },
-    500);
+    400);
   }
   
   delete()
@@ -123,6 +124,10 @@ export class UpdateStoreComponent implements OnInit {
     {
       this.router.navigate(['/storesAdmin']);
     },
-    500);
+    400);
+  }
+
+  back() {
+    this.location.back();
   }
 }

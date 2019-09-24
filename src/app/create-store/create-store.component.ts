@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Routes, RouterModule, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Store } from '../models/store';
 import { StoreService } from '../services/store.service';
  
@@ -14,7 +15,9 @@ export class CreateStoreComponent implements OnInit {
  
   constructor(
       private storeService: StoreService,
-      private router: Router,) { }
+      private router: Router,
+      private location: Location
+  ) { }
  
   ngOnInit() {
   }
@@ -26,7 +29,6 @@ export class CreateStoreComponent implements OnInit {
           console.log(data);
         },
         error => console.log(error));
-    this.store = new Store();
   }
  
   onSubmit() {
@@ -35,6 +37,10 @@ export class CreateStoreComponent implements OnInit {
     {
       this.router.navigate(['/storesAdmin']);
     },
-    500);
+    400);
+  }
+
+  back() {
+    this.location.back();
   }
 }
