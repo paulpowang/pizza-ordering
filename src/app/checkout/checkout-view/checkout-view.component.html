@@ -1,4 +1,8 @@
 <p>checkout-view works!</p>
-<router-outlet></router-outlet>
+<a [routerLink]="['/checkout/shipment/add']">Click to shipment add</a>
+<a [routerLink]="['/checkout/creditcard/add']">Click to Creditcard add</a>
+
 <router-outlet name="shipment"></router-outlet>
 <router-outlet name="creditcard"></router-outlet>
+<router-outlet></router-outlet>
+

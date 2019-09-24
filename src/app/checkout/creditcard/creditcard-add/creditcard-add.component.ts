@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Creditcard } from '../creditcard';
 import { CreditcardService } from '../creditcard.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-creditcard-add',
@@ -13,7 +15,8 @@ export class CreditcardAddComponent implements OnInit {
   creditcard: Creditcard = new Creditcard();
 
   constructor(private service: CreditcardService, 
-              private router: Router) { }
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
   }
@@ -36,6 +39,10 @@ export class CreditcardAddComponent implements OnInit {
       this.router.navigate(['/checkout']);
     },
     250);
+  }
+
+  back() {
+    this.location.back();
   }
 
 }
