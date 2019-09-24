@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class ServerApplication {
 
   public static void main(String[] args) {
+    System.out.println(org.hibernate.Version.getVersionString());
     SpringApplication.run(ServerApplication.class, args);
   }
 
