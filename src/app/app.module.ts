@@ -20,7 +20,6 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
-import { FoodQuantityComponent } from './food-quantity/food-quantity.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,6 @@ import { FoodQuantityComponent } from './food-quantity/food-quantity.component';
     CreateStoreComponent,
     FoodItemFormComponent,
     CreateUsercredentialComponent,
-    FoodQuantityComponent,
   ],
   imports: [
     BrowserModule,

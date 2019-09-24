@@ -6,15 +6,12 @@ import { StoresListCustomerComponent } from './stores-list-customer/stores-list-
 import { StoresListAdminComponent } from './stores-list-admin/stores-list-admin.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
-import { FoodQuantityComponent } from './food-quantity/food-quantity.component';
 
 const routes: Routes = [
   {path: 'storesCustomer',
    component: StoresListCustomerComponent,},
   {path: 'storesCustomer/:id',
    component: FoodItemFormComponent,},
-  {path: 'foodItemQuantity',
-   component: FoodQuantityComponent,},
   {path: 'storesAdmin',
    component: StoresListAdminComponent,},
   {path: 'storesAdmin/createStore',

@@ -15,6 +15,7 @@ export class FoodItemFormComponent implements OnInit {
   @Input('storeId') storeId: number;
   allFoodItems: Array<FoodItem> = [];
   shoppingCartItems: Array<FoodItem> = [];
+  quantity: Array<number>;
   @Output() shoppingCartEmitter = new EventEmitter<Array<FoodItem>>();
 
   constructor(
@@ -27,6 +28,7 @@ export class FoodItemFormComponent implements OnInit {
       //populate FoodItems on Page
       this.foodItemsService.getFoodItemsByStoreId(id).subscribe((array: Array<any>) => {
       this.allFoodItems = array.map(obj => new FoodItem(obj));
+      this.quantity = new Array(this.allFoodItems.length).fill(0);
     });
 };
 
@@ -39,23 +41,19 @@ export class FoodItemFormComponent implements OnInit {
     this.shoppingCartEmitter.emit(this.shoppingCartItems);
   }
 
-  //create initial quantity array with 0 as values
-  private shoppingCartItems: Array<ShoppingCartItem> = [];
-  for(var i = 0; i < this.allFoodItems.length; i++){
-    quantity[i] = 0;
-    console.log(quantity[i]);
-  }
+   //create initial quantity array with 0 as values
+
 
   increaseQtny(index) {
-    this.quantityArr[index] = this.quantity + 1;
+    this.quantity[index] = this.quantity[index] + 1;
   }
 
   decreaseQtny(index) {
-  if(this.quantity[index] <= 1) {
-    this.quantity[index] = this.quantity;
+  if(this.quantity[index] <= 0) {
+    this.quantity[index] = this.quantity[index];
   }
   else {
-    this.quantity = this.quantity - 1;
+    this.quantity[index] = this.quantity[index] - 1;
   }
 }
 }
