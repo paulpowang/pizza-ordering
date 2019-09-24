@@ -2,6 +2,8 @@ package com.pizza.models;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
   @Entity
   @Table(name = "ShipmentDetails")
   public class ShipmentDetails {
@@ -34,11 +36,14 @@ import javax.persistence.*;
     @Column(name = "OrderStatus")
     private String orderStatus;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "shipmentDetails", cascade = CascadeType.PERSIST)
     private Order order;
-
+    
+    // set nullable to true for function creating.
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="userCredentialId", nullable=false)
+    @JoinColumn(name="userCredentialId", nullable=true)
     private UserCredential userCredential;
 
     public Long getShippingId() {

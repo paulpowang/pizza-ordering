@@ -3,6 +3,8 @@ package com.pizza.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,21 +14,19 @@ public class FoodItem {
   @Column(name = "FoodItemId")
   private Long foodItemId;
 
-  @Column(name = "Price")
+  @Column(name = "price")
+  @NotNull
   private Double price;
 
-  @Column(name = "Name")
+  @Column(name = "name")
+  @NotNull
   private String name;
 
+  @JsonIgnore
   @ManyToMany(fetch = FetchType.LAZY,
     cascade = { CascadeType.PERSIST },
     mappedBy = "foodItems")
-  private List<PizzaStore> pizzaStores;
-
-  @JsonIgnore
-  @OneToMany(cascade = { CascadeType.PERSIST},
-    mappedBy = "shoppingCartItemId")
-  private List<ShoppingCartItem> shoppingCartItems;
+  private List<PizzaStore> pizzaStores = new ArrayList<>();
 
   public FoodItem() {
   }

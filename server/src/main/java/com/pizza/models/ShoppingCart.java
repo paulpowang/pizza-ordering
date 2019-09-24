@@ -6,25 +6,13 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "ShoppingCart")
+@Table(name = "ShoppingCarts")
 public class ShoppingCart {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "ShoppingCartId")
   private Long shoppingCartId;
-
-  @Column(name = "FoodName")
-  private String foodName;
-
-  @Column(name = "UnitPrice")
-  private double unitPrice;
-
-  @Column(name = "Quantity")
-  private int quantity;
-
-  @Column(name = "TotalPrice")
-  private double totalPrice;
 
   @OneToOne(mappedBy = "shoppingCart", cascade = CascadeType.PERSIST)
   @JsonIgnore
@@ -38,11 +26,7 @@ public class ShoppingCart {
   public ShoppingCart() {
   }
 
-  public ShoppingCart(String foodName, double unitPrice, int quantity, double totalPrice, Order order, List<ShoppingCartItem> shoppingCartItems) {
-    this.foodName = foodName;
-    this.unitPrice = unitPrice;
-    this.quantity = quantity;
-    this.totalPrice = totalPrice;
+  public ShoppingCart(Order order, List<ShoppingCartItem> shoppingCartItems) {
     this.order = order;
     this.shoppingCartItems = shoppingCartItems;
   }
@@ -55,34 +39,6 @@ public class ShoppingCart {
     this.shoppingCartId = shoppingCartId;
   }
 
-  public String getFoodName() {
-    return foodName;
-  }
-
-  public void setFoodName(String foodName) {
-    this.foodName = foodName;
-  }
-
-  public double getUnitPrice() {
-    return unitPrice;
-  }
-
-  public void setUnitPrice(double unitPrice) {
-    this.unitPrice = unitPrice;
-  }
-
-  public int getQuantity() {
-    return quantity;
-  }
-
-  public void setQuantity(int quantity) {
-    this.quantity = quantity;
-  }
-
-  public double getTotalPrice() {
-    return totalPrice;
-  }
-
   public Order getOrder() {
     return order;
   }
@@ -91,10 +47,13 @@ public class ShoppingCart {
     this.order = order;
   }
 
-  public void setTotalPrice(double totalPrice) {
-    this.totalPrice = totalPrice;
+  public List<ShoppingCartItem> getShoppingCartItems() {
+    return shoppingCartItems;
   }
 
+  public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
+    this.shoppingCartItems = shoppingCartItems;
+  }
 }
 
 

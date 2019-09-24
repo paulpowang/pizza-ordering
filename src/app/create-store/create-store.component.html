@@ -1,5 +1,6 @@
+  
 <h3>Create Store</h3>
-<div [hidden]="submitted" style="width: 300px;">
+<div style="width: 300px;">
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="storeName">Name</label>
@@ -23,9 +24,4 @@
  
     <button type="submit" class="btn btn-success">Submit</button>
   </form>
-</div>
- 
-<div [hidden]="!submitted">
-  <h4>You submitted successfully!</h4>
-  <button class="btn btn-success" (click)="newStore()">Add</button>
 </div>

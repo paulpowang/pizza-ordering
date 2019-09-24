@@ -1,0 +1,26 @@
+<h3>Add CreditCard</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="creditCardNumber">Card Number</label>
+      <input type="text" class="form-control" id="creditCardNumber" required [(ngModel)]="creditcard.creditCardNumber" name="creditCardNumber">
+    </div>
+ 
+    <div class="form-group">
+      <label for="cardHolderName">Card Holder Name</label>
+      <input type="text" class="form-control" id="cardHolderName" required [(ngModel)]="creditcard.cardHolderName" name="cardHolderName">
+    </div>
+
+    <div class="form-group">
+        <label for="validTo">Valid Date to</label>
+        <input type="text" class="form-control" id="validTo" required [(ngModel)]="creditcard.validTo" name="validTo">
+    </div>
+
+    <div class="form-group">
+        <label for="balance">Balance</label>
+        <input type="number" class="form-control" id="balance" required [(ngModel)]="creditcard.balance" name="balance"  maxlength="5">
+    </div>
+ 
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
