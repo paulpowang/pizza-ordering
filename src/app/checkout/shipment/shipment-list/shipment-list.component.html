@@ -1,20 +1,42 @@
-<h2>Shipment List</h2>
+<mat-grid-list cols="4" rowHeight="50px">
+    <mat-grid-tile>
+        <h2>Shipment List</h2>
+    </mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="primary" (click)="addShipment()">Add Shipment</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
 
-<div *ngFor="let shipment of shipments| async" style="width: 300px;">
-    <div>
-        {{shipment.shippingId}} <br>
-        {{shipment.name}} <br>
-        {{shipment.address}}<br>
-        {{shipment.city}} <br>
-        {{shipment.state}} <br>
-        {{shipment.pin}} <br>
-        {{shipment.mobileNumber}} <br>
-        {{shipment.landline}}<br>
-        {{shipment.orderStatus}}
-    </div>
-    <button mat-raised-button color="primary" (click)="editShipment(shipment.shippingId)">Edit Shipment</button>
 
-        
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
 
+</mat-grid-list>
+
+
+<hr style="border-top: 1px dotted grey;">
+
+
+<div>
+
+    <mat-grid-list cols="4" rowHeight="1:1">
+        <mat-radio-group aria-label="Select an option">
+            <mat-grid-tile *ngFor="let shipment of shipments| async" style="width: 300px;">
+                <mat-card [style.minHeight]="'100%'" [style.minWidth]="'100%'">
+                    Shipment ID: {{shipment.shippingId}} <br>
+                    Name: {{shipment.name}} <br>
+                    Address: <br>
+                    {{shipment.address}}, {{shipment.city}}, {{shipment.state}},
+                    {{shipment.pin}}<br>
+                    (M): {{shipment.mobileNumber}} <br>
+                    (H): {{shipment.landline}}<br>
+                    Status:{{shipment.orderStatus}}<br>
+                    <mat-radio-button value="shipment.shipmentId"></mat-radio-button>
+                    <button mat-raised-button color="primary" (click)="editShipment(shipment.shippingId)">Edit</button>
+                </mat-card>
+
+
+            </mat-grid-tile>
+        </mat-radio-group>
+    </mat-grid-list>
 </div>
-<button mat-raised-button color="primary" (click)="addShipment()">Add Shipment</button>

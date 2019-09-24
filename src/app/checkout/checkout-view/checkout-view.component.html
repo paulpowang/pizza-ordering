@@ -7,5 +7,23 @@
 <router-outlet></router-outlet> -->
 
 <app-shipment-list></app-shipment-list>
+
 <app-creditcard-list></app-creditcard-list>
+<hr>
+
+<mat-grid-list cols="4" rowHeight="50px">
+        <mat-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
+    
+    
+        </mat-grid-tile>
+        <mat-grid-tile>
+                <button mat-raised-button color="warn" (click)="back()" style="margin-right:10px;">Cancel</button>
+                <button mat-raised-button color="primary" (click)="toSummary()">Continue</button>
+        </mat-grid-tile>
+    
+    </mat-grid-list>
 

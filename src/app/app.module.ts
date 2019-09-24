@@ -28,6 +28,11 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
+import { CheckoutDashboardComponent } from './checkout/checkout-dashboard/checkout-dashboard.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -47,6 +52,7 @@ import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipmen
     ShipmentListComponent,
     ShipmentAddComponent,
     ShipmentEditComponent,
+    CheckoutDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,10 @@ import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipmen
     MatRadioModule,
     MatButtonModule,
     MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatIconModule,
+    LayoutModule,
   ],
   exports: [FormsModule, ReactiveFormsModule],
   providers: [],
