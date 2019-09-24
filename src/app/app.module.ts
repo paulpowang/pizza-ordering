@@ -21,6 +21,13 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
+import { CheckoutViewComponent } from './checkout/checkout-view/checkout-view.component';
+import { CreditcardListComponent } from './checkout/creditcard/creditcard-list/creditcard-list.component';
+import { CreditcardAddComponent } from './checkout/creditcard/creditcard-add/creditcard-add.component';
+import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/creditcard-edit.component';
+import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
+import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
+import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +40,13 @@ import { CreateUsercredentialComponent } from './create-usercredential/create-us
     CreateStoreComponent,
     FoodItemFormComponent,
     CreateUsercredentialComponent,
+    CheckoutViewComponent,
+    CreditcardListComponent,
+    CreditcardAddComponent,
+    CreditcardEditComponent,
+    ShipmentListComponent,
+    ShipmentAddComponent,
+    ShipmentEditComponent,
   ],
   imports: [
     BrowserModule,
