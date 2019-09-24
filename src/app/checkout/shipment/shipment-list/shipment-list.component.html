@@ -1,0 +1,16 @@
+<h2>Shipment List</h2>
+<div *ngFor="let shipment of shipments| async">
+    <div>
+        {{shipment.shippingId}} <br>
+        {{shipment.name}} <br>
+        {{shipment.address}}<br>
+        {{shipment.city}} <br>
+        {{shipment.state}} <br>
+        {{shipment.pin}} <br>
+        {{shipment.mobileNumber}} <br>
+        {{shipment.landline}}<br>
+        {{shipment.orderStatus}}
+    </div>
+        
+
+</div>
