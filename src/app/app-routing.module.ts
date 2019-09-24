@@ -6,6 +6,7 @@ import { StoresListCustomerComponent } from './stores-list-customer/stores-list-
 import { StoresListAdminComponent } from './stores-list-admin/stores-list-admin.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
+import { CheckoutViewComponent } from './checkout/checkout-view/checkout-view.component';
 
 const routes: Routes = [
   {path: 'storesCustomer',
@@ -18,6 +19,8 @@ const routes: Routes = [
    component: CreateStoreComponent,},
   {path: 'storesAdmin/:id',
    component: UpdateStoreComponent,},  
+   {path: 'checkout',
+   component: CheckoutViewComponent,},  
   {path: '**',
   redirectTo: 'storesCustomer',},
   
