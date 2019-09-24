@@ -1,3 +1,4 @@
+import { ShoppingCart } from './models/shopping-cart';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -6,6 +7,7 @@ import { StoresListCustomerComponent } from './stores-list-customer/stores-list-
 import { StoresListAdminComponent } from './stores-list-admin/stores-list-admin.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 const routes: Routes = [
   {path: 'storesCustomer',
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: 'storesAdmin/createStore',
    component: CreateStoreComponent,},
   {path: 'storesAdmin/:id',
-   component: UpdateStoreComponent,},  
+   component: UpdateStoreComponent,},
+  {path: 'shoppingCart',
+   component: ShoppingCartComponent,},
   {path: '**',
   redirectTo: 'storesCustomer',},
   

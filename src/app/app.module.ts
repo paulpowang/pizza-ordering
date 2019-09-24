@@ -20,6 +20,7 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CreateUsercredentialComponent } from './create-usercredential/create-us
     CreateStoreComponent,
     FoodItemFormComponent,
     CreateUsercredentialComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,
