@@ -15,7 +15,7 @@ import { FoodItemFormComponent } from './food-item-form/food-item-form.component
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatToolbarModule, MatNativeDateModule, MatIconModule,
-  MatCardModule, MatFormFieldModule, MatProgressSpinnerModule} from '@angular/material';
+  MatCardModule, MatFormFieldModule, MatProgressSpinnerModule, MatInputModule} from '@angular/material';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -35,7 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, BrowserAnimationsModule, MatButtonModule, MatToolbarModule,
     MatDatepickerModule, ReactiveFormsModule, MatNativeDateModule, MatIconModule, MatCardModule, MatFormFieldModule,
-    MatProgressSpinnerModule],
+    MatProgressSpinnerModule, MatInputModule],
   exports: [MatButtonModule, MatToolbarModule, MatButtonModule, MatToolbarModule,
     MatDatepickerModule, ReactiveFormsModule, MatNativeDateModule, MatIconModule, MatCardModule, MatFormFieldModule],
   providers: [],

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { UsercredentialService } from '../usercredential.service';
+import {FormControl, Validators} from '@angular/forms';
 import {Ucerc} from '../userc';
 
 @Component({
@@ -19,6 +20,7 @@ export class CreateUsercredentialComponent implements OnInit {
   date: Date;
   newuser: Ucerc = new Ucerc();
   tempuser: Ucerc = new Ucerc();
+  email = new FormControl('', [Validators.required, Validators.email]);
 
 
 
@@ -51,6 +53,11 @@ export class CreateUsercredentialComponent implements OnInit {
       error => console.log(error));
     this.newuser = new Ucerc();
     this.contain = true;
+  }
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+      this.email.hasError('email') ? 'Not a valid email' :
+        '';
   }
 
   ngOnInit() {
