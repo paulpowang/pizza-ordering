@@ -1,5 +1,6 @@
 <h2>Shipment List</h2>
-<div *ngFor="let shipment of shipments| async">
+
+<div *ngFor="let shipment of shipments| async" style="width: 300px;">
     <div>
         {{shipment.shippingId}} <br>
         {{shipment.name}} <br>
@@ -11,6 +12,9 @@
         {{shipment.landline}}<br>
         {{shipment.orderStatus}}
     </div>
+    <button mat-raised-button color="primary" (click)="editShipment(shipment.shippingId)">Edit Shipment</button>
+
         
 
 </div>
+<button mat-raised-button color="primary" (click)="addShipment()">Add Shipment</button>

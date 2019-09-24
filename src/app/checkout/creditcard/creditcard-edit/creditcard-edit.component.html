@@ -2,38 +2,40 @@
 
     <!-- Column 1 -->
     <div class="column">
+        <form class="example-form">
   
-      <h3>creditcard Details</h3>
+      
+      <div class="form-header">
+        <h3 color="accent">Creditcard Details</h3>
+    </div>
   
-        <form (ngSubmit)="updateCreditcard()">
-          <div class="form-group">
-            <label for="creditCardNumber">Creditcard Number</label>
-            <input type="text" class="form-control" id="creditCardNumber" 
+    <mat-form-field class="example-full-width">
+          
+            <input matInput placeholder="Creditcard Number" 
             required [ngModel]="creditcard?.creditCardNumber" (ngModelChange)="creditcard.creditCardNumber = $event" name="creditCardNumber">
-          </div>
+          
+        </mat-form-field>
   
-          <div class="form-group">
-            <label for="cardHolderName">Card Holder's cardHolderName</label>
-            <input type="text" class="form-control" id="cardHolderName" 
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Card Holder's Name" 
             [ngModel]="creditcard?.cardHolderName" (ngModelChange)="creditcard.cardHolderName = $event" name="cardHolderName">
-          </div>
+        </mat-form-field>
     
-          <div class="form-group">
-            <label for="validTo">Date Valid To</label>
-            <input type="text" class="form-control" id="validTo" 
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Date Valid To" 
             required [ngModel]="creditcard?.validTo" (ngModelChange)="creditcard.validTo = $event" name="validTo">
-          </div>
+          </mat-form-field>
   
-          <div class="form-group">
-            <label for="balance">Balance</label>
-            <input type="text" class="form-control" id="balance" 
+          <mat-form-field class="example-full-width">
+            
+            <input matInput placeholder="Balance" 
             required [ngModel]="creditcard?.balance" (ngModelChange)="creditcard.balance = $event" name="balance">
-          </div>
+          </mat-form-field>
   
           
-    
-          <button type="submit" class="btn btn-success">Update</button>
-          <button (click)="delete()">Delete</button>
+          <button mat-raised-button color="primary" (click)= back()>Back</button>
+          <button mat-raised-button color="primary" (click)= updateCreditcard() style="margin-left: 10px">Update</button>
+          <button mat-raised-button color="warn" (click)="delete()" style="margin-left: 10px">Delete</button>
         </form>
     </div>
   
