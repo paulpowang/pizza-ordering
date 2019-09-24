@@ -1,9 +1,12 @@
 package com.pizza.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.pizza.models.UserCredential;
 import com.pizza.repositories.UserCredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,7 +55,13 @@ public class CreditCardController {
 
 	@PostMapping(value = "/creditcards/addForUser/{userId}")
   public ResponseEntity addCreditCardFor(@PathVariable String userId, @RequestBody CreditCardDetail creditCard) {
-
+    Optional<UserCredential> userData = userCredentialRepository.findById(userId);
+    if (!userData.isPresent())
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    UserCredential user = userData.get();
+    creditCard.setUserCredential(user);
+    service.saveCreditCardDetail(creditCard);
+    return new ResponseEntity(HttpStatus.CREATED);
   }
 
 }

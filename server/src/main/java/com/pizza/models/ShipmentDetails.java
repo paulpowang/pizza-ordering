@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
     @JsonIgnore
     @OneToOne(mappedBy = "shipmentDetails", cascade = CascadeType.PERSIST)
     private Order order;
-    
+
     // set nullable to true for function creating.
     @JsonIgnore
     @ManyToOne
@@ -116,5 +116,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
     public void setOrderStatus(String orderStatus) {
       this.orderStatus = orderStatus;
+    }
+
+    public Order getOrder() {
+      return order;
+    }
+
+    public void setOrder(Order order) {
+      this.order = order;
+    }
+
+    public UserCredential getUserCredential() {
+      return userCredential;
+    }
+
+    public void setUserCredential(UserCredential userCredential) {
+      this.userCredential = userCredential;
     }
   }

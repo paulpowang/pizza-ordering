@@ -26,6 +26,15 @@ public class Order {
   @JoinColumn(name = "userCredentialId")
   private UserCredential userCredential;
 
+  public Order() {
+  }
+
+  public Order(ShoppingCart shoppingCart, ShipmentDetails shipmentDetails, CreditCardDetail creditCardDetail) {
+    this.shoppingCart = shoppingCart;
+    this.shipmentDetails = shipmentDetails;
+    this.creditCardDetail = creditCardDetail;
+  }
+
   public Long getOrderId() {
     return orderId;
   }
@@ -64,5 +73,16 @@ public class Order {
 
   public void setUserCredential(UserCredential userCredential) {
     this.userCredential = userCredential;
+  }
+
+  @Override
+  public String toString() {
+    return "Order{" +
+      "orderId=" + orderId +
+      ", shoppingCart=" + shoppingCart +
+      ", shipmentDetails=" + shipmentDetails +
+      ", creditCardDetail=" + creditCardDetail +
+      ", userCredential=" + userCredential +
+      '}';
   }
 }

@@ -1,6 +1,10 @@
 package com.pizza.controllers;
+import com.pizza.models.CreditCardDetail;
 import com.pizza.models.PizzaStore;
+import com.pizza.models.ShipmentDetails;
 import com.pizza.models.UserCredential;
+import com.pizza.repositories.CreditCardRepository;
+import com.pizza.repositories.ShipmentDetailsRepository;
 import com.pizza.repositories.UserCredentialRepository;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,12 @@ public class UserCredentialController {
   @Autowired
   UserCredentialRepository repository;
 
+  @Autowired
+  CreditCardRepository creditCardRepository;
+
+  @Autowired
+  ShipmentDetailsRepository shipmentDetailsRepository;
+
   @GetMapping("/signup")
   public ResponseEntity<List<UserCredential>> getAllStores() {
     List<UserCredential> users = new ArrayList<>();
@@ -37,30 +47,6 @@ public class UserCredentialController {
     }
   }
 
-
-  /*
-  @GetMapping("/signup/{id}")
-  public boolean getById(@PathVariable(value = "id") String UserId) {
-    return (userCredentialRepository.existsById(UserId));
-  }
-  */
-
-
-  /*
-    @GetMapping("/signup/{id}")
-  public ResponseEntity<UserCredential> getStoreById(@PathVariable("id") String userid) {
-    Optional<UserCredential> storeData = repository.findById(userid);
-    boolean found = storeData.isPresent();
-
-
-    if (storeData.isPresent()) {
-      return new ResponseEntity<>(storeData.get(), HttpStatus.OK);
-    } else {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-  }
-   */
-
   @GetMapping("/signup/{id}")
   public boolean getStoreById(@PathVariable("id") String userCredentialId) {
     Optional<UserCredential> storeData = repository.findById(userCredentialId);
@@ -69,26 +55,8 @@ public class UserCredentialController {
     return found;
 
   }
-/*
-  @RequestMapping("/signup/add")
-  public String addNewUser (@RequestParam String userid
-    , @RequestParam String password, String usertype, Date date) {
-    // @ResponseBody means the returned String is the response, not a view name
-    // @RequestParam means it is a parameter from the GET or POST request
-    UserCredential s = new UserCredential();
-
-
-    s.setUserCredentialId(userid);
-    s.setLoginStatus(date);
-    s.setPassword(password);
-    s.setUserType(usertype);
-    repository.save(s);
-    return "Saved";
-  }
-*/
 
   @PostMapping(value = "/signup")
-
   public ResponseEntity<UserCredential> postUser(@RequestBody UserCredential usercredential) {
     try {
       UserCredential users= repository.save(new UserCredential(usercredential.getUserCredentialId(),
@@ -100,4 +68,28 @@ public class UserCredentialController {
     }
   }
 
+  @PostMapping(path = "/user/{userId}/addCreditCard", consumes = "application/json")
+  public ResponseEntity addCreditCardForUserId(@PathVariable String userId, @RequestBody CreditCardDetail creditCard) {
+    Optional<UserCredential> userCredentialData = repository.findById(userId);
+    if (!userCredentialData.isPresent())
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+
+    UserCredential userCredential = userCredentialData.get();
+    creditCard.setUserCredential(userCredential);
+    userCredential.getCreditCardDetails().add(creditCard);
+    creditCardRepository.save(creditCard);
+    repository.save(userCredential);
+    return new ResponseEntity(HttpStatus.CREATED);
+  }
+
+  @PostMapping(path = "/user/{userId}/addShipmentDetail", consumes = "application/json")
+  public ResponseEntity addShipmentDetail(@PathVariable String userId, @RequestBody ShipmentDetails shipmentDetails) {
+    Optional<UserCredential> userData = repository.findById(userId);
+    if (!userData.isPresent())
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    UserCredential user = userData.get();
+    shipmentDetails.setUserCredential(user);
+    shipmentDetailsRepository.save(shipmentDetails);
+    return new ResponseEntity(HttpStatus.CREATED);
+  }
 }

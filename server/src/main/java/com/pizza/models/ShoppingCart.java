@@ -54,6 +54,17 @@ public class ShoppingCart {
   public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
     this.shoppingCartItems = shoppingCartItems;
   }
+
+  @Override
+  public String toString() {
+    return "ShoppingCart{" +
+      "shoppingCartId=" + shoppingCartId +
+      ", order=" + order +
+      ", shoppingCartItems=" + shoppingCartItems +
+      '}';
+  }
+
+
 }
 
 
