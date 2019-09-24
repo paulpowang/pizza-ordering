@@ -1,5 +1,8 @@
 package com.pizza.models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -27,14 +30,17 @@ public class UserCredential {
   @Column(name = "LoginStatus")
   private String loginStatus;
 
-  @OneToMany(mappedBy = "userCredential", cascade = CascadeType.PERSIST)
-  private List<Order> orders = new ArrayList<>();
+  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private List<ShipmentDetails> shipmentDetails = new ArrayList<>();
 
-  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.PERSIST)
+  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OnDelete(action = OnDeleteAction.CASCADE)
   private List<CreditCardDetail> creditCardDetails = new ArrayList<>();
 
-  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.PERSIST)
-  private List<ShipmentDetails> shipmentDetails = new ArrayList<>();
+  @OneToMany(mappedBy = "userCredential", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private List<Order> orders = new ArrayList<>();
 
   public UserCredential() {
   }

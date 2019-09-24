@@ -1,6 +1,8 @@
 package com.pizza.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -14,6 +16,7 @@ public class Order {
 
   @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn (name = "shoppingCartId")
+  @OnDelete(action = OnDeleteAction.CASCADE)
   private ShoppingCart shoppingCart;
 
   @ManyToOne(cascade = CascadeType.ALL)

@@ -67,6 +67,16 @@ public class UserCredentialController {
     }
   }
 
+  @DeleteMapping("/user/{userId}")
+  public ResponseEntity deleteUser(@PathVariable String userId) {
+    Optional<UserCredential> userData = userCredentialRepository.findById(userId);
+    if (!userData.isPresent()) {
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+    userCredentialRepository.delete(userData.get());
+    return new ResponseEntity(HttpStatus.OK);
+  }
+
   @GetMapping(path = "/user/{userId}/getCreditCards")
   public ResponseEntity<List<CreditCardDetail>> getCreditCardsForUser(@PathVariable String userId) {
     Optional<UserCredential> userCredentialData = userCredentialRepository.findById(userId);
