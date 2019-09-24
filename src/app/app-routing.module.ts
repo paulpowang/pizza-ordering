@@ -6,6 +6,7 @@ import { StoresListCustomerComponent } from './stores-list-customer/stores-list-
 import { StoresListAdminComponent } from './stores-list-admin/stores-list-admin.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
+import {CreateUsercredentialComponent} from './create-usercredential/create-usercredential.component';
 
 const routes: Routes = [
   {path: 'storesCustomer',
@@ -17,10 +18,14 @@ const routes: Routes = [
   {path: 'storesAdmin/createStore',
    component: CreateStoreComponent,},
   {path: 'storesAdmin/:id',
-   component: UpdateStoreComponent,},  
+   component: UpdateStoreComponent,},
+  {
+    path: 'signup',
+    component: CreateUsercredentialComponent,
+  },
   {path: '**',
   redirectTo: 'storesCustomer',},
-  
+
 ];
 
 @NgModule({
