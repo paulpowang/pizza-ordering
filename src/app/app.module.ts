@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,6 +61,7 @@ import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipmen
     MatCheckboxModule,
     MatRadioModule,
     MatButtonModule,
+    MatCardModule,
   ],
   exports: [FormsModule, ReactiveFormsModule],
   providers: [],

@@ -11,13 +11,15 @@
         (ngModelChange)="searchStores($event)"
         name="zipCodeInput"
         placeholder="Zipcode"
+        maxlength="5"
       />
     </mat-form-field>
   </div>
-
-  <div *ngFor="let store of stores | async" style="width: 300px;">
-    <a routerLink="{{store.storeId}}">
-      <app-store-details [store]='store'></app-store-details>
-    </a>
-  </div>
 </form>
+
+<div *ngFor="let store of stores | async" style="width: 300px;">
+  <a routerLink="{{store.storeId}}">
+    <app-store-details [store]='store'></app-store-details>
+  </a>
+</div>
+  
