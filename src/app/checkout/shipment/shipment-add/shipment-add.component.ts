@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Shipment } from '../shipment';
 import { ShipmentService } from '../shipment.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-shipment-add',
@@ -13,7 +14,8 @@ export class ShipmentAddComponent implements OnInit {
   shipment: Shipment = new Shipment();
 
   constructor(private service: ShipmentService,
-              private router: Router) { }
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
   }
@@ -36,6 +38,10 @@ export class ShipmentAddComponent implements OnInit {
       this.router.navigate(['/checkout']);
     },
     250);
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

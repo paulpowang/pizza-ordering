@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Shipment } from '../shipment';
 import { ShipmentService } from '../shipment.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-shipment-edit',
@@ -12,7 +13,7 @@ export class ShipmentEditComponent implements OnInit {
 
   @Input() shipment: Shipment;
   submitted = false;
-  constructor(private router: Router, private route: ActivatedRoute,private service: ShipmentService) { }
+  constructor(private router: Router, private route: ActivatedRoute,private service: ShipmentService,private location: Location) { }
 
   ngOnInit() {
     // Get Id
@@ -66,4 +67,8 @@ export class ShipmentEditComponent implements OnInit {
     },
     250);
     }//end of delete()
+
+    back() {
+      this.location.back();
+    }
 }

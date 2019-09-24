@@ -13,8 +13,12 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 
 const routes: Routes = [
+  {path: 'login',
+   component: LoginPageComponent,},
   {path: 'storesCustomer',
    component: StoresListCustomerComponent,},
   {path: 'storesCustomer/:id',
@@ -25,23 +29,20 @@ const routes: Routes = [
    component: CreateStoreComponent,},
   {path: 'storesAdmin/:id',
    component: UpdateStoreComponent,},  
-   {path: 'checkout',
-   component: CheckoutViewComponent, children:[
-    {path: '',
-    component: CreditcardListComponent, outlet:"creditcard"},
-    {path: 'creditcard/add',
-   component: CreditcardAddComponent},
-   {path: 'creditcard/edit/:id',
-   component: CreditcardEditComponent},
-   {path: '',
-   component: ShipmentListComponent,outlet:"shipment"},
-   {path: 'shipment/add',
-   component: ShipmentAddComponent},
-   {path: 'shipment/edit/:id',
-   component: ShipmentEditComponent},   
-   ]},  
+  {path: 'checkout',
+   component: CheckoutViewComponent, 
+   children:[
+    {path: '', component: CreditcardListComponent, outlet:"creditcard"},
+    {path: 'creditcard/add', component: CreditcardAddComponent},
+    {path: 'creditcard/edit/:id', component: CreditcardEditComponent},
+    {path: '', component: ShipmentListComponent,outlet:"shipment"},
+    {path: 'shipment/add', component: ShipmentAddComponent},
+    {path: 'shipment/edit/:id', component: ShipmentEditComponent},]},  
+
+  {path: 'signup',
+    component: CreateUsercredentialComponent},
   {path: '**',
-  redirectTo: 'storesCustomer',},
+   redirectTo: 'login',},
   
 ];
 

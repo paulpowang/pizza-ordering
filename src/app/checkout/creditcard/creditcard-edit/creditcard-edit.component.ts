@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Creditcard } from '../creditcard';
 import { CreditcardService } from '../creditcard.service';
-
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -16,7 +16,8 @@ export class CreditcardEditComponent implements OnInit {
   submitted = false;
   constructor(private service: CreditcardService,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
     
@@ -67,6 +68,10 @@ export class CreditcardEditComponent implements OnInit {
     },
     250);
     }//end of delete()
+
+    back() {
+      this.location.back();
+    }
   }
 
 
