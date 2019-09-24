@@ -13,17 +13,21 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
+import {CreateUsercredentialComponent} from './create-usercredential/create-usercredential.component';
 
 const routes: Routes = [
   {path: 'storesCustomer',
-   component: StoresListCustomerComponent,},
+    component: StoresListCustomerComponent, },
+  {path: 'signup',
+    component: CreateUsercredentialComponent, },
   {path: 'storesCustomer/:id',
-   component: FoodItemFormComponent,},
+    component: FoodItemFormComponent, },
   {path: 'storesAdmin',
-   component: StoresListAdminComponent,},
+    component: StoresListAdminComponent, },
   {path: 'storesAdmin/createStore',
-   component: CreateStoreComponent,},
+    component: CreateStoreComponent, },
   {path: 'storesAdmin/:id',
+
    component: UpdateStoreComponent,},  
    {path: 'checkout',
    component: CheckoutViewComponent},  
@@ -35,9 +39,10 @@ const routes: Routes = [
    component: CreditcardAddComponent},
    {path: 'checkout/creditcard/edit/:id',
    component: CreditcardEditComponent},
+
   {path: '**',
-  redirectTo: 'storesCustomer',},
-  
+    redirectTo: 'storesCustomer', },
+
 ];
 
 @NgModule({
