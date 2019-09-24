@@ -1,0 +1,73 @@
+<h2>Edit Shipment</h2>
+
+<div class="row">
+
+    <!-- Column 1 -->
+    <div class="column">
+
+        <h3>shipment Details</h3>
+
+        <form (ngSubmit)="updateShipment()">
+
+            <div class="form-group">
+                <label for="shippingId">ID</label>
+                <input readonly=true; type="text" class="form-control" id="shippingId" required
+                    [ngModel]="shipment?.shippingId" (ngModelChange)="shipment.shippingId = $event" name="shippingId">
+            </div>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [ngModel]="shipment?.name"
+                    (ngModelChange)="shipment.name = $event" name="name">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" [ngModel]="shipment?.address"
+                    (ngModelChange)="shipment.address = $event" name="address">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city" required [ngModel]="shipment?.city"
+                    (ngModelChange)="shipment.city = $event" name="city">
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <input type="text" class="form-control" id="state" required [ngModel]="shipment?.state"
+                    (ngModelChange)="shipment.state = $event" name="state">
+            </div>
+
+
+            <div class="form-group">
+                <label for="pin">Pin</label>
+                <input type="number" class="form-control" id="pin" required [ngModel]="shipment?.pin"
+                    (ngModelChange)="shipment.pin = $event" name="pin">
+            </div>
+
+            <div class="form-group">
+                <label for="mobileNumber">Mobile Number</label>
+                <input type="text" class="form-control" id="mobileNumber" required [ngModel]="shipment?.mobileNumber"
+                    (ngModelChange)="shipment.mobileNumber = $event" name="mobileNumber">
+            </div>
+
+            <div class="form-group">
+                <label for="landline">Landline</label>
+                <input type="text" class="form-control" id="landline" required [ngModel]="shipment?.landline"
+                    (ngModelChange)="shipment.landline = $event" name="landline">
+            </div>
+            <div class="form-group">
+                <label for="orderStatus">Order Status</label>
+                <input type="text" class="form-control" id="orderStatus" required [ngModel]="shipment?.orderStatus"
+                    (ngModelChange)="shipment.orderStatus = $event" name="orderStatus">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success">Update</button>
+            <button (click)="delete()">Delete</button>
+        </form>
+    </div>
+
+
+</div>
