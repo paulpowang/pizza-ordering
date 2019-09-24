@@ -19,15 +19,15 @@ export class CreditcardService {
   }
  
   createCreditcard(creditcard: any): Observable<any> {
-    return this.http.post(this.baseUrl, creditcard);
+    return this.http.post(this.baseUrl+"/save", creditcard);
   }
  
   updateCreditcard(id: number, value: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, value);
+    return this.http.put(`${this.baseUrl}/update/${id}`, value);
   }
  
   deleteCreditcard(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+    return this.http.delete(`${this.baseUrl}/delete/${id}`);
   }
  
   

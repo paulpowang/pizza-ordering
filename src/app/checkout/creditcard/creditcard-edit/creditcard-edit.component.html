@@ -1,1 +1,41 @@
-<p>creditcard-edit works!</p>
+<div class="row">
+
+    <!-- Column 1 -->
+    <div class="column">
+  
+      <h3>creditcard Details</h3>
+  
+        <form (ngSubmit)="updateCreditcard()">
+          <div class="form-group">
+            <label for="creditCardNumber">Creditcard Number</label>
+            <input type="text" class="form-control" id="creditCardNumber" 
+            required [ngModel]="creditcard?.creditCardNumber" (ngModelChange)="creditcard.creditCardNumber = $event" name="creditCardNumber">
+          </div>
+  
+          <div class="form-group">
+            <label for="cardHolderName">Card Holder's cardHolderName</label>
+            <input type="text" class="form-control" id="cardHolderName" 
+            [ngModel]="creditcard?.cardHolderName" (ngModelChange)="creditcard.cardHolderName = $event" name="cardHolderName">
+          </div>
+    
+          <div class="form-group">
+            <label for="validTo">Date Valid To</label>
+            <input type="text" class="form-control" id="validTo" 
+            required [ngModel]="creditcard?.validTo" (ngModelChange)="creditcard.validTo = $event" name="validTo">
+          </div>
+  
+          <div class="form-group">
+            <label for="balance">Balance</label>
+            <input type="text" class="form-control" id="balance" 
+            required [ngModel]="creditcard?.balance" (ngModelChange)="creditcard.balance = $event" name="balance">
+          </div>
+  
+          
+    
+          <button type="submit" class="btn btn-success">Update</button>
+          <button (click)="delete()">Delete</button>
+        </form>
+    </div>
+  
+  
+  </div>

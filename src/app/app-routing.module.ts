@@ -7,6 +7,9 @@ import { StoresListAdminComponent } from './stores-list-admin/stores-list-admin.
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { FoodItemFormComponent } from './food-item-form/food-item-form.component';
 import { CheckoutViewComponent } from './checkout/checkout-view/checkout-view.component';
+import { CreditcardListComponent } from './checkout/creditcard/creditcard-list/creditcard-list.component';
+import { CreditcardAddComponent } from './checkout/creditcard/creditcard-add/creditcard-add.component';
+import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/creditcard-edit.component';
 
 const routes: Routes = [
   {path: 'storesCustomer',
@@ -20,7 +23,14 @@ const routes: Routes = [
   {path: 'storesAdmin/:id',
    component: UpdateStoreComponent,},  
    {path: 'checkout',
-   component: CheckoutViewComponent,},  
+   component: CheckoutViewComponent, children:[
+    {path: '',
+    component: CreditcardListComponent,},
+    {path: 'add',
+   component: CreditcardAddComponent,},
+   {path: 'edit/:id',
+   component: CreditcardEditComponent,},   
+   ]},  
   {path: '**',
   redirectTo: 'storesCustomer',},
   
