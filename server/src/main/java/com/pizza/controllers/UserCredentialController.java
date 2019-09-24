@@ -67,6 +67,33 @@ public class UserCredentialController {
     }
   }
 
+  @GetMapping(path = "/user/{userId}/getCreditCards")
+  public ResponseEntity<List<CreditCardDetail>> getCreditCardsForUser(@PathVariable String userId) {
+    Optional<UserCredential> userCredentialData = userCredentialRepository.findById(userId);
+    return userCredentialData
+      .map(userCredential -> new ResponseEntity<>(userCredential.getCreditCardDetails(), HttpStatus.OK))
+      .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
+  }
+
+  /**
+   * Gets a list of all shipmentDetails for the user with userId
+   * @param userId Email of the user
+   * @return A list of ShipmentDetails associated with this user
+   */
+  @GetMapping(path = "/user/{userId}/getShipmentDetails")
+  public ResponseEntity<List<ShipmentDetails>> getShipmentDetailsForUser(@PathVariable String userId) {
+    Optional<UserCredential> userCredentialData = userCredentialRepository.findById(userId);
+    return userCredentialData
+      .map(userCredential -> new ResponseEntity<>(userCredential.getShipmentDetails(), HttpStatus.OK))
+      .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
+  }
+
+  /**
+   * Adds a credit
+   * @param userId
+   * @param creditCard
+   * @return
+   */
   @PostMapping(path = "/user/{userId}/addCreditCard", consumes = "application/json")
   public ResponseEntity addCreditCardForUserId(@PathVariable String userId, @RequestBody CreditCardDetail creditCard) {
     Optional<UserCredential> userCredentialData = userCredentialRepository.findById(userId);
@@ -108,14 +135,18 @@ public class UserCredentialController {
     CreditCardDetail creditCard = creditCardData.get();
     ShipmentDetails shipmentDetails = shipmentDetailsData.get();
 
+    Order order = new Order(shoppingCart, shipmentDetails, creditCard, user);
+
     for (ShoppingCartItem item : shoppingCart.getShoppingCartItems()) {
-      item.setShoppingCart(shoppingCart);
+      item.setShoppingCart(shoppingCart); // shoppingCartItem -> shoppingCart
     }
-    Order order = new Order(shoppingCart, shipmentDetails, creditCard);
-    shipmentDetails.setOrder(order);
-    creditCard.getOrders().add(order);
-    order.setUserCredential(user);
-    user.getOrders().add(order);
+    shipmentDetails.getOrders().add(order); // shipmentDetails -> order
+    creditCard.getOrders().add(order); // creditCard -> [order]
+    user.getOrders().add(order); // user -> order
+
+    shipmentDetailsRepository.save(shipmentDetails);
+    creditCardRepository.save(creditCard);
+    userCredentialRepository.save(user);
     orderRepository.save(order);
     return new ResponseEntity(HttpStatus.CREATED);
   }

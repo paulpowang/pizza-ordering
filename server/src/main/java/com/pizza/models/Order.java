@@ -1,20 +1,22 @@
 package com.pizza.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Orders")
 public class Order {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "OrderID")
   private Long orderId;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn (name = "shoppingCartId")
   private ShoppingCart shoppingCart;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn (name = "shippingID")
   private ShipmentDetails shipmentDetails;
 
@@ -22,6 +24,7 @@ public class Order {
   @JoinColumn(name = "creditCardNumber")
   private CreditCardDetail creditCardDetail;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "userCredentialId")
   private UserCredential userCredential;
@@ -29,10 +32,11 @@ public class Order {
   public Order() {
   }
 
-  public Order(ShoppingCart shoppingCart, ShipmentDetails shipmentDetails, CreditCardDetail creditCardDetail) {
+  public Order(ShoppingCart shoppingCart, ShipmentDetails shipmentDetails, CreditCardDetail creditCardDetail, UserCredential userCredential) {
     this.shoppingCart = shoppingCart;
     this.shipmentDetails = shipmentDetails;
     this.creditCardDetail = creditCardDetail;
+    this.userCredential = userCredential;
   }
 
   public Long getOrderId() {
