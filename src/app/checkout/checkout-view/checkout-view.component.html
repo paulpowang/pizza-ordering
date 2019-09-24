@@ -2,7 +2,10 @@
 <a [routerLink]="['/checkout/shipment/add']">Click to shipment add</a>
 <a [routerLink]="['/checkout/creditcard/add']">Click to Creditcard add</a>
 
-<router-outlet name="shipment"></router-outlet>
+<!-- <router-outlet name="shipment"></router-outlet>
 <router-outlet name="creditcard"></router-outlet>
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -->
+
+<app-shipment-list></app-shipment-list>
+<app-creditcard-list></app-creditcard-list>
 
