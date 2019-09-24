@@ -1,1 +1,42 @@
-<p>shipment-add works!</p>
+<h3>Add Shipment</h3>
+<div style="width: 300px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="shipment.name" name="name">
+    </div>
+ 
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" id="address" required [(ngModel)]="shipment.address" name="address">
+    </div>
+
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" required [(ngModel)]="shipment.city" name="city">
+    </div>
+
+    <div class="form-group">
+        <label for="state">state</label>
+        <input type="text" class="form-control" id="state" required [(ngModel)]="shipment.state" name="state">
+    </div>
+    <div class="form-group">
+        <label for="pin">Pin</label>
+        <input type="number" class="form-control" id="pin" required [(ngModel)]="shipment.pin" name="pin"  maxlength="5">
+    </div>
+    <div class="form-group">
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="text" class="form-control" id="mobileNumber" required [(ngModel)]="shipment.mobileNumber" name="mobileNumber" >
+    </div>
+    <div class="form-group">
+        <label for="landline">Landline</label>
+        <input type="text" class="form-control" id="landline" required [(ngModel)]="shipment.landline" name="landline" >
+    </div>
+    <div class="form-group">
+        <label for="orderStatus">Order Status</label>
+        <input type="text" class="form-control" id="orderStatus" required [(ngModel)]="shipment.orderStatus" name="orderStatus"  >
+    </div>
+ 
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

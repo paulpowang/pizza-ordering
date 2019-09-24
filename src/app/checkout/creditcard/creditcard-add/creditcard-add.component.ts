@@ -31,8 +31,6 @@ export class CreditcardAddComponent implements OnInit {
 
   onSubmit(){
     this.save();
-    
-
     setTimeout(() => 
     {
       this.router.navigate(['/checkout']);
