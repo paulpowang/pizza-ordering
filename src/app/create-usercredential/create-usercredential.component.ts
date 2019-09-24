@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import { UsercredentialService } from '../usercredential.service';
 import {Ucerc} from '../userc';
 import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-usercredential',
@@ -24,7 +25,8 @@ export class CreateUsercredentialComponent implements OnInit {
 
 
 
-  constructor(private userCredentialService: UsercredentialService) { }
+  constructor(private userCredentialService: UsercredentialService,
+              private router: Router) { }
   onClickMe() {
     this.userCredentialService.getUser(this.userCredentialId).subscribe(data => {
       console.log(data);
@@ -35,6 +37,7 @@ export class CreateUsercredentialComponent implements OnInit {
         alert('user id exist');
       }
     });
+    this.router.navigate(['/login']);
     // tslint:disable-next-line:triple-equals
 
 

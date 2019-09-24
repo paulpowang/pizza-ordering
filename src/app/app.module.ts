@@ -28,6 +28,7 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipmen
     ShipmentListComponent,
     ShipmentAddComponent,
     ShipmentEditComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
