@@ -4,9 +4,10 @@
   justify-content: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 10em;
-  height: 8em;
+  width: 15em;
+  height: 12em;
   text-align: center;
+  margin: 10px 10px 10px 10px;
 }
 
 .card:hover {
@@ -20,4 +21,43 @@
 .card-container {
   display: flex;
   margin: 3em;
+}
+
+#AddToCart {
+ text-align: center
+}
+
+.plus-minus-input {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.plus-minus-input .input-group-field {
+  text-align: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  padding: 1rem;
+}
+
+.plus-minus-input .input-group-field::-webkit-inner-spin-button,
+.plus-minus-input .input-group-field ::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.plus-minus-input .input-group-button .circle {
+  border-radius: 50%;
+  padding: 0.25em 0.8em;
+}
+/* 
+input {
+  border:none;
+  border-bottom: 2px solid black;
+} */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
