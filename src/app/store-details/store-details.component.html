@@ -1,16 +1,18 @@
-<button *ngIf="store" style="text-align:left">
-<div>
+<button mat-stroked-button *ngIf="store">
+
     <div>
-      <label>Name:</label> <br/>
-      {{store.storeName}}
+
+      <div class="header">
+        {{store.storeName}} 
+      </div>
+
+      <br>
+      
+      <div>
+        {{store.city}}, {{store.state}} <br>
+        {{store.zipCode}}
+      </div>
+
     </div>
-    <div>
-      <label>Address:</label> <br/>
-      {{store.city}}, {{store.state}}
-    </div>
-    <div>
-      <label>Zip Code:</label> <br/>
-      {{store.zipCode}}
-    </div>
-</div>
+
 </button>

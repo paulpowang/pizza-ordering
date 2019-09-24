@@ -35,6 +35,6 @@ export class CreateStoreComponent implements OnInit {
     {
       this.router.navigate(['/storesAdmin']);
     },
-    250);
+    500);
   }
 }

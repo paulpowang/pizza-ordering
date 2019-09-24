@@ -106,7 +106,7 @@ export class UpdateStoreComponent implements OnInit {
     {
       this.router.navigate(['/storesAdmin']);
     },
-    250);
+    500);
   }
   
   delete()
@@ -123,6 +123,6 @@ export class UpdateStoreComponent implements OnInit {
     {
       this.router.navigate(['/storesAdmin']);
     },
-    250);
+    500);
   }
 }

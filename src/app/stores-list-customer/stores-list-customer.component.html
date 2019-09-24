@@ -16,8 +16,9 @@
   </div>
 
   <div *ngFor="let store of stores | async" style="width: 300px;">
-    <a routerLink="{{store.storeId}}">
-      <app-store-details [store]='store'></app-store-details>
-    </a>
+      <a routerLink="{{store.storeId}}">
+        <app-store-details [store]='store'></app-store-details>
+      </a>
   </div>
+  
 </form>
