@@ -46,6 +46,10 @@ export class CheckoutViewComponent implements OnInit {
   cardId:number;
   shipId:number;
 
+  //user info
+  userId: string;
+  email:string;
+
   //shoppingCartItems: List<ShoppingCartItem>
 shoppingCartItems: Array<ShoppingCartItem>;
 displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
@@ -59,17 +63,20 @@ displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
               private service: OrderService) { }
 
   ngOnInit() {
-    console.log(this.service);
+    
     
     this.shipments = this.service.shipmentDetails;
-    console.log("shipments:" + this.shipments);
-    console.log("service shipments" + this.service.shipmentDetails);
+    
     this.creditcards = this.service.creditCardDetails;
     
     this.shoppingCart = this.service.shoppingCart;
     this.shoppingCartItems = this.shoppingCart.shoppingCartItems;
+    
 
     this.total = this.shoppingCart.getTotalCost();
+
+    this.email = this.service.getUserId();
+    this.userId = this.email.split("@")[0];
   }
 
   addCreditcard(){
