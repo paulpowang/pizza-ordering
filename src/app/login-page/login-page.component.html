@@ -4,7 +4,7 @@
         <div class="form-header">
             <h1 color="accent">Login Page</h1>
         </div>
-            
+
         <mat-form-field class="full-width">
                 <input matInput placeholder="Email"  formControlName="email" required>
                 <mat-error *ngFor="let validation of validation_messages.email">
@@ -17,17 +17,16 @@
                 <mat-error *ngIf="!loginAttempted">{{requiredError}}</mat-error>
                 <mat-error *ngIf="loginAttempted">{{invalidUserPassError}}</mat-error>
         </mat-form-field>
- 
+
         <button class="submit-btn" color="primary" mat-raised-button (click)=onSubmit() type="submit" [disabled]="!loginDetailsForm.valid">
                 Log In
         </button>
 
         <button mat-raised-button color="primary" (click)=createAccount() style="margin-left: 10px">Create Account</button>
-            
+
         <div [hidden]="!error">
             <h4>Invalid email and/or password</h4>
         </div>
-            
     </form>
 </div>
 

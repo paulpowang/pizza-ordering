@@ -24,12 +24,12 @@ a:link {
 }
 
 nav a:hover {
-  color: #039be5;
+  color: black;
   background-color: #cfd8dc;
 }
 
 nav a.active {
-  color: #039be5;
+  color: black;
 }
 
 main {
@@ -45,5 +45,18 @@ main {
 .filler {
   flex: 1 1 auto;
 
+}
+.image{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  opacity:.4;
+  background-color:transparent;
+  background-size: 100%;
+  background-image: url('../assets/image/pizzalogo.jpg');
+  backdrop-filter: drop-shadow(4px 4px 10px blue);
 }
 
