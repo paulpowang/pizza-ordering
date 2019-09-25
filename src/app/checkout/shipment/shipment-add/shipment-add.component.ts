@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Shipment } from '../shipment';
 import { ShipmentService } from '../shipment.service';
 import { Location } from '@angular/common';
+import { OrderService } from 'src/app/services/order.service';
+import { ShipmentDetail } from 'src/app/models/shipment-detail';
 
 @Component({
   selector: 'app-shipment-add',
@@ -11,24 +13,29 @@ import { Location } from '@angular/common';
 })
 export class ShipmentAddComponent implements OnInit {
 
-  shipment: Shipment = new Shipment();
+  shipment: ShipmentDetail = new ShipmentDetail();
 
   constructor(private service: ShipmentService,
               private router: Router,
-              private location: Location) { }
+              private location: Location,
+              private orderService: OrderService
+              ) { }
 
   ngOnInit() {
   }
 
   save(){
-    this.service.createShipment(this.shipment)
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => console.log(error)
-      );
-      this.shipment = new Shipment();
+    this.orderService.addShipmentDetail(this.shipment);
+    
+    
+    // this.service.createShipment(this.shipment)
+    //   .subscribe(
+    //     data => {
+    //       console.log(data);
+    //     },
+    //     error => console.log(error)
+    //   );
+    //   this.shipment = new Shipment();
   }
 
   onSubmit(){

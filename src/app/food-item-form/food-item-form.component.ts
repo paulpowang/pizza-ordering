@@ -47,10 +47,12 @@ export class FoodItemFormComponent implements OnInit {
     this.orderService.setShoppingCartItems(
       this.shoppingCartItems
         .map((foodItem: FoodItem, index) => {
+          this.router.navigate(['/checkout']);
           return new ShoppingCartItem(foodItem, this.quantity[index]);
         })
         .filter((shoppingCartItem: ShoppingCartItem) => shoppingCartItem.quantity > 0)
     );
+    this.router.navigate(['/checkout']);
     this.shoppingCartEmitter.emit(this.shoppingCartItems);
   }
 
