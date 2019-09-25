@@ -21,6 +21,9 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
+
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+
 import { CheckoutViewComponent } from './checkout/checkout-view/checkout-view.component';
 import { CreditcardListComponent } from './checkout/creditcard/creditcard-list/creditcard-list.component';
 import { CreditcardAddComponent } from './checkout/creditcard/creditcard-add/creditcard-add.component';
@@ -43,6 +46,7 @@ import {MatTableModule} from '@angular/material/table';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,6 +58,9 @@ import {MatTableModule} from '@angular/material/table';
     CreateStoreComponent,
     FoodItemFormComponent,
     CreateUsercredentialComponent,
+
+    ShoppingCartComponent,
+
     CheckoutViewComponent,
     CreditcardListComponent,
     CreditcardAddComponent,
@@ -68,6 +75,7 @@ import {MatTableModule} from '@angular/material/table';
     ThankyouPageComponent,
 
     LoginPageComponent,
+
 
   ],
   imports: [
