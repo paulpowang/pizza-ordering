@@ -1,6 +1,7 @@
 import { CartServicesService } from './../services/cart-services.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ShoppingCartItem } from '../models/shopping-cart-item';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -14,11 +15,15 @@ export class ShoppingCartComponent implements OnInit {
   oldQuantity: number;
   newShoppingCartItem: ShoppingCartItem; 
   index: number;
-
+  shippingId: number = 0;
   constructor(private shoppingCartService: CartServicesService) { }
 
   ngOnInit() {
     this.shoppingCartItems = this.shoppingCartService.getShoppingCartItems();
+    if(!this.shippingId)
+      this.shippingId = 1;
+    else
+      this.shippingId++;
   }
 
   deleteItem(sc: ShoppingCartItem){
@@ -39,5 +44,4 @@ export class ShoppingCartComponent implements OnInit {
     this.modifyActivated = false;
     this.shoppingCartItems[this.index].quantity = this.oldQuantity;
   }
-
 }

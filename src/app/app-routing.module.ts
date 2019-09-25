@@ -21,6 +21,11 @@ const routes: Routes = [
    component: UpdateStoreComponent,},  
   {path: 'shoppingcart',
    component: ShoppingCartComponent},
+   //here the router should contain the shipping componet
+   //and the shipping id
+   //page won't refresh 
+  // {path: 'shipping/:shippingId',
+  //  component: ShoppingCartComponent },
   {path: '**',
   redirectTo: 'storesCustomer',},
   
