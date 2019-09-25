@@ -61,6 +61,7 @@ export class ShipmentEditComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          this.orderService.fetchUserInfo(this.orderService.getUserId());
         },
         error => console.log(error)
       );
