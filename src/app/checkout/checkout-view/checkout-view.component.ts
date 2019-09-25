@@ -5,6 +5,13 @@ import { CreditcardService } from '../creditcard/creditcard.service';
 import { Router } from '@angular/router';
 import { Shipment } from '../shipment/shipment';
 import { ShipmentService } from '../shipment/shipment.service';
+import { OrderService } from 'src/app/services/order.service';
+import { ShipmentDetail } from '../../models/shipment-detail';
+import { CreditCardDetail } from '../../models/credit-card-detail';
+import { ShoppingCart } from '../../models/shopping-cart';
+import { ShoppingCartItem } from '../../models/shopping-cart-item';
+
+
 
 export interface TempItem {
   name: string;
@@ -29,8 +36,9 @@ export class CheckoutViewComponent implements OnInit {
 
   
 
-  shipments: Observable<Shipment[]>;
-  creditcards: Observable<Creditcard[]>;
+  shipments: Array<ShipmentDetail>;
+  creditcards: Array<CreditCardDetail>;
+  shoppingCart: ShoppingCart;
 
 
   
@@ -39,7 +47,7 @@ export class CheckoutViewComponent implements OnInit {
   shipId:number;
 
   //shoppingCartItems: List<ShoppingCartItem>
-shoppingCartItems = test_data;
+shoppingCartItems: Array<ShoppingCartItem>;
 displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
 
   // total for shopping cart
@@ -47,13 +55,22 @@ displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
 
   constructor(private router: Router, 
               private creditcardService: CreditcardService,
-              private shipmentService: ShipmentService) { }
+              private shipmentService: ShipmentService,
+              private service: OrderService) { }
 
   ngOnInit() {
-    this.creditcards = this.creditcardService.getCreditcardsList();
-    this.shipments = this.shipmentService.getShipmentsList();
+    console.log(this.service);
+    // this.creditcards = this.creditcardService.getCreditcardsList();
+    // this.shipments = this.shipmentService.getShipmentsList();
+    this.shipments = this.service.shipmentDetails;
+    console.log("shipments:" + this.shipments);
+    console.log("service shipments" + this.service.shipmentDetails);
+    this.creditcards = this.service.creditCardDetails;
+    
+    this.shoppingCart = this.service.shoppingCart;
+    this.shoppingCartItems = this.shoppingCart.shoppingCartItems;
 
-    this.total = 123;
+    this.total = this.shoppingCart.getTotalCost();
   }
 
   addCreditcard(){
@@ -79,10 +96,15 @@ displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
   }
 
   toSummary(){
+    console.log("ship" + this.shipId);
+    console.log("card" + this.cardId);
 
-    if(this.cardId && this.shipId){
-      this.creditcardService.setCardId(this.cardId);
-    this.shipmentService.setShipId(this.shipId);
+    if(this.shipId && this.cardId){
+
+      this.service.creditCardId = this.cardId;
+    this.service.shippingId = this.shipId;
+    //   this.creditcardService.setCardId(this.cardId);
+    // this.shipmentService.setShipId(this.shipId);
     this.router.navigate(['/summary']);
     }else{
       alert("please select payment and shipping address");
