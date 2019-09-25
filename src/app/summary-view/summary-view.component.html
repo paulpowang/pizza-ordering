@@ -1,3 +1,4 @@
+<div id="content" #content>
 <form class="form" style="width: 100%;">
 
         <!-- Header -->
@@ -70,6 +71,12 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+
+    <!-- end of #contain -->
+  </div> <br> <br> <br>
+  <button (click)="toPrintPdf()">Print Order Summary</button>
+  
+
     
     <div style=" text-align: right;">
         <br>
@@ -77,6 +84,7 @@
         <button mat-raised-button color="warn" style="margin-left: 10px" (click)="back()">Cancel</button>
         <button mat-raised-button color="primary" style="margin-left: 10px" (click)="toPlaceOrder()">Confirm</button>
     </div>
+
     
     
     
