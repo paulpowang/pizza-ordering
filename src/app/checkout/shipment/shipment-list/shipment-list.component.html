@@ -19,11 +19,12 @@
 
 <div>
 
-    <mat-grid-list cols="4" rowHeight="1:1">
-        <mat-radio-group aria-label="Select an option">
-            <mat-grid-tile *ngFor="let shipment of shipments| async" style="width: 300px;">
-                <mat-card [style.minHeight]="'100%'" [style.minWidth]="'100%'">
-                    Shipment ID: {{shipment.shippingId}} <br>
+    <!-- <mat-grid-list cols="4" rowHeight="1:1"> -->
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="shipId">
+            <!-- <mat-grid-tile *ngFor="let shipment of shipments| async" style="width: 300px;"> -->
+                   
+                <mat-card *ngFor="let shipment of shipments| async" [style.minHeight]="'100%'" [style.minWidth]="'100%'" >
+                        <mat-radio-button  [value]="shipment.shippingId">
                     Name: {{shipment.name}} <br>
                     Address: <br>
                     {{shipment.address}}, {{shipment.city}}, {{shipment.state}},
@@ -31,12 +32,14 @@
                     (M): {{shipment.mobileNumber}} <br>
                     (H): {{shipment.landline}}<br>
                     Status:{{shipment.orderStatus}}<br>
-                    <mat-radio-button value="shipment.shipmentId"></mat-radio-button>
+                    
                     <button mat-raised-button color="primary" (click)="editShipment(shipment.shippingId)">Edit</button>
+                </mat-radio-button>
                 </mat-card>
+                
 
-
-            </mat-grid-tile>
+            <!-- </mat-grid-tile> -->
         </mat-radio-group>
-    </mat-grid-list>
+    <!-- </mat-grid-list> -->
 </div>
+{{shipId}}

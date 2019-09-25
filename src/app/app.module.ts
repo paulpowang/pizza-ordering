@@ -33,6 +33,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutModule } from '@angular/cdk/layout';
+import { SummaryViewComponent } from './summary-view/summary-view.component';
+
+import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,9 @@ import { LayoutModule } from '@angular/cdk/layout';
     ShipmentAddComponent,
     ShipmentEditComponent,
     CheckoutDashboardComponent,
+    SummaryViewComponent,
+    
+    ThankyouPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,8 @@ import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipmen
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
 import {CreateUsercredentialComponent} from './create-usercredential/create-usercredential.component';
+import { SummaryViewComponent } from './summary-view/summary-view.component';
+import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
 
 const routes: Routes = [
   {path: 'storesCustomer',
@@ -39,6 +41,11 @@ const routes: Routes = [
    component: CreditcardAddComponent},
    {path: 'checkout/creditcard/edit/:id',
    component: CreditcardEditComponent},
+
+   {path: 'summary',
+   component: SummaryViewComponent},  
+   {path: 'thankyou',
+   component: ThankyouPageComponent},  
 
   {path: '**',
     redirectTo: 'storesCustomer', },
