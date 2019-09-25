@@ -1,0 +1,56 @@
+<div class="grid-container">
+    <h1 class="mat-h1">Order Summary</h1>
+
+    <mat-grid-list cols="2" rowHeight="350px">
+<!-- card1 -->
+      <mat-grid-tile colspan=2 rowspan=1>
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              card.title
+              {{shipment.address}}
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>Card Content Here</div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+<!-- end card1 -->
+<!-- card2 -->
+<mat-grid-tile colspan=1 rowspan=1>
+        <mat-card class="dashboard-card">
+          <mat-card-header>
+            <mat-card-title>
+              card.title
+              {{creditcard.balance}}
+              
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content">
+            <div>Card Content Here</div>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+<!-- end card2 -->
+
+
+    </mat-grid-list>
+
+
+  </div>
+
+  <mat-grid-list cols="4" rowHeight="50px">
+        <mat-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
+        </mat-grid-tile>
+        <mat-grid-tile>
+    
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-raised-button color="warn" (click)="back()" style="margin-right:10px;">Cancel</button>
+            <button mat-raised-button color="primary" (click)="toPlaceOrder()">Place Order</button>
+        </mat-grid-tile>
+    
+    </mat-grid-list>
