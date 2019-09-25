@@ -67,6 +67,14 @@ public class UserCredentialController {
     }
   }
 
+  @GetMapping("/user/{userId}")
+  public ResponseEntity<UserCredential> getUser(@PathVariable String userId) {
+    Optional<UserCredential> userData = userCredentialRepository.findById(userId);
+    return userData
+      .map(userCredential -> new ResponseEntity<>(userCredential, HttpStatus.OK))
+      .orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
+  }
+
   @DeleteMapping("/user/{userId}")
   public ResponseEntity deleteUser(@PathVariable String userId) {
     Optional<UserCredential> userData = userCredentialRepository.findById(userId);
@@ -104,7 +112,7 @@ public class UserCredentialController {
    * @param creditCard
    * @return
    */
-  @PostMapping(path = "/user/{userId}/addCreditCard", consumes = "application/json")
+  @PostMapping(path = "/user/{userId}/addCreditCardDetail", consumes = "application/json")
   public ResponseEntity addCreditCardForUserId(@PathVariable String userId, @RequestBody CreditCardDetail creditCard) {
     Optional<UserCredential> userCredentialData = userCredentialRepository.findById(userId);
     if (!userCredentialData.isPresent())
