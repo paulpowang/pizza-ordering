@@ -82,8 +82,6 @@ export class OrderService {
       );
   }
 
-  
-
   setFoodItemQuantity(foodItem: FoodItem, quantity: number): void {
     this.shoppingCart.setShoppingCartItemQuantity(foodItem, quantity);
   }
@@ -98,10 +96,14 @@ export class OrderService {
   }
 
   save(): Observable<any> {
-    return this.http.post(`${this.userApi}/user/${this.userId}/addOrder`, this.shoppingCart, {
+    return this.http.post(`${this.userApi}/${this.userId}/addOrder`, this.shoppingCart, {
       params: new HttpParams()
         .set('creditCardId', this.creditCardId.toString())
         .set('shippingId', this.shippingId.toString()),
     });
+  }
+
+  getUserId() {
+    return this.userId;
   }
 }

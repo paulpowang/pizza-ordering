@@ -1,3 +1,4 @@
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -34,6 +35,10 @@ const routes: Routes = [
    component: CreateStoreComponent,},
   {path: 'storesAdmin/:id',
    component: UpdateStoreComponent,},  
+
+  {path: 'shoppingcart',
+   component: ShoppingCartComponent},
+
   {path: 'checkout',
    component: CheckoutViewComponent},
   {path: 'checkout/creditcard/add', component: CreditcardAddComponent},
@@ -50,6 +55,7 @@ const routes: Routes = [
 
   {path: 'signup',
     component: CreateUsercredentialComponent},
+
 
   {path: '**',
    redirectTo: 'login',},
