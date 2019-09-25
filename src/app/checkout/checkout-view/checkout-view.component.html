@@ -4,13 +4,37 @@
 
 <hr>
 
-<h2>Food list:</h2>
-<ul>
-    <li>Bacon</li>
-    <li>Bacon</li>
-    <li>Bacon</li>
-    <li>Bacon</li>
-</ul>
+<!-- shopping cart list -->
+
+<table mat-table [dataSource]="shoppingCartItems" class="mat-elevation-z8" style="width: 100%; margin-top: 20px;">
+    
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let element"> ${{element.price}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="qty">
+      <th mat-header-cell *matHeaderCellDef> Qty </th>
+      <td mat-cell *matCellDef="let element"> {{element.qty}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="total">
+      <th mat-header-cell *matHeaderCellDef> Total </th>
+      <td mat-cell *matCellDef="let element"> ${{element.total}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <br>
+  <hr>
+  <h3 style="text-align-last: right;margin-right: 20%;">Total: ${{total}}</h3>
+  <!-- end of shopping cart list -->
 
 
 
