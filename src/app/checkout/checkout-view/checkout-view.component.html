@@ -1,6 +1,6 @@
 <h1>Checkout</h1><br>
-<h2> Name: JoJo Kola </h2>
-<h3>ID: 1223</h3>
+<h2> User ID:{{userId}}</h2>
+<h3>Email: {{email}}</h3>
 
 <hr>
 
@@ -65,7 +65,7 @@
     <mat-radio-group aria-label="Select an option" [(ngModel)]="shipId">
         <!-- <mat-grid-tile *ngFor="let shipment of shipments| async" style="width: 300px;"> -->
 
-        <mat-card *ngFor="let shipment of shipments| async" [style.minHeight]="'100%'" [style.minWidth]="'100%'">
+        <mat-card *ngFor="let shipment of shipments" [style.minHeight]="'100%'" [style.minWidth]="'100%'">
             <mat-radio-button [value]="shipment.shippingId">
                 Name: {{shipment.name}} <br>
                 Address: <br>
@@ -106,7 +106,7 @@
 <div>
     <mat-radio-group aria-label="Select an option" [(ngModel)]="cardId">
         <!-- <mat-grid-tile *ngFor="let card of creditcards| async" style="width: 300px;"> -->
-        <mat-card *ngFor="let card of creditcards| async" [style.minHeight]="'100%'" [style.minWidth]="'100%'">
+        <mat-card *ngFor="let card of creditcards" [style.minHeight]="'100%'" [style.minWidth]="'100%'">
             <mat-radio-button [value]="card.creditCardId">
                 Creditcard Number: {{card.creditCardNumber}} <br>
                 Card Holder's Name: {{card.cardHolderName}} <br>

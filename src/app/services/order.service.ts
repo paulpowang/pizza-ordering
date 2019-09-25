@@ -15,11 +15,11 @@ export class OrderService {
   private readonly userApi: string = 'http://localhost:8080/api/user';
 
   private userId: string;
-  private shoppingCart: ShoppingCart;
+  shoppingCart: ShoppingCart = new ShoppingCart();
   creditCardDetails: Array<CreditCardDetail> = [];
   shipmentDetails: Array<ShipmentDetail> = [];
-  private creditCardId: number; // The chosen credit card
-  private shippingId: number; // The chosen shippingDetails
+  creditCardId: number; // The chosen credit card
+  shippingId: number; // The chosen shippingDetails
 
   constructor(private http: HttpClient) {}
 
@@ -31,8 +31,8 @@ export class OrderService {
     this.userId = userId;
     this.http.get(`${this.userApi}/${this.userId}`).subscribe(res => {
       this.shoppingCart = new ShoppingCart();
-      this.creditCardDetails = res['creditCardDetails'];
-      this.shipmentDetails = res['shippingDetails'];
+      this.creditCardDetails = res['creditCardDetails'] || [];
+      this.shipmentDetails = res['shipmentDetails'] || [];
     });
   }
 
@@ -96,10 +96,14 @@ export class OrderService {
   }
 
   save(): Observable<any> {
-    return this.http.post(`${this.userApi}/user/${this.userId}/addOrder`, this.shoppingCart, {
+    return this.http.post(`${this.userApi}/${this.userId}/addOrder`, this.shoppingCart, {
       params: new HttpParams()
         .set('creditCardId', this.creditCardId.toString())
         .set('shippingId', this.shippingId.toString()),
     });
+  }
+
+  getUserId() {
+    return this.userId;
   }
 }

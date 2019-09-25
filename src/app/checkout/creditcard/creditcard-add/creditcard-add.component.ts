@@ -3,6 +3,8 @@ import { Creditcard } from '../creditcard';
 import { CreditcardService } from '../creditcard.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { OrderService } from 'src/app/services/order.service';
+import { CreditCardDetail } from 'src/app/models/credit-card-detail';
 
 
 @Component({
@@ -12,9 +14,9 @@ import { Location } from '@angular/common';
 })
 export class CreditcardAddComponent implements OnInit {
 
-  creditcard: Creditcard = new Creditcard();
+  creditcard: CreditCardDetail = new CreditCardDetail();;
 
-  constructor(private service: CreditcardService, 
+  constructor(private service: OrderService, 
               private router: Router,
               private location: Location) { }
 
@@ -22,14 +24,9 @@ export class CreditcardAddComponent implements OnInit {
   }
 
   save(){
-    this.service.createCreditcard(this.creditcard)
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => console.log(error)
-      );
-      this.creditcard = new Creditcard();
+    
+    this.service.addCreditCardDetail(this.creditcard);
+
   }
 
   onSubmit(){

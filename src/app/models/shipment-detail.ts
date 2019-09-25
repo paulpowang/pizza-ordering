@@ -8,7 +8,7 @@ export class ShipmentDetail {
   landline: string;
   orderStatus: string;
 
-  constructor(
+ /* constructor(
     name: string,
     address: string,
     city: string,
@@ -26,5 +26,5 @@ export class ShipmentDetail {
     this.mobileNumber = mobileNumber;
     this.landline = landline;
     this.orderStatus = orderStatus;
-  }
+  }*/
 }

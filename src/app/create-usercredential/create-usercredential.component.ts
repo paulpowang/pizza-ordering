@@ -3,6 +3,8 @@ import { UsercredentialService } from '../usercredential.service';
 import {Ucerc} from '../userc';
 import {FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from '../alert.service';
+import {AlertComponent} from '../alert/alert.component';
 
 @Component({
   selector: 'app-create-usercredential',
@@ -26,23 +28,30 @@ export class CreateUsercredentialComponent implements OnInit {
 
 
   constructor(private userCredentialService: UsercredentialService,
-              private router: Router) { }
+              private router: Router, private alertService: AlertService,
+              private alert: AlertComponent) { }
   onClickMe() {
     this.userCredentialService.getUser(this.userCredentialId).subscribe(data => {
       console.log(data);
       this.contain = data;
-      if (this.contain !== true) {
-        this.printalert();
+      if (this.contain !== true && this.email && this.password) {
+        this.saveuser();
+        this.alert.success('sucess');
+        this.router.navigate(['/login']);
+      } else if (this.password && this.email) {
+        this.alert.fail('email already exists');
+      } else if (this.email) {
+        this.alert.fail('user email or password missing');
       } else {
-        alert('user id exist');
+        this.alert.fail('email required');
       }
     });
-    this.router.navigate(['/login']);
+    // this.router.navigate(['/login']);
     // tslint:disable-next-line:triple-equals
 
 
   }
-  printalert() {
+  saveuser() {
     this.newuser.userCredentialId = this.userCredentialId;
     this.newuser.password = this.password;
     this.newuser.userType = 'customer';

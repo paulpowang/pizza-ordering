@@ -21,6 +21,9 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
+
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+
 import { CheckoutViewComponent } from './checkout/checkout-view/checkout-view.component';
 import { CreditcardListComponent } from './checkout/creditcard/creditcard-list/creditcard-list.component';
 import { CreditcardAddComponent } from './checkout/creditcard/creditcard-add/creditcard-add.component';
@@ -39,6 +42,10 @@ import { SummaryViewComponent } from './summary-view/summary-view.component';
 import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
+import { MessagesComponent } from './messages/messages.component';
+import { AlertComponent } from './alert/alert.component';
+import {AlertService} from './alert.service';
+
 
 
 
@@ -54,6 +61,9 @@ import {MatTableModule} from '@angular/material/table';
     CreateStoreComponent,
     FoodItemFormComponent,
     CreateUsercredentialComponent,
+
+    ShoppingCartComponent,
+
     CheckoutViewComponent,
     CreditcardListComponent,
     CreditcardAddComponent,
@@ -61,9 +71,16 @@ import {MatTableModule} from '@angular/material/table';
     ShipmentListComponent,
     ShipmentAddComponent,
     ShipmentEditComponent,
+
     SummaryViewComponent,
+
     ThankyouPageComponent,
     LoginPageComponent,
+
+    MessagesComponent,
+
+    AlertComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -88,7 +105,7 @@ import {MatTableModule} from '@angular/material/table';
 
   ],
   exports: [FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [AlertService, AlertComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
