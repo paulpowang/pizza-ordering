@@ -22,6 +22,8 @@ export class LoginPageComponent implements OnInit {
   loginAttempted: boolean;
 
   requiredError = "Password is required";
+
+  invalidUserPassError = "Invalid Email or Password";
   invalidUserPassError = "Invalid User Name or Password";
 
   // tslint:disable-next-line:no-shadowed-variable
@@ -47,9 +49,7 @@ export class LoginPageComponent implements OnInit {
       { type: 'required', message: 'Password is required' },
     ],
   };
-
-
-  
+ 
   createForms() {
     this.loginDetailsForm = this.fb.group({
       email:  new FormControl ('', Validators.compose([

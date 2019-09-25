@@ -44,8 +44,13 @@ main {
 
 .filler {
   flex: 1 1 auto;
-
 }
+
+.center {
+  flex: 15 1 auto;
+  text-align: center;
+}
+
 .image{
   position: fixed;
   top: 0;
@@ -59,4 +64,3 @@ main {
   background-image: url('../assets/image/pizzalogo.jpg');
   backdrop-filter: drop-shadow(4px 4px 10px blue);
 }
-
