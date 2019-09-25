@@ -3,6 +3,7 @@ import { LoginService } from '../services/login.service';
 import { Login } from '../models/login';
 import { Router } from '@angular/router';
 import { OrderService } from '../services/order.service';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-login-page',
@@ -15,19 +16,59 @@ export class LoginPageComponent implements OnInit {
   @Input() password2: string;
   @Input() login: Login;
   error = false;
+  loginDetailsForm: FormGroup;
+
+  loginSuccess: boolean;
+  loginAttempted: boolean;
+
+  requiredError = "Password is required";
+  invalidUserPassError = "Invalid Email or Password";
 
   // tslint:disable-next-line:no-shadowed-variable
   constructor(
     private LoginService: LoginService,
     private orderService: OrderService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.createForms();
+    this.loginSuccess = false;
+    this.loginAttempted = false;
+  }
+
+  validation_messages = {
+    'email': [
+      { type: 'required', message: 'Email is required' },
+      { type: 'email', message: 'Email must be valid' }
+    ],
+    'password': [
+      { type: 'required', message: 'Password is required' },
+    ],
+  };
+
+
+
+  createForms() {
+    this.loginDetailsForm = this.fb.group({
+      email:  new FormControl ('', Validators.compose([
+        Validators.required,
+        Validators.email
+      ])),
+      password: ['', Validators.required],
+
+    })
+  }
 
   onSubmit() {
+
+    this.loginAttempted = true;
+    this.email = this.loginDetailsForm.value.email;
     this.password2 = this.password;
-    this.password = '';
+    this.password = "";
+
+
     this.LoginService.login(this.email).subscribe(login => {
       this.login = login;
       console.log(this.login);
@@ -42,6 +83,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   success() {
+    this.loginSuccess = true;
     if (this.login.userType === 'customer') {
       this.router.navigate(['/storesCustomer']);
     } else {
@@ -51,5 +93,13 @@ export class LoginPageComponent implements OnInit {
 
   createAccount() {
     this.router.navigate(['/signup']);
+  }
+
+  passwordEmpty() {
+    if (this.password === "")
+    {
+      return true;
+    }
+    return false;
   }
 }
