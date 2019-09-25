@@ -72,18 +72,14 @@ import {AlertService} from './alert.service';
     ShipmentAddComponent,
     ShipmentEditComponent,
 
-
     SummaryViewComponent,
 
     ThankyouPageComponent,
-
     LoginPageComponent,
-
 
     MessagesComponent,
 
     AlertComponent,
-
 
   ],
   imports: [

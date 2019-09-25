@@ -14,15 +14,12 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
-
 import { SummaryViewComponent } from './summary-view/summary-view.component';
 import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
-
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 
 const routes: Routes = [
-
   {path: 'login',
    component: LoginPageComponent,},
   {path: 'storesCustomer',
@@ -45,22 +42,16 @@ const routes: Routes = [
     {path: 'checkout/creditcard/edit/:id', component: CreditcardEditComponent},
     {path: 'checkout/shipment/add', component: ShipmentAddComponent},
     {path: 'checkout/shipment/edit/:id', component: ShipmentEditComponent},  
-
-
-   {path: 'summary',
+  {path: 'summary',
    component: SummaryViewComponent},  
-   {path: 'thankyou',
+  {path: 'thankyou',
    component: ThankyouPageComponent},  
-
-
   {path: 'signup',
-    component: CreateUsercredentialComponent},
 
+   component: CreateUsercredentialComponent},
 
   {path: '**',
    redirectTo: 'login',},
-  
-
 ];
 
 @NgModule({
