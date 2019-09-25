@@ -40,6 +40,8 @@ import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import { MessagesComponent } from './messages/messages.component';
+import { AlertComponent } from './alert/alert.component';
+import {AlertService} from './alert.service';
 
 
 
@@ -62,14 +64,16 @@ import { MessagesComponent } from './messages/messages.component';
     ShipmentAddComponent,
     ShipmentEditComponent,
 
-    
+
     SummaryViewComponent,
-    
+
     ThankyouPageComponent,
 
     LoginPageComponent,
 
     MessagesComponent,
+
+    AlertComponent,
 
   ],
   imports: [
@@ -95,7 +99,7 @@ import { MessagesComponent } from './messages/messages.component';
 
   ],
   exports: [FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [AlertService, AlertComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
