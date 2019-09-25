@@ -5,10 +5,10 @@
       <p>{{ foodItem.price | currency: 'USD' }}</p>
       <div class="quantity-button">
           <button mat-icon-button (click)="decreaseQtny(i)"> - </button>
-          <input matInput [(ngModel)]="quantity[i]"/>
+          {{quantity[i]}}
           <button mat-icon-button (click)="increaseQtny(i)"> + </button>
       </div>
-      <button mat-raised-button (click)="addtoCart()" > Add to Cart </button>
+      <button mat-raised-button (click)="addToCart()"> Add to Cart </button>
     </div>
   </a>
 </div>

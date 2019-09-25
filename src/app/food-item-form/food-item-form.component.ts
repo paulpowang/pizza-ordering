@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FoodItemsService } from '../services/food-items.service';
 import { FoodItem } from '../models/food-item';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-food-item-form',
@@ -16,12 +16,14 @@ export class FoodItemFormComponent implements OnInit {
   allFoodItems: Array<FoodItem> = [];
   shoppingCartItems: Array<FoodItem> = [];
   quantity: Array<number>;
+  cartSnackBar: MatSnackBar;
   @Output() shoppingCartEmitter = new EventEmitter<Array<FoodItem>>();
 
   constructor(
       private foodItemsService: FoodItemsService,
       private route: ActivatedRoute,
-      private router: Router) {}
+      private router: Router,
+      ) {}
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -35,6 +37,7 @@ export class FoodItemFormComponent implements OnInit {
   //Adds to Cart
   addToCart(foodItem: FoodItem) {
     this.shoppingCartItems.push(foodItem);
+    // let cartSnackBar = MatSnackBar.toString();
   }
 
   submitShoppingCart(): void {
@@ -58,6 +61,7 @@ export class FoodItemFormComponent implements OnInit {
 }
 }
   
+
 
 //-----------------STOPPED HERE--------------------//
   //Used to Create Pop-Up Window
