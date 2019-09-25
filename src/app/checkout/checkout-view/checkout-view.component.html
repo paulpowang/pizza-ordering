@@ -1,0 +1,115 @@
+<h1>Checkout</h1><br>
+<h2> Name: JoJo Kola </h2>
+<h3>ID: 1223</h3>
+
+<hr>
+
+<h2>Food list:</h2>
+<ul>
+    <li>Bacon</li>
+    <li>Bacon</li>
+    <li>Bacon</li>
+    <li>Bacon</li>
+</ul>
+
+
+
+
+<!-- shipment -->
+<mat-grid-list cols="4" rowHeight="50px">
+    <mat-grid-tile>
+        <h2>Shipment List</h2>
+    </mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="primary" (click)="addShipment()">Add Shipment</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+
+<hr style="border-top: 1px dotted grey;">
+
+
+<div>
+
+    <!-- <mat-grid-list cols="4" rowHeight="1:1"> -->
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="shipId">
+        <!-- <mat-grid-tile *ngFor="let shipment of shipments| async" style="width: 300px;"> -->
+
+        <mat-card *ngFor="let shipment of shipments| async" [style.minHeight]="'100%'" [style.minWidth]="'100%'">
+            <mat-radio-button [value]="shipment.shippingId">
+                Name: {{shipment.name}} <br>
+                Address: <br>
+                {{shipment.address}}, {{shipment.city}}, {{shipment.state}},
+                {{shipment.pin}}<br>
+                (M): {{shipment.mobileNumber}} <br>
+                (H): {{shipment.landline}}<br>
+                Status:{{shipment.orderStatus}}<br>
+
+                <button mat-raised-button color="primary" (click)="editShipment(shipment.shippingId)">Edit</button>
+            </mat-radio-button>
+        </mat-card>
+
+
+        <!-- </mat-grid-tile> -->
+    </mat-radio-group>
+    <!-- </mat-grid-list> -->
+</div>
+
+<!-- End shipment -->
+<!-- creditcard -->
+<mat-grid-list cols="4" rowHeight="50px">
+    <mat-grid-tile>
+        <h2>Credit Card List</h2>
+    </mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="primary" (click)="addCreditcard()">Add Creditcard</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+<hr style="border-top: 1px dotted grey;">
+
+<div>
+    <mat-radio-group aria-label="Select an option" [(ngModel)]="cardId">
+        <!-- <mat-grid-tile *ngFor="let card of creditcards| async" style="width: 300px;"> -->
+        <mat-card *ngFor="let card of creditcards| async" [style.minHeight]="'100%'" [style.minWidth]="'100%'">
+            <mat-radio-button [value]="card.creditCardId">
+                Creditcard Number: {{card.creditCardNumber}} <br>
+                Card Holder's Name: {{card.cardHolderName}} <br>
+                Date Valid to: {{card.validTo}}<br>
+                Balance: {{card.balance}}<br>
+            </mat-radio-button>
+            <button mat-raised-button color="primary" (click)="editCreditcard(card.creditCardId)">Edit</button>
+        </mat-card>
+
+    </mat-radio-group>
+
+</div>
+
+<!-- end creditcard -->
+<hr>
+
+<mat-grid-list cols="4" rowHeight="50px">
+    <mat-grid-tile>
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <button mat-raised-button color="warn" (click)="back()" style="margin-right:10px;">Cancel</button>
+        <button mat-raised-button color="primary" (click)="toSummary()">Continue</button>
+    </mat-grid-tile>
+
+</mat-grid-list>

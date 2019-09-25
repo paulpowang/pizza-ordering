@@ -37,4 +37,9 @@ export class StoresListAdminComponent  implements OnInit {
   reloadData() {
     this.stores = this.storeService.getStoresList();
   }
+
+  createStore()
+  {
+    this.router.navigate(['/storesAdmin/createStore']);
+  }
 }

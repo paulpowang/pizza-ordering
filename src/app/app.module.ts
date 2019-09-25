@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,26 @@ import { StoreDetailsComponent } from './store-details/store-details.component';
 import { UpdateStoreComponent } from './update-store/update-store.component';
 import { CreateStoreComponent } from './create-store/create-store.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
+import { CheckoutViewComponent } from './checkout/checkout-view/checkout-view.component';
+import { CreditcardListComponent } from './checkout/creditcard/creditcard-list/creditcard-list.component';
+import { CreditcardAddComponent } from './checkout/creditcard/creditcard-add/creditcard-add.component';
+import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/creditcard-edit.component';
+import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
+import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
+import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { LayoutModule } from '@angular/cdk/layout';
+import { SummaryViewComponent } from './summary-view/summary-view.component';
+
+import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+
+
 
 
 @NgModule({
@@ -33,6 +54,21 @@ import { CreateUsercredentialComponent } from './create-usercredential/create-us
     CreateStoreComponent,
     FoodItemFormComponent,
     CreateUsercredentialComponent,
+    CheckoutViewComponent,
+    CreditcardListComponent,
+    CreditcardAddComponent,
+    CreditcardEditComponent,
+    ShipmentListComponent,
+    ShipmentAddComponent,
+    ShipmentEditComponent,
+
+    
+    SummaryViewComponent,
+    
+    ThankyouPageComponent,
+
+    LoginPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,6 +83,14 @@ import { CreateUsercredentialComponent } from './create-usercredential/create-us
     MatCheckboxModule,
     MatRadioModule,
     MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatIconModule,
+    LayoutModule,
+    MatDividerModule,
+    MatTableModule,
+
   ],
   exports: [FormsModule, ReactiveFormsModule],
   providers: [],

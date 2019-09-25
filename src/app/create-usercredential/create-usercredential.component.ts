@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import { UsercredentialService } from '../usercredential.service';
 import {Ucerc} from '../userc';
+import {FormControl, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-usercredential',
@@ -19,10 +21,12 @@ export class CreateUsercredentialComponent implements OnInit {
   date: Date;
   newuser: Ucerc = new Ucerc();
   tempuser: Ucerc = new Ucerc();
+  email = new FormControl('', [Validators.required, Validators.email]);
 
 
 
-  constructor(private userCredentialService: UsercredentialService) { }
+  constructor(private userCredentialService: UsercredentialService,
+              private router: Router) { }
   onClickMe() {
     this.userCredentialService.getUser(this.userCredentialId).subscribe(data => {
       console.log(data);
@@ -33,6 +37,7 @@ export class CreateUsercredentialComponent implements OnInit {
         alert('user id exist');
       }
     });
+    this.router.navigate(['/login']);
     // tslint:disable-next-line:triple-equals
 
 
@@ -53,6 +58,11 @@ export class CreateUsercredentialComponent implements OnInit {
     this.contain = true;
   }
 
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+      this.email.hasError('email') ? 'Not a valid email' :
+        '';
+  }
   ngOnInit() {
     this.userCredentialService.getAll().subscribe(data => {
       this.people = data;

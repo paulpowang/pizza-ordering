@@ -4,18 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import com.pizza.models.FoodItem;
+import com.pizza.repositories.FoodItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.pizza.models.PizzaStore;
 import com.pizza.repositories.PizzaStoreRepository;
@@ -27,6 +21,9 @@ public class PizzaStoreController
 {
 	@Autowired
 	PizzaStoreRepository repository;
+
+	@Autowired
+  FoodItemRepository foodItemRepository;
 
 	@GetMapping("/stores")
 	public ResponseEntity<List<PizzaStore>> getAllStores() {
@@ -119,4 +116,20 @@ public class PizzaStoreController
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
+	@PostMapping("/stores/addFoodItem/{storeId}")
+  public ResponseEntity addFoodItemToStore(@PathVariable Long storeId, @RequestBody FoodItem foodItem) {
+	  System.out.println(foodItem.toString());
+
+	  Optional<PizzaStore> pizzaStoreData = repository.findById(storeId);
+	  if (!pizzaStoreData.isPresent())
+	    return new ResponseEntity(HttpStatus.NOT_FOUND);
+
+	  PizzaStore pizzaStore = pizzaStoreData.get();
+	  foodItem.getPizzaStores().add(pizzaStore);
+	  pizzaStore.getFoodItems().add(foodItem);
+	  foodItemRepository.save(foodItem);
+	  repository.save(pizzaStore);
+	  return new ResponseEntity(HttpStatus.CREATED);
+  }
 }

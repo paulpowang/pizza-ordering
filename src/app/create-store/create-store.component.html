@@ -1,27 +1,31 @@
+<form class="form">
+
+    <div class="form-header">
+        <h1 color="accent">Create Store</h1>
+    </div>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Store Name" 
+      required [ngModel]="store?.storeName" (ngModelChange)="store.storeName = $event" name="name" >
+    </mat-form-field>
   
-<h3>Create Store</h3>
-<div style="width: 300px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="storeName">Name</label>
-      <input type="text" class="form-control" id="storeName" required [(ngModel)]="store.storeName" name="storeName">
-    </div>
- 
-    <div class="form-group">
-      <label for="city">City</label>
-      <input type="text" class="form-control" id="city" required [(ngModel)]="store.city" name="city">
-    </div>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="City" 
+        required [ngModel]="store?.city" (ngModelChange)="store.city = $event" name="city" >
+    </mat-form-field>
 
-    <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" class="form-control" id="state" required [(ngModel)]="store.state" name="state">
-    </div>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="State" 
+        required [ngModel]="store?.state" (ngModelChange)="store.state = $event" name="state" >
+    </mat-form-field>
 
-    <div class="form-group">
-        <label for="zipCode">Zip Code</label>
-        <input type="text" class="form-control" id="zipCode" required [(ngModel)]="store.zipCode" name="zipCode"  maxlength="5">
-    </div>
- 
-    <button type="submit" class="btn btn-success">Submit</button>
-  </form>
-</div>
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Zip Code" 
+        required [ngModel]="store?.zipCode" (ngModelChange)="store.zipCode = $event" name="zipCode" maxlength="5" >
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="back()">Back</button>
+    <button mat-raised-button color="primary" (click)=onSubmit() style="margin-left: 10px">Create Store</button>
+
+</form>
+

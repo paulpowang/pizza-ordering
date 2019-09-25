@@ -1,12 +1,10 @@
 import { FoodItem } from './food-item';
-import { ShoppingCart } from './shopping-cart';
 
 export class ShoppingCartItem {
-  quantity: number;
   foodItem: FoodItem;
-  shoppingCart: ShoppingCart;
+  quantity: number;
 
-  constructor(quantity: number, foodItem: FoodItem) {
+  constructor(foodItem: FoodItem, quantity: number) {
     this.foodItem = foodItem;
     this.quantity = quantity;
   }

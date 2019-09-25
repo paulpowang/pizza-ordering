@@ -1,20 +1,25 @@
 package com.pizza.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Orders")
 public class Order {
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "OrderID")
   private Long orderId;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn (name = "shoppingCartId")
+  @OnDelete(action = OnDeleteAction.CASCADE)
   private ShoppingCart shoppingCart;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @ManyToOne(cascade = CascadeType.ALL)
   @JoinColumn (name = "shippingID")
   private ShipmentDetails shipmentDetails;
 
@@ -22,9 +27,20 @@ public class Order {
   @JoinColumn(name = "creditCardNumber")
   private CreditCardDetail creditCardDetail;
 
+  @JsonIgnore
   @ManyToOne
   @JoinColumn(name = "userCredentialId")
   private UserCredential userCredential;
+
+  public Order() {
+  }
+
+  public Order(ShoppingCart shoppingCart, ShipmentDetails shipmentDetails, CreditCardDetail creditCardDetail, UserCredential userCredential) {
+    this.shoppingCart = shoppingCart;
+    this.shipmentDetails = shipmentDetails;
+    this.creditCardDetail = creditCardDetail;
+    this.userCredential = userCredential;
+  }
 
   public Long getOrderId() {
     return orderId;
@@ -64,5 +80,16 @@ public class Order {
 
   public void setUserCredential(UserCredential userCredential) {
     this.userCredential = userCredential;
+  }
+
+  @Override
+  public String toString() {
+    return "Order{" +
+      "orderId=" + orderId +
+      ", shoppingCart=" + shoppingCart +
+      ", shipmentDetails=" + shipmentDetails +
+      ", creditCardDetail=" + creditCardDetail +
+      ", userCredential=" + userCredential +
+      '}';
   }
 }
