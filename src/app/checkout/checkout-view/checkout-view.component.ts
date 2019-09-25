@@ -51,7 +51,7 @@ export class CheckoutViewComponent implements OnInit {
   email:string;
 
   //shoppingCartItems: List<ShoppingCartItem>
-shoppingCartItems: Array<ShoppingCartItem>;
+shoppingCartItems;
 displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
 
   // total for shopping cart
@@ -69,11 +69,18 @@ displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
     
     this.creditcards = this.service.creditCardDetails;
     
-    this.shoppingCart = this.service.shoppingCart;
-    this.shoppingCartItems = this.shoppingCart.shoppingCartItems;
+
+    
+    this.shoppingCartItems = this.service.shoppingCart.shoppingCartItems.map(shoppingCartItem =>{
+      return {name: shoppingCartItem.foodItem.name, 
+              price: shoppingCartItem.foodItem.price, 
+              qty: shoppingCartItem.quantity, 
+              total: shoppingCartItem.foodItem.price * shoppingCartItem.quantity}
+    });
+    
     
 
-    this.total = this.shoppingCart.getTotalCost();
+    this.total = this.service.shoppingCart.getTotalCost();
 
     this.email = this.service.getUserId();
     this.userId = this.email.split("@")[0];
