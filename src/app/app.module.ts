@@ -39,6 +39,7 @@ import { SummaryViewComponent } from './summary-view/summary-view.component';
 import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
+import { MessagesComponent } from './messages/messages.component';
 
 
 
@@ -67,6 +68,8 @@ import {MatTableModule} from '@angular/material/table';
     ThankyouPageComponent,
 
     LoginPageComponent,
+
+    MessagesComponent,
 
   ],
   imports: [

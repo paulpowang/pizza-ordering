@@ -3,6 +3,7 @@ import { UsercredentialService } from '../usercredential.service';
 import {Ucerc} from '../userc';
 import {FormControl, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-create-usercredential',
@@ -22,6 +23,7 @@ export class CreateUsercredentialComponent implements OnInit {
   newuser: Ucerc = new Ucerc();
   tempuser: Ucerc = new Ucerc();
   email = new FormControl('', [Validators.required, Validators.email]);
+  messageservice: MessageService;
 
 
 
@@ -32,7 +34,8 @@ export class CreateUsercredentialComponent implements OnInit {
       console.log(data);
       this.contain = data;
       if (this.contain !== true) {
-        this.printalert();
+        this.saveuser();
+        this.messageservice.add('registered complete');
       } else {
         alert('user id exist');
       }
@@ -42,7 +45,7 @@ export class CreateUsercredentialComponent implements OnInit {
 
 
   }
-  printalert() {
+  saveuser() {
     this.newuser.userCredentialId = this.userCredentialId;
     this.newuser.password = this.password;
     this.newuser.userType = 'customer';
