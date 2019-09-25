@@ -9,6 +9,8 @@ export class CreditcardService {
 
   private baseUrl = 'http://localhost:8080/api/creditcards';
 
+  private cardId:number;
+
   constructor(private http: HttpClient) { }
 
   getCreditcardsList(): Observable<any> {
@@ -29,6 +31,16 @@ export class CreditcardService {
   deleteCreditcard(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete/${id}`);
   }
+
+  setCardId(cardId: number): void{
+    this.cardId = cardId;
+  }
+
+  getCreditcardByCardId(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/${this.cardId}`);
+  }
+
+
  
   
 }

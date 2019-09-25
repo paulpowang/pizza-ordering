@@ -13,6 +13,7 @@ import { CreditcardService } from '../creditcard.service';
 export class CreditcardListComponent implements OnInit {
 
   creditcards: Observable<Creditcard[]>;
+  cardId:number;
 
   constructor(private router: Router,private creditcardService: CreditcardService) { }
 

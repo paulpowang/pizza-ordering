@@ -1,15 +1,39 @@
-<h2>Credit Card List</h2>
-<div *ngFor="let card of creditcards| async" style="width: 300px;">
-    <div>
-        {{card.creditCardNumber}} <br>
-        {{card.cardHolderName}} <br>
-        {{card.validTo}}
-    </div>
-    <button mat-raised-button color="primary" (click)="editCreditcard(card.creditCardId)">Edit Creditcard</button>
+<mat-grid-list cols="4" rowHeight="50px">
+    <mat-grid-tile>
+        <h2>Credit Card List</h2>
+    </mat-grid-tile>
+    <mat-grid-tile><button mat-raised-button color="primary" (click)="addCreditcard()">Add Creditcard</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
 
-        
 
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+<hr style="border-top: 1px dotted grey;">
+
+
+
+<div>
+
+    
+        <mat-radio-group aria-label="Select an option" [(ngModel)]="cardId">
+            <!-- <mat-grid-tile *ngFor="let card of creditcards| async" style="width: 300px;"> -->
+                <mat-card *ngFor="let card of creditcards| async" [style.minHeight]="'100%'" [style.minWidth]="'100%'">
+                        <mat-radio-button [value]="card.creditCardId">
+                    Creditcard Number: {{card.creditCardNumber}} <br>
+                    Card Holder's Name: {{card.cardHolderName}} <br>
+                    Status: {{card.validTo}}<br>
+                    Balance: {{card.balance}}<br>
+                    </mat-radio-button>
+                    <button mat-raised-button color="primary" (click)="editCreditcard(card.creditCardId)">Edit</button>
+                </mat-card>
+
+
+            
+        </mat-radio-group>
+    
 </div>
-<nav>
-        <button mat-raised-button color="primary" (click)="addCreditcard()">Add Creditcard</button>
-    </nav>

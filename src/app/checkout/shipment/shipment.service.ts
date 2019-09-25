@@ -9,6 +9,7 @@ export class ShipmentService {
 
  
   private baseUrl = 'http://localhost:8080/api/shipments';
+  private shipId:number;
 
   constructor(private http: HttpClient) { }
 
@@ -29,6 +30,14 @@ export class ShipmentService {
  
   deleteShipment(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/delete/${id}`);
+  }
+
+  setShipId(shipId: number): void{
+    this.shipId = shipId;
+  }
+
+  getShipmentByShipId(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/${this.shipId}`);
   }
  
 }

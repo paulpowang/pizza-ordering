@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Shipment } from '../shipment';
@@ -12,6 +12,7 @@ import { ShipmentService } from '../shipment.service';
 export class ShipmentListComponent implements OnInit {
 
   shipments: Observable<Shipment[]>;
+  shipId: number;
   
 
   constructor(private router: Router, private service: ShipmentService) { }
