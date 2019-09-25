@@ -13,11 +13,20 @@ import { CreditcardService } from '../creditcard.service';
 export class CreditcardListComponent implements OnInit {
 
   creditcards: Observable<Creditcard[]>;
+  cardId:number;
 
-  constructor(private creditcardService: CreditcardService) { }
+  constructor(private router: Router,private creditcardService: CreditcardService) { }
 
   ngOnInit() {
     this.creditcards = this.creditcardService.getCreditcardsList();
+  }
+
+  addCreditcard(){
+    this.router.navigate(['/checkout/creditcard/add']);
+  }
+
+  editCreditcard(id:number){
+    this.router.navigate(['/checkout/creditcard/edit/' + id]);
   }
 
 }

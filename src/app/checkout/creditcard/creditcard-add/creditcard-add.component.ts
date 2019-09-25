@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Creditcard } from '../creditcard';
 import { CreditcardService } from '../creditcard.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { OrderService } from 'src/app/services/order.service';
+import { CreditCardDetail } from 'src/app/models/credit-card-detail';
+
 
 @Component({
   selector: 'app-creditcard-add',
@@ -10,23 +14,19 @@ import { Router } from '@angular/router';
 })
 export class CreditcardAddComponent implements OnInit {
 
-  creditcard: Creditcard = new Creditcard();
+  creditcard: CreditCardDetail = new CreditCardDetail();;
 
-  constructor(private service: CreditcardService, 
-              private router: Router) { }
+  constructor(private service: OrderService, 
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
   }
 
   save(){
-    this.service.createCreditcard(this.creditcard)
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => console.log(error)
-      );
-      this.creditcard = new Creditcard();
+    
+    this.service.addCreditCardDetail(this.creditcard);
+
   }
 
   onSubmit(){
@@ -36,6 +36,10 @@ export class CreditcardAddComponent implements OnInit {
       this.router.navigate(['/checkout']);
     },
     250);
+  }
+
+  back() {
+    this.location.back();
   }
 
 }

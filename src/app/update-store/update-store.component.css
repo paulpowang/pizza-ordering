@@ -54,6 +54,7 @@ label {
   width: 100px;
   height: 100px;
   text-align: center;
+  margin: 10px;
 }
   
 .card:hover 
@@ -63,15 +64,17 @@ label {
   
 .container 
 {
-  padding: 8px 16px;
+  padding: 4px 16px;
 }
   
 .card-container 
 {
   display: flex;
   margin: 3em;
-}
+  justify-content: flex-start;
+  flex-wrap: wrap;
   
+}
 
 .example-form {
   min-width: 150px;

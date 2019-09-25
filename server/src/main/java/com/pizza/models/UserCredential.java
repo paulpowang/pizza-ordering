@@ -1,7 +1,14 @@
 package com.pizza.models;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,16 +28,19 @@ public class UserCredential {
   private String password;
 
   @Column(name = "LoginStatus")
-  private Date loginStatus;
+  private String loginStatus;
 
-  @OneToMany(mappedBy = "userCredential", cascade = CascadeType.PERSIST)
-  private List<Order> orders;
+  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private List<ShipmentDetails> shipmentDetails = new ArrayList<>();
 
-  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.PERSIST)
-  private List<CreditCardDetail> creditCardDetails;
+  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private List<CreditCardDetail> creditCardDetails = new ArrayList<>();
 
-  @OneToMany(mappedBy =  "userCredential", cascade = CascadeType.PERSIST)
-  private List<ShipmentDetails> shipmentDetails;
+  @OneToMany(mappedBy = "userCredential", cascade = CascadeType.ALL, orphanRemoval = true)
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private List<Order> orders = new ArrayList<>();
 
   public UserCredential() {
   }
@@ -38,7 +48,7 @@ public class UserCredential {
   public UserCredential(String userCredentialId,
                         @NotNull String userType,
                         @NotNull String password,
-                        Date loginStatus, List<Order> orders,
+                        String loginStatus, List<Order> orders,
                         List<CreditCardDetail> creditCardDetails,
                         List<ShipmentDetails> shipmentDetails) {
     this.userCredentialId = userCredentialId;
@@ -80,11 +90,11 @@ public class UserCredential {
     this.password = password;
   }
 
-  public Date getLoginStatus() {
+  public String getLoginStatus() {
     return loginStatus;
   }
 
-  public void setLoginStatus(Date loginStatus) {
+  public void setLoginStatus(String loginStatus) {
     this.loginStatus = loginStatus;
   }
 

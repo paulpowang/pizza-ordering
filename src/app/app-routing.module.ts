@@ -14,7 +14,16 @@ import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipmen
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
 
+import { SummaryViewComponent } from './summary-view/summary-view.component';
+import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
+
+import { LoginPageComponent } from './login-page/login-page.component';
+import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
+
 const routes: Routes = [
+
+  {path: 'login',
+   component: LoginPageComponent,},
   {path: 'storesCustomer',
    component: StoresListCustomerComponent,},
   {path: 'storesCustomer/:id',
@@ -25,24 +34,27 @@ const routes: Routes = [
    component: CreateStoreComponent,},
   {path: 'storesAdmin/:id',
    component: UpdateStoreComponent,},  
-   {path: 'checkout',
-   component: CheckoutViewComponent, children:[
-    {path: '',
-    component: CreditcardListComponent, outlet:"creditcard"},
-    {path: 'creditcard/add',
-   component: CreditcardAddComponent},
-   {path: 'creditcard/edit/:id',
-   component: CreditcardEditComponent},
-   {path: '',
-   component: ShipmentListComponent,outlet:"shipment"},
-   {path: 'shipment/add',
-   component: ShipmentAddComponent},
-   {path: 'shipment/edit/:id',
-   component: ShipmentEditComponent},   
-   ]},  
+  {path: 'checkout',
+   component: CheckoutViewComponent},
+  {path: 'checkout/creditcard/add', component: CreditcardAddComponent},
+    {path: 'checkout/creditcard/edit/:id', component: CreditcardEditComponent},
+    {path: 'checkout/shipment/add', component: ShipmentAddComponent},
+    {path: 'checkout/shipment/edit/:id', component: ShipmentEditComponent},  
+
+
+   {path: 'summary',
+   component: SummaryViewComponent},  
+   {path: 'thankyou',
+   component: ThankyouPageComponent},  
+
+
+  {path: 'signup',
+    component: CreateUsercredentialComponent},
+
   {path: '**',
-  redirectTo: 'storesCustomer',},
+   redirectTo: 'login',},
   
+
 ];
 
 @NgModule({

@@ -1,14 +1,14 @@
 package com.pizza.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
+import com.pizza.models.UserCredential;
+import com.pizza.repositories.UserCredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.pizza.models.CreditCardDetail;
 import com.pizza.service.CreditCardService;
@@ -20,6 +20,9 @@ public class CreditCardController {
 
 	@Autowired
 	private CreditCardService service;
+
+	@Autowired
+  private UserCredentialRepository userCredentialRepository;
 
 	// Get
 	@RequestMapping(value="/creditcards", method = RequestMethod.GET)
@@ -50,6 +53,16 @@ public class CreditCardController {
 		service.deleteCreditCardDetail(id);
 	}
 
+	@PostMapping(value = "/creditcards/addForUser/{userId}")
+  public ResponseEntity addCreditCardFor(@PathVariable String userId, @RequestBody CreditCardDetail creditCard) {
+    Optional<UserCredential> userData = userCredentialRepository.findById(userId);
+    if (!userData.isPresent())
+      return new ResponseEntity(HttpStatus.NOT_FOUND);
+    UserCredential user = userData.get();
+    creditCard.setUserCredential(user);
+    service.saveCreditCardDetail(creditCard);
+    return new ResponseEntity(HttpStatus.CREATED);
+  }
 
 }
 

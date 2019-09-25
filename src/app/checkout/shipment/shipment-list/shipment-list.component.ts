@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { Shipment } from '../shipment';
 import { ShipmentService } from '../shipment.service';
 
@@ -11,12 +12,21 @@ import { ShipmentService } from '../shipment.service';
 export class ShipmentListComponent implements OnInit {
 
   shipments: Observable<Shipment[]>;
+  shipId: number;
   
 
-  constructor(private service: ShipmentService) { }
+  constructor(private router: Router, private service: ShipmentService) { }
 
   ngOnInit() {
     this.shipments = this.service.getShipmentsList();
+  }
+
+  addShipment(){
+    this.router.navigate(['/checkout/shipment/add']);
+  }
+
+  editShipment(id:number){
+    this.router.navigate(['/checkout/shipment/edit/' + id]);
   }
 
 }

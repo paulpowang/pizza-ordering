@@ -1,0 +1,10 @@
+.mat-figure {
+    justify-content: flex-start !important ;
+    align-items: flex-start !important;
+ }
+
+ .column 
+{
+  float: left;
+  width: 25%;
+}
