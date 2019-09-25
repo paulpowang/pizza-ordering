@@ -1,5 +1,7 @@
 .alert-danger {
-  background-color: lightgray; /* Red */
+  background-color: lightcoral; /* Red */
+
+
 }
 .alert-success {
   background-color: #36f456;
@@ -9,4 +11,5 @@
   color: white;
   margin-bottom: 15px;
   text-align: center;
+
 }
