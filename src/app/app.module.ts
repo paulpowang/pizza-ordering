@@ -28,6 +28,7 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -59,10 +60,14 @@ import {MatTableModule} from '@angular/material/table';
     ShipmentListComponent,
     ShipmentAddComponent,
     ShipmentEditComponent,
+
     
     SummaryViewComponent,
     
     ThankyouPageComponent,
+
+    LoginPageComponent,
+
   ],
   imports: [
     BrowserModule,
