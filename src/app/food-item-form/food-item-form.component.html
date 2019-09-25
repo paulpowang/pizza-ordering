@@ -1,8 +1,17 @@
-<div class="card-container">
-  <a (click)="addToCart(foodItem)" *ngFor="let foodItem of allFoodItems" class="card">
+<div class="card-container" ng-controller="food-item-controller">
+  <a (click)="addToCart(foodItem)" *ngFor="let foodItem of allFoodItems; let i = index" class="card" [name]="name">
     <div class="description-container">
       <h4>{{ foodItem.name }}</h4>
       <p>{{ foodItem.price | currency: 'USD' }}</p>
+      <div class="quantity-button">
+          <button mat-icon-button (click)="decreaseQtny(i)"> - </button>
+          <input matInput [(ngModel)]="quantity[i]"/>
+          <button mat-icon-button (click)="increaseQtny(i)"> + </button>
+      </div>
+      <button mat-raised-button (click)="addtoCart()" > Add to Cart </button>
     </div>
   </a>
+</div>
+<div id="AddToCart">
+  <button mat-raised-button  color="primary" (click)="submitShoppingCart()"> Go to Checkout </button>
 </div>
