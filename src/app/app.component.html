@@ -2,14 +2,19 @@
   <mat-toolbar-row>
     <span>Pizza Ordering</span>
     <span class="filler"></span>
+
+    <span><a href="http://localhost:4200/login" style="text-decoration: none; color:white">Logout</a></span>
+
       <span 
       type="text"
       [routerLink]="['/shoppingcart']"
       class="btn btn-warning">
       Shopping Cart
      </span> 
+
   </mat-toolbar-row>
 </mat-toolbar>
+
 <main>
   <router-outlet></router-outlet>
 </main>
