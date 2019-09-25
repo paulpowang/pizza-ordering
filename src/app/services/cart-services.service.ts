@@ -7,13 +7,13 @@ import { FoodItem } from '../models/food-item';
 })
 export class CartServicesService {
 
-  shoppingCartItems: ShoppingCartItem[] = [
-    new ShoppingCartItem(1, new FoodItem({ foodItemId: 1, name: "food1", price: 1, pizzaStores: null})), 
-    new ShoppingCartItem(2, new FoodItem({ foodItemId: 3, name: "food2", price: 2, pizzaStores: null})), 
-    new ShoppingCartItem(3, new FoodItem({ foodItemId: 3, name: "food3", price: 3, pizzaStores: null})), 
-  ]; 
+  shoppingCartItems: ShoppingCartItem[] = []; 
 
   constructor() { }
+
+  setShoppingCartItems(shoppingCartItems: ShoppingCartItem[]) {
+    this.shoppingCartItems = shoppingCartItems;
+  }
 
   addToCart(shoppingCartItem:ShoppingCartItem){
     this.shoppingCartItems.push(shoppingCartItem);

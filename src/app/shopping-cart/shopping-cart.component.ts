@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
+import { OrderService } from './../services/order.service';
 import { CartServicesService } from './../services/cart-services.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { ShoppingCartItem } from '../models/shopping-cart-item';
-import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -16,10 +17,13 @@ export class ShoppingCartComponent implements OnInit {
   newShoppingCartItem: ShoppingCartItem; 
   index: number;
   shippingId: number = 0;
-  constructor(private shoppingCartService: CartServicesService) { }
+  constructor(private shoppingCartService: CartServicesService,
+              private orderService: OrderService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.shoppingCartItems = this.shoppingCartService.getShoppingCartItems();
+    this.shoppingCartService.setShoppingCartItems(this.orderService.getShoppingCartItems())
+    this.shoppingCartItems = this.orderService.getShoppingCartItems();''
     if(!this.shippingId)
       this.shippingId = 1;
     else
@@ -43,5 +47,10 @@ export class ShoppingCartComponent implements OnInit {
   onSubmit(){
     this.modifyActivated = false;
     this.shoppingCartItems[this.index].quantity = this.oldQuantity;
+  }
+  
+  submit(){
+    this.orderService.setShoppingCartItems(this.shoppingCartService.getShoppingCartItems());
+    this.router.navigate(['/checkout']);
   }
 }

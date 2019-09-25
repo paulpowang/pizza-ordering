@@ -32,12 +32,12 @@
     </tbody>
   </table>
 <hr>
-<!-- <button 
-  (click)="generateShippingId()" 
+<button 
+  (click)="submit()" 
   class="btn btn-primary" 
-  [routerLink]="['/shippingcart', shippingId]">
+  >
   Continue shopping
-</button> -->
+</button>
 <div *ngIf="modifyActivated">
           <form (ngSubmit)="onSubmit()">
                   <div class="form-group">
