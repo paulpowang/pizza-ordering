@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Creditcard } from '../creditcard';
 import { CreditcardService } from '../creditcard.service';
 import { Location } from '@angular/common';
+import { OrderService } from 'src/app/services/order.service';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class CreditcardEditComponent implements OnInit {
               private route: ActivatedRoute,
               private router: Router,
               private location: Location,
+              private orderService: OrderService
               ) { }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class CreditcardEditComponent implements OnInit {
         console.log(data);
         this.creditcard = data as Creditcard;
         this.submitted = true;
+        this.orderService.fetchUserInfo(this.orderService.getUserId());
       },
       error => console.log(error)
     );
