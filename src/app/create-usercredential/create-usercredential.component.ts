@@ -30,7 +30,7 @@ export class CreateUsercredentialComponent implements OnInit {
       console.log(data);
       this.contain = data;
       if (this.contain !== true) {
-        this.printalert();
+        this.saveuser();
       } else {
         alert('user id exist');
       }
@@ -39,7 +39,7 @@ export class CreateUsercredentialComponent implements OnInit {
 
 
   }
-  printalert() {
+  saveuser() {
     this.newuser.userCredentialId = this.userCredentialId;
     this.newuser.password = this.password;
     this.newuser.userType = 'customer';
