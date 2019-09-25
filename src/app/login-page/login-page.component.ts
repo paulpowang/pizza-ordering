@@ -3,7 +3,7 @@ import { LoginService } from '../services/login.service';
 import { Login } from '../models/login';
 import { Router } from '@angular/router';
 import { OrderService } from '../services/order.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -21,10 +21,9 @@ export class LoginPageComponent implements OnInit {
   loginSuccess: boolean;
   loginAttempted: boolean;
 
-  requiredError = "Password is required";
+  requiredError = 'Password is required';
 
-  invalidUserPassError = "Invalid Email or Password";
-  invalidUserPassError = "Invalid User Name or Password";
+  invalidUserPassError = 'Invalid Email or Password';
 
   // tslint:disable-next-line:no-shadowed-variable
   constructor(
@@ -41,33 +40,25 @@ export class LoginPageComponent implements OnInit {
   }
 
   validation_messages = {
-    'email': [
+    email: [
       { type: 'required', message: 'Email is required' },
-      { type: 'email', message: 'Email must be valid' }
+      { type: 'email', message: 'Email must be valid' },
     ],
-    'password': [
-      { type: 'required', message: 'Password is required' },
-    ],
+    password: [{ type: 'required', message: 'Password is required' }],
   };
- 
+
   createForms() {
     this.loginDetailsForm = this.fb.group({
-      email:  new FormControl ('', Validators.compose([
-        Validators.required, 
-        Validators.email
-      ])),
+      email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
       password: ['', Validators.required],
-
-    })
+    });
   }
 
   onSubmit() {
-
     this.loginAttempted = true;
     this.email = this.loginDetailsForm.value.email;
     this.password2 = this.password;
-    this.password = "";
-
+    this.password = '';
 
     this.LoginService.login(this.email).subscribe(login => {
       this.login = login;
@@ -96,8 +87,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   passwordEmpty() {
-    if (this.password === "")
-    {
+    if (this.password === '') {
       return true;
     }
     return false;

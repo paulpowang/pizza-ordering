@@ -9,7 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,15 +41,11 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { SummaryViewComponent } from './summary-view/summary-view.component';
 
 import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatTableModule} from '@angular/material/table';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTableModule } from '@angular/material/table';
 import { MessagesComponent } from './messages/messages.component';
 import { AlertComponent } from './alert/alert.component';
-import {AlertService} from './alert.service';
-
-
-
-
+import { AlertService } from './alert.service';
 
 @NgModule({
   declarations: [
@@ -80,7 +77,6 @@ import {AlertService} from './alert.service';
     MessagesComponent,
 
     AlertComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -102,7 +98,7 @@ import {AlertService} from './alert.service';
     LayoutModule,
     MatDividerModule,
     MatTableModule,
-
+    MatSnackBarModule,
   ],
   exports: [FormsModule, ReactiveFormsModule],
   providers: [AlertService, AlertComponent],
