@@ -1,6 +1,6 @@
 <div>
 
-  <form (ngSubmit)="submit(zipcodeForm.value)" #zipcodeForm="ngForm" novalidate>
+  <form>
 
     <div class="form-header">
       <h1 color="accent">Find a location</h1>
@@ -15,7 +15,9 @@
           (ngModelChange)="searchStores($event)"
           name="zipCodeInput"
           placeholder="Zipcode"
+          minLength="5"
           maxlength="5"
+          ng-pattern="onlyNumbers"
         />
       </mat-form-field>
     </div>
