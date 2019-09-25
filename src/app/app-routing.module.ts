@@ -1,3 +1,4 @@
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -20,8 +21,8 @@ import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 
-
 const routes: Routes = [
+
   {path: 'login',
    component: LoginPageComponent,},
   {path: 'storesCustomer',
@@ -34,15 +35,16 @@ const routes: Routes = [
    component: CreateStoreComponent,},
   {path: 'storesAdmin/:id',
    component: UpdateStoreComponent,},  
+
+  {path: 'shoppingcart',
+   component: ShoppingCartComponent},
+
   {path: 'checkout',
-   component: CheckoutViewComponent, 
-   children:[
-    {path: '', component: CreditcardListComponent, outlet:"creditcard"},
-    {path: 'creditcard/add', component: CreditcardAddComponent},
-    {path: 'creditcard/edit/:id', component: CreditcardEditComponent},
-    {path: '', component: ShipmentListComponent,outlet:"shipment"},
-    {path: 'shipment/add', component: ShipmentAddComponent},
-    {path: 'shipment/edit/:id', component: ShipmentEditComponent},]},  
+   component: CheckoutViewComponent},
+  {path: 'checkout/creditcard/add', component: CreditcardAddComponent},
+    {path: 'checkout/creditcard/edit/:id', component: CreditcardEditComponent},
+    {path: 'checkout/shipment/add', component: ShipmentAddComponent},
+    {path: 'checkout/shipment/edit/:id', component: ShipmentEditComponent},  
 
 
    {path: 'summary',
@@ -54,9 +56,11 @@ const routes: Routes = [
   {path: 'signup',
     component: CreateUsercredentialComponent},
 
+
   {path: '**',
    redirectTo: 'login',},
   
+
 ];
 
 @NgModule({
