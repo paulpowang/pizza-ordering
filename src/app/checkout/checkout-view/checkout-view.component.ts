@@ -6,6 +6,20 @@ import { Router } from '@angular/router';
 import { Shipment } from '../shipment/shipment';
 import { ShipmentService } from '../shipment/shipment.service';
 
+export interface TempItem {
+  name: string;
+  price: number;
+  qty: number;
+  total: number;
+}
+
+const test_data: TempItem[] = [
+  {name: 'Pineapple Pizza', price: 5.00, qty: 1, total: 5},
+  {name: 'Coke',            price: 1.00, qty: 2, total: 2},
+  {name: 'Peperoni Pizza',  price: 5.00, qty: 1, total: 5},
+];
+
+
 @Component({
   selector: 'app-checkout-view',
   templateUrl: './checkout-view.component.html',
@@ -17,10 +31,19 @@ export class CheckoutViewComponent implements OnInit {
 
   shipments: Observable<Shipment[]>;
   creditcards: Observable<Creditcard[]>;
+
+
   
   // cardId & shipId use for locate radio option
   cardId:number;
   shipId:number;
+
+  //shoppingCartItems: List<ShoppingCartItem>
+shoppingCartItems = test_data;
+displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
+
+  // total for shopping cart
+  total:number;
 
   constructor(private router: Router, 
               private creditcardService: CreditcardService,
@@ -29,6 +52,8 @@ export class CheckoutViewComponent implements OnInit {
   ngOnInit() {
     this.creditcards = this.creditcardService.getCreditcardsList();
     this.shipments = this.shipmentService.getShipmentsList();
+
+    this.total = 123;
   }
 
   addCreditcard(){
@@ -54,9 +79,15 @@ export class CheckoutViewComponent implements OnInit {
   }
 
   toSummary(){
-    this.creditcardService.setCardId(this.cardId);
+
+    if(this.cardId && this.shipId){
+      this.creditcardService.setCardId(this.cardId);
     this.shipmentService.setShipId(this.shipId);
     this.router.navigate(['/summary']);
+    }else{
+      alert("please select payment and shipping address");
+    }
+    
 
   }
 

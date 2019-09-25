@@ -30,19 +30,11 @@ const test_data: TempItem[] = [
 
 
 export class SummaryViewComponent implements OnInit {
-//shipmentDetails: ShipmentDetails;
-name: string;
-address: string;
-city: string;
-state: string;
-mobileNumber: string;
-landline: string;
+
 
 //userCredential: UserCredential
 email: string;
 
-//creditCard: CreditCard
-creditCardNumber: string;
 
 //shoppingCartItems: List<ShoppingCartItem>
 shoppingCartItems = test_data;
@@ -53,15 +45,9 @@ total: number;
 
 
 
-
-
-
   shipment: Shipment;
   creditcard: Creditcard;
   
-  
-
-
   constructor(private router: Router, 
     private creditcardService: CreditcardService,
     private shipmentService: ShipmentService,
@@ -76,14 +62,6 @@ total: number;
 
     });
 
-    this.name = "Bob Builder";
-    this.address = "6 Marlborough Street";
-    this.city = "Mableton";
-    this.state = "GA";
-    this.mobileNumber = "111-111-1111";
-    this.landline = "222-222-2222";
-    this.creditCardNumber = "1111222233334444"
-    this.email = "bob@gmail.com"
     this.total = 12231323.00;
   }
 
