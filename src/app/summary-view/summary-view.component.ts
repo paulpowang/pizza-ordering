@@ -40,7 +40,7 @@ email: string;
 username:string;
 
 //shoppingCartItems: List<ShoppingCartItem>
-shoppingCartItems: Array<ShoppingCartItem>;
+shoppingCartItems;
 displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
 
 //calculate this somehow
@@ -69,13 +69,23 @@ total: number;
 
     });
 
-    this.shoppingCart = this.orderService.shoppingCart;
-    this.shoppingCartItems = this.shoppingCart.shoppingCartItems;
+    
 
-    this.total = this.shoppingCart.getTotalCost();
+    this.shoppingCartItems = this.orderService.shoppingCart.shoppingCartItems.map(shoppingCartItem =>{
+      return {name: shoppingCartItem.foodItem.name, 
+              price: shoppingCartItem.foodItem.price, 
+              qty: shoppingCartItem.quantity, 
+              total: shoppingCartItem.foodItem.price * shoppingCartItem.quantity}
+    });
+    
+    
+
+    this.total = this.orderService.shoppingCart.getTotalCost();
 
     this.email = this.orderService.getUserId();
     this.username = this.email.split("@")[0];
+
+    
 
   }
 
@@ -84,6 +94,7 @@ total: number;
   }
 
   toPlaceOrder(){
+    this.orderService.save();
     this.router.navigate(['/thankyou']);
   }
 
