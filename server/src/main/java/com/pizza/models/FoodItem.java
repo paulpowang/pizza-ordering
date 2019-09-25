@@ -3,7 +3,6 @@ package com.pizza.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +14,23 @@ public class FoodItem {
   private Long foodItemId;
 
   @Column(name = "price")
-  @NotNull
   private Double price;
 
   @Column(name = "name")
-  @NotNull
   private String name;
 
   @JsonIgnore
   @ManyToMany(fetch = FetchType.LAZY,
-    cascade = { CascadeType.PERSIST },
+    cascade = { CascadeType.ALL },
     mappedBy = "foodItems")
   private List<PizzaStore> pizzaStores = new ArrayList<>();
 
   public FoodItem() {
+  }
+
+  public FoodItem(Double price, String name) {
+    this.price = price;
+    this.name = name;
   }
 
   public Long getFoodItemId() {
@@ -63,4 +65,13 @@ public class FoodItem {
     this.pizzaStores = pizzaStores;
   }
 
+  @Override
+  public String toString() {
+    return "FoodItem{" +
+      "foodItemId=" + foodItemId +
+      ", price=" + price +
+      ", name='" + name + '\'' +
+      ", pizzaStores=" + pizzaStores +
+      '}';
+  }
 }
