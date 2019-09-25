@@ -2,7 +2,7 @@ import { ShoppingCartItem } from './shopping-cart-item';
 import { FoodItem } from './food-item';
 
 export class ShoppingCart {
-  private shoppingCartItems: Array<ShoppingCartItem> = [];
+  shoppingCartItems: Array<ShoppingCartItem> = [];
 
   setShoppingCartItemQuantity(foodItem: FoodItem, quantity: number): void {
     let index: number = this.shoppingCartItems.findIndex(
@@ -14,7 +14,7 @@ export class ShoppingCart {
       delete this.shoppingCartItems[index];
     } else if (quantity > 0 && index === -1) {
       // Add an new foodItem
-      this.shoppingCartItems.push(new ShoppingCartItem(quantity, foodItem));
+      this.shoppingCartItems.push(new ShoppingCartItem(foodItem, quantity));
     } else if (index > -1) {
       // Set a new quantity for an existing shoppingCartItem
       this.shoppingCartItems[index].quantity = quantity;

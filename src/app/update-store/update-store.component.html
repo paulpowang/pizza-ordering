@@ -1,55 +1,56 @@
-<div class="row">
+<div>
 
   <!-- Column 1 -->
   <div class="column">
+      <form class="example-form">
 
-    <h3>Store Details</h3>
+          <div class="form-header">
+              <h3 color="accent">Store Details</h3>
+          </div>
+      
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Store ID" disabled
+            required [ngModel]="store?.storeId" (ngModelChange)="store.storeId = $event" name="storeId" >
+          </mat-form-field>
 
-      <form (ngSubmit)="updateStore()">
-        <div class="form-group">
-          <label for="storeId">ID</label>
-          <input readonly = true; type="text" class="form-control" id="storeId" 
-          required [ngModel]="store?.storeId" (ngModelChange)="store.storeId = $event" name="storeId">
-        </div>
-
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" 
-          [ngModel]="store?.storeName" (ngModelChange)="store.storeName = $event" name="name">
-        </div>
-  
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" class="form-control" id="city" 
-          required [ngModel]="store?.city" (ngModelChange)="store.city = $event" name="city">
-        </div>
-
-        <div class="form-group">
-          <label for="state">State</label>
-          <input type="text" class="form-control" id="state" 
-          required [ngModel]="store?.state" (ngModelChange)="store.state = $event" name="state">
-        </div>
-
-        <div class="form-group">
-          <label for="zipCode">Zip Code</label>
-          <input type="text" class="form-control" id="zipCode" 
-          required [ngModel]="store?.zipCode" (ngModelChange)="store.zipCode = $event" name="zipCode">
-        </div>
-  
-        <button type="submit" class="btn btn-success">Update</button>
-        <button (click)="delete()">Delete</button>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Store Name" 
+            required [ngModel]="store?.storeName" (ngModelChange)="store.storeName = $event" name="name" >
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="City" 
+              required [ngModel]="store?.city" (ngModelChange)="store.city = $event" name="city" >
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="State" 
+              required [ngModel]="store?.state" (ngModelChange)="store.state = $event" name="state" >
+          </mat-form-field>
+      
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="Zip Code" 
+              required [ngModel]="store?.zipCode" (ngModelChange)="store.zipCode = $event" name="zipCode" maxlength="5" >
+          </mat-form-field>
+      
+          <button mat-raised-button color="primary" (click)= back()>Back</button>
+          <button mat-raised-button color="primary" (click)= updateStore() style="margin-left: 10px">Update</button>
+          <button mat-raised-button color="warn" (click)="delete()" style="margin-left: 10px">Delete</button>
+      
       </form>
   </div>
 
   <!-- Column 2 -->
   <div class="column">
 
-    <h3>Items in Store</h3>
+      <div class="form-header">
+          <h3 color="accent">Items in Store</h3>
+      </div>
+
     <div class="card-container">
       <a (click)="addToAll(foodItem)" *ngFor="let foodItem of storeFoodItems" class="card">
         <div class="description-container">
           <h4>{{ foodItem.name }}</h4>
-          <p>{{ foodItem.price | currency: 'USD' }}</p>
         </div>
       </a>
     </div>
@@ -59,12 +60,13 @@
   <!-- Column 3 -->
   <div class="column">
     
-      <h3>Items bank</h3>
+      <div class="form-header">
+          <h3 color="accent">Items bank</h3>
+      </div>
       <div class="card-container">
           <a (click)="addToStore(foodItem)" *ngFor="let foodItem of allFoodItems" class="card">
             <div class="description-container">
               <h4>{{ foodItem.name }}</h4>
-              <p>{{ foodItem.price | currency: 'USD' }}</p>
             </div>
           </a>
         </div>

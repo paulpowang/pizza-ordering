@@ -1,0 +1,27 @@
+
+<div style="width: 300px;">
+  <form class="form">
+      <div class="form-header">
+          <h1 color="accent">Add CreditCard</h1>
+      </div>
+
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Creditcard Number" required [(ngModel)]="creditcard.creditCardNumber" name="creditCardNumber">
+    </mat-form-field>
+ 
+    <mat-form-field class="full-width">
+      <input matInput placeholder="card Holder's Name" required [(ngModel)]="creditcard.cardHolderName" name="cardHolderName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Date Valid To" required [(ngModel)]="creditcard.validTo" name="validTo">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Balance" required [(ngModel)]="creditcard.balance" name="balance"  maxlength="5">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="back()">Back</button>
+    <button mat-raised-button color="primary" (click)=onSubmit() style="margin-left: 10px">Add Creditcard</button>
+
+  </form>
+</div>

@@ -1,0 +1,43 @@
+<div class="row">
+
+    <!-- Column 1 -->
+    <div class="column">
+        <form class="example-form">
+  
+      
+      <div class="form-header">
+        <h3 color="accent">Creditcard Details</h3>
+    </div>
+  
+    <mat-form-field class="example-full-width">
+          
+            <input matInput placeholder="Creditcard Number" 
+            required [ngModel]="creditcard?.creditCardNumber" (ngModelChange)="creditcard.creditCardNumber = $event" name="creditCardNumber">
+          
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Card Holder's Name" 
+            [ngModel]="creditcard?.cardHolderName" (ngModelChange)="creditcard.cardHolderName = $event" name="cardHolderName">
+        </mat-form-field>
+    
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Date Valid To" 
+            required [ngModel]="creditcard?.validTo" (ngModelChange)="creditcard.validTo = $event" name="validTo">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            
+            <input matInput placeholder="Balance" 
+            required [ngModel]="creditcard?.balance" (ngModelChange)="creditcard.balance = $event" name="balance">
+          </mat-form-field>
+  
+          
+          <button mat-raised-button color="primary" (click)= back()>Back</button>
+          <button mat-raised-button color="primary" (click)= updateCreditcard() style="margin-left: 10px">Update</button>
+          <button mat-raised-button color="warn" (click)="delete()" style="margin-left: 10px">Delete</button>
+        </form>
+    </div>
+  
+  
+  </div>

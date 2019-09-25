@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import com.pizza.models.ShipmentDetails;
 import com.pizza.service.ShipmentDetailsService;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 public class ShipmentDetailsController {

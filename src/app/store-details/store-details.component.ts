@@ -4,6 +4,7 @@ import { StoreService } from '../services/store.service';
 import { Store } from '../models/store';
 
 
+
 @Component({
   selector: 'app-store-details',
   templateUrl: './store-details.component.html',

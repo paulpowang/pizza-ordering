@@ -1,10 +1,12 @@
 package com.pizza.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,12 +32,12 @@ public class CreditCardDetail {
 
   @JsonIgnore
   @OneToMany(mappedBy = "creditCardDetail")
-  List<Order> orders;
+  List<Order> orders = new ArrayList<>();
 
   //Changed nullable to true for now, or creditcard cannot be created
   @JsonIgnore
   @ManyToOne
-  @JoinColumn(name="userCredentialId", nullable=true)
+  @JoinColumn(name="userCredentialId", nullable = false)
   private UserCredential userCredential;
 
   public long getCreditCardId() {
@@ -94,4 +96,16 @@ public class CreditCardDetail {
     this.userCredential = userCredential;
   }
 
+  @Override
+  public String toString() {
+    return "CreditCardDetail{" +
+      "creditCardId=" + creditCardId +
+      ", creditCardNumber='" + creditCardNumber + '\'' +
+      ", cardHolderName='" + cardHolderName + '\'' +
+      ", validTo='" + validTo + '\'' +
+      ", balance=" + balance +
+      ", orders=" + orders +
+      ", userCredential=" + userCredential +
+      '}';
+  }
 }

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import com.pizza.models.ShoppingCart;
 import com.pizza.service.ShoppingCartService;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/shoppingcarts")
 public class ShoppingCartController {

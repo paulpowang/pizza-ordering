@@ -1,0 +1,56 @@
+label {
+  display: inline-block;
+  width: 10em;
+  margin: 0.5em 0;
+  color: #607d8b;
+  font-weight: bold;
+}
+
+.form-group {
+  margin: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  max-width: 20em;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.radio-button {
+  margin: 1em 0.5em;
+}
+
+.form-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  height: 1em;
+}
+
+nav a {
+  text-decoration: none;
+  background-color: #eee;
+}
+
+nav a:visited,
+a:link {
+  color: #334953;
+}
+
+nav a:hover {
+  color: #039be5;
+  background-color: #cfd8dc;
+}
+
+nav a.active {
+  color: #039be5;
+}

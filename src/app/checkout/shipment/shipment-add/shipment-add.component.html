@@ -1,0 +1,48 @@
+
+<div style="width: 300px;">
+    <form class="form">
+        <div class="form-header">
+            <h1 color="accent">Add Shipment</h1>
+        </div>
+    <mat-form-field class="full-width">
+      
+      <input matInput placeholder="Name" required [(ngModel)]="shipment.name" name="name">
+    </mat-form-field>
+ 
+    <mat-form-field class="full-width">
+      
+      <input matInput placeholder="Address" required [(ngModel)]="shipment.address" name="address">
+    </mat-form-field>
+ 
+    <mat-form-field class="full-width">
+        
+        <input matInput placeholder="City" required [(ngModel)]="shipment.city" name="city">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        
+        <input matInput placeholder="State" required [(ngModel)]="shipment.state" name="state">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        
+        <input matInput placeholder="Pin" required [(ngModel)]="shipment.pin" name="pin"  maxlength="5">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        
+        <input matInput placeholder="Mobile Number" required [(ngModel)]="shipment.mobileNumber" name="mobileNumber" >
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        
+        <input matInput placeholder="Landline" required [(ngModel)]="shipment.landline" name="landline" >
+    </mat-form-field>
+    
+    <mat-form-field class="full-width"> 
+        <input matInput placeholder="Order Status" required [(ngModel)]="shipment.orderStatus" name="orderStatus"  >
+    </mat-form-field>
+ 
+    <button mat-raised-button color="primary" (click)="back()">Back</button>
+    <button mat-raised-button color="primary" (click)=onSubmit() style="margin-left: 10px">Add Shipping Address</button>
+
+  </form>
+</div>

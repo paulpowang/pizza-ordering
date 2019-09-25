@@ -2,9 +2,7 @@ package com.pizza.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 
 /**
  * Database entity for PizzaStores. Has many-to-many relationship with
@@ -30,7 +27,7 @@ public class PizzaStore
   @Column(name = "storeName")
   @NotNull
   private String storeName;
-
+  
   @Column(name = "city")
   private String city;
 
@@ -41,10 +38,8 @@ public class PizzaStore
   @NotNull
   private String zipCode;
 
-  @ManyToMany(fetch = FetchType.LAZY,
-      cascade = {
-          CascadeType.PERSIST,
-  })
+  @ManyToMany(fetch = FetchType.EAGER,
+      cascade = {CascadeType.ALL})
   @JoinTable(name = "PizzaStores_has_FoodItems",
   joinColumns = { @JoinColumn(name = "PizzaStoreID") },
   inverseJoinColumns = { @JoinColumn(name = "FoodItemID") })
@@ -122,7 +117,7 @@ public class PizzaStore
 
   @Override
   public String toString() {
-    return "PizzaStore [storeId=" + storeId + ", storeName=" + storeName + ", city=" + city + ", state=" + state
-        + ", zipCode=" + zipCode + ", foodItems=" + foodItems + "]";
+	  return "PizzaStore [storeId=" + storeId + ", storeName=" + storeName + ", city=" + city + ", state=" + state
+			+ ", zipCode=" + zipCode + ", foodItems=" + foodItems + "]";
   }
 }

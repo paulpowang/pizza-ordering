@@ -4,7 +4,10 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-  @Entity
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
   @Table(name = "ShipmentDetails")
   public class ShipmentDetails {
     @Id
@@ -37,9 +40,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
     private String orderStatus;
 
     @JsonIgnore
-    @OneToOne(mappedBy = "shipmentDetails", cascade = CascadeType.PERSIST)
-    private Order order;
-    
+    @OneToMany(mappedBy = "shipmentDetails", cascade = CascadeType.ALL)
+    private List<Order> orders = new ArrayList<>();
+
     // set nullable to true for function creating.
     @JsonIgnore
     @ManyToOne
@@ -117,4 +120,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
     public void setOrderStatus(String orderStatus) {
       this.orderStatus = orderStatus;
     }
+
+    public UserCredential getUserCredential() {
+      return userCredential;
+    }
+
+    public void setUserCredential(UserCredential userCredential) {
+      this.userCredential = userCredential;
+    }
+
+  public List<Order> getOrders() {
+    return orders;
   }
+
+  public void setOrders(List<Order> orders) {
+    this.orders = orders;
+  }
+}

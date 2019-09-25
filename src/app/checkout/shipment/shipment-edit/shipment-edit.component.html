@@ -1,0 +1,75 @@
+
+
+<div class="row">
+
+    <!-- Column 1 -->
+    <div class="column">
+            <form class="example-form">
+      
+          
+          <div class="form-header">
+            <h3 color="accent">Edit Shipment Address</h3>
+        </div>
+
+        
+
+        
+
+            <mat-form-field class="example-full-width">
+                <label for="shippingId">ID</label>
+                <input readonly=true; matInput placeholder="shippingId" required
+                    [ngModel]="shipment?.shippingId" (ngModelChange)="shipment.shippingId = $event" name="shippingId">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="name" required [ngModel]="shipment?.name"
+                    (ngModelChange)="shipment.name = $event" name="name">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="address" [ngModel]="shipment?.address"
+                    (ngModelChange)="shipment.address = $event" name="address">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="city" required [ngModel]="shipment?.city"
+                    (ngModelChange)="shipment.city = $event" name="city">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="state" required [ngModel]="shipment?.state"
+                    (ngModelChange)="shipment.state = $event" name="state">
+            </mat-form-field>
+
+
+            <mat-form-field class="example-full-width">
+                
+                <input matInput placeholder="pin" required [ngModel]="shipment?.pin"
+                    (ngModelChange)="shipment.pin = $event" name="pin">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="mobileNumber" required [ngModel]="shipment?.mobileNumber"
+                    (ngModelChange)="shipment.mobileNumber = $event" name="mobileNumber">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <label for="landline">Landline</label>
+                <input matInput placeholder="landline" required [ngModel]="shipment?.landline"
+                    (ngModelChange)="shipment.landline = $event" name="landline">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <label for="orderStatus">Order Status</label>
+                <input matInput placeholder="orderStatus" required [ngModel]="shipment?.orderStatus"
+                    (ngModelChange)="shipment.orderStatus = $event" name="orderStatus">
+            </mat-form-field>
+
+
+
+            <button mat-raised-button color="primary" (click)= back()>Back</button>
+          <button mat-raised-button color="primary" (click)= updateShipment() style="margin-left: 10px">Update</button>
+          <button mat-raised-button color="warn" (click)="delete()" style="margin-left: 10px">Delete</button>
+        </form>
+    </div>
+
+
+</div>
