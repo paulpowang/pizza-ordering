@@ -38,10 +38,8 @@ public class PizzaStore
   @NotNull
   private String zipCode;
 
-  @ManyToMany(fetch = FetchType.LAZY,
-      cascade = {
-          CascadeType.PERSIST,
-  })
+  @ManyToMany(fetch = FetchType.EAGER,
+      cascade = {CascadeType.ALL})
   @JoinTable(name = "PizzaStores_has_FoodItems",
   joinColumns = { @JoinColumn(name = "PizzaStoreID") },
   inverseJoinColumns = { @JoinColumn(name = "FoodItemID") })

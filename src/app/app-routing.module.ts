@@ -20,8 +20,8 @@ import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 
-
 const routes: Routes = [
+
   {path: 'login',
    component: LoginPageComponent,},
   {path: 'storesCustomer',
@@ -54,6 +54,7 @@ const routes: Routes = [
   {path: '**',
    redirectTo: 'login',},
   
+
 ];
 
 @NgModule({

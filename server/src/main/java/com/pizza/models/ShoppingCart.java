@@ -1,8 +1,11 @@
 package com.pizza.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,14 +17,15 @@ public class ShoppingCart {
   @Column(name = "ShoppingCartId")
   private Long shoppingCartId;
 
-  @OneToOne(mappedBy = "shoppingCart", cascade = CascadeType.PERSIST)
+  @OneToOne(mappedBy = "shoppingCart", cascade = CascadeType.ALL)
   @JsonIgnore
   private Order order;
 
   @OneToMany(cascade = CascadeType.ALL,
     orphanRemoval = true,
     mappedBy = "shoppingCart")
-  private List<ShoppingCartItem> shoppingCartItems;
+  @OnDelete(action = OnDeleteAction.CASCADE)
+  private List<ShoppingCartItem> shoppingCartItems = new ArrayList<>();
 
   public ShoppingCart() {
   }
@@ -54,6 +58,17 @@ public class ShoppingCart {
   public void setShoppingCartItems(List<ShoppingCartItem> shoppingCartItems) {
     this.shoppingCartItems = shoppingCartItems;
   }
+
+  @Override
+  public String toString() {
+    return "ShoppingCart{" +
+      "shoppingCartId=" + shoppingCartId +
+      ", order=" + order +
+      ", shoppingCartItems=" + shoppingCartItems +
+      '}';
+  }
+
+
 }
 
 
