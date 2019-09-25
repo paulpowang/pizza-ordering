@@ -60,8 +60,7 @@ displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
 
   ngOnInit() {
     console.log(this.service);
-    // this.creditcards = this.creditcardService.getCreditcardsList();
-    // this.shipments = this.shipmentService.getShipmentsList();
+    
     this.shipments = this.service.shipmentDetails;
     console.log("shipments:" + this.shipments);
     console.log("service shipments" + this.service.shipmentDetails);
@@ -103,8 +102,8 @@ displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
 
       this.service.creditCardId = this.cardId;
     this.service.shippingId = this.shipId;
-    //   this.creditcardService.setCardId(this.cardId);
-    // this.shipmentService.setShipId(this.shipId);
+    this.creditcardService.setCardId(this.cardId);
+    this.shipmentService.setShipId(this.shipId);
     this.router.navigate(['/summary']);
     }else{
       alert("please select payment and shipping address");

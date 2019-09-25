@@ -104,4 +104,8 @@ export class OrderService {
         .set('shippingId', this.shippingId.toString()),
     });
   }
+
+  getUserId(){
+    return this.userId;
+  }
 }

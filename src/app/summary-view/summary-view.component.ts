@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { Shipment } from '../checkout/shipment/shipment';
 import { ShipmentService } from '../checkout/shipment/shipment.service';
 import { Location } from '@angular/common';
+import { OrderService } from '../services/order.service';
+import { ShoppingCartItem } from '../models/shopping-cart-item';
+import { ShoppingCart } from '../models/shopping-cart';
 
 
 export interface TempItem {
@@ -34,10 +37,10 @@ export class SummaryViewComponent implements OnInit {
 
 //userCredential: UserCredential
 email: string;
-
+username:string;
 
 //shoppingCartItems: List<ShoppingCartItem>
-shoppingCartItems = test_data;
+shoppingCartItems: Array<ShoppingCartItem>;
 displayedColumns: string[] = ['name', 'price', 'qty', 'total'];
 
 //calculate this somehow
@@ -47,13 +50,17 @@ total: number;
 
   shipment: Shipment;
   creditcard: Creditcard;
+  shoppingCart: ShoppingCart;
   
   constructor(private router: Router, 
     private creditcardService: CreditcardService,
     private shipmentService: ShipmentService,
+    private orderService: OrderService,
     private location: Location) { }
 
   ngOnInit() {
+
+
     this.creditcardService.getCreditcardByCardId().subscribe(creditcard => {
       this.creditcard = creditcard;
     });
@@ -62,7 +69,14 @@ total: number;
 
     });
 
-    this.total = 12231323.00;
+    this.shoppingCart = this.orderService.shoppingCart;
+    this.shoppingCartItems = this.shoppingCart.shoppingCartItems;
+
+    this.total = this.shoppingCart.getTotalCost();
+
+    this.email = this.orderService.getUserId();
+    this.username = this.email.split("@")[0];
+
   }
 
   back(){
