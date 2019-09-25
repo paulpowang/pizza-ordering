@@ -61,7 +61,7 @@ export class OrderService {
   addShipmentDetail(shipmentDetail: ShipmentDetail) {
     this.http.post(`${this.userApi}/${this.userId}/addShipmentDetail`, shipmentDetail).subscribe(
       () => {
-        this.creditCardDetails.push(shipmentDetail);
+        this.shipmentDetails.push(shipmentDetail);
       },
       error => {
         console.log(error);
@@ -84,6 +84,11 @@ export class OrderService {
 
   setFoodItemQuantity(foodItem: FoodItem, quantity: number): void {
     this.shoppingCart.setShoppingCartItemQuantity(foodItem, quantity);
+  }
+
+  setShoppingCartItems(shoppingCartItems: Array<ShoppingCartItem>) {
+    this.shoppingCart.shoppingCartItems = shoppingCartItems;
+    console.log(this.shoppingCart);
   }
 
   getShoppingCartItems(): Array<ShoppingCartItem> {
