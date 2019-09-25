@@ -12,8 +12,8 @@ import { StoreService } from '../services/store.service';
   styleUrls: ['./stores-list-admin.component.css'],
 })
 export class StoresListAdminComponent  implements OnInit {
+
   zipCode: string;
-  zipcodeForm: FormControl = new FormControl('');
   stores: Observable<Store[]>;
 
   constructor(private router: Router,

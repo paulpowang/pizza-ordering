@@ -61,14 +61,9 @@ import {MatTableModule} from '@angular/material/table';
     ShipmentListComponent,
     ShipmentAddComponent,
     ShipmentEditComponent,
-
-    
     SummaryViewComponent,
-    
     ThankyouPageComponent,
-
     LoginPageComponent,
-
   ],
   imports: [
     BrowserModule,
