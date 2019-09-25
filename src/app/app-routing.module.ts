@@ -13,6 +13,10 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
+
+import { SummaryViewComponent } from './summary-view/summary-view.component';
+import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
+
 import { LoginPageComponent } from './login-page/login-page.component';
 import { CreateUsercredentialComponent } from './create-usercredential/create-usercredential.component';
 
@@ -37,6 +41,13 @@ const routes: Routes = [
   },
 
   { path: 'signup', component: CreateUsercredentialComponent },
+  { path: '**', redirectTo: 'login' },
+
+  { path: 'summary', component: SummaryViewComponent },
+  { path: 'thankyou', component: ThankyouPageComponent },
+
+  { path: 'signup', component: CreateUsercredentialComponent },
+
   { path: '**', redirectTo: 'login' },
 ];
 
