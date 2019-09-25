@@ -28,7 +28,7 @@ import { CreditcardEditComponent } from './checkout/creditcard/creditcard-edit/c
 import { ShipmentListComponent } from './checkout/shipment/shipment-list/shipment-list.component';
 import { ShipmentAddComponent } from './checkout/shipment/shipment-add/shipment-add.component';
 import { ShipmentEditComponent } from './checkout/shipment/shipment-edit/shipment-edit.component';
-import { CheckoutDashboardComponent } from './checkout/checkout-dashboard/checkout-dashboard.component';
+
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -36,6 +36,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { SummaryViewComponent } from './summary-view/summary-view.component';
 
 import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+
+
 
 @NgModule({
   declarations: [
@@ -55,7 +59,7 @@ import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
     ShipmentListComponent,
     ShipmentAddComponent,
     ShipmentEditComponent,
-    CheckoutDashboardComponent,
+    
     SummaryViewComponent,
     
     ThankyouPageComponent,
@@ -78,6 +82,9 @@ import { ThankyouPageComponent } from './thankyou-page/thankyou-page.component';
     MatMenuModule,
     MatIconModule,
     LayoutModule,
+    MatDividerModule,
+    MatTableModule,
+
   ],
   exports: [FormsModule, ReactiveFormsModule],
   providers: [],

@@ -1,11 +1,5 @@
-<p>checkout-view works!</p>
-<a [routerLink]="['/checkout/shipment/add']">Click to shipment add</a>
-<a [routerLink]="['/checkout/creditcard/add']">Click to Creditcard add</a>
-
-<!-- <router-outlet name="shipment"></router-outlet>
-<router-outlet name="creditcard"></router-outlet>
-<router-outlet></router-outlet> -->
-<h1> Name: JoJo Kola </h1>
+<h1>Checkout</h1><br>
+<h2> Name: JoJo Kola </h2>
 <h3>ID: 1223</h3>
 
 <hr>
@@ -92,7 +86,7 @@
             <mat-radio-button [value]="card.creditCardId">
                 Creditcard Number: {{card.creditCardNumber}} <br>
                 Card Holder's Name: {{card.cardHolderName}} <br>
-                Status: {{card.validTo}}<br>
+                Date Valid to: {{card.validTo}}<br>
                 Balance: {{card.balance}}<br>
             </mat-radio-button>
             <button mat-raised-button color="primary" (click)="editCreditcard(card.creditCardId)">Edit</button>
