@@ -11,6 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatRippleModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +47,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MessagesComponent } from './messages/messages.component';
 import { AlertComponent } from './alert/alert.component';
 import { AlertService } from './alert.service';
+import { OrdersListAdminComponent } from './orders-list-admin/orders-list-admin.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,6 @@ import { AlertService } from './alert.service';
     ShipmentListComponent,
     ShipmentAddComponent,
     ShipmentEditComponent,
-
     SummaryViewComponent,
 
     ThankyouPageComponent,
@@ -77,6 +78,8 @@ import { AlertService } from './alert.service';
     MessagesComponent,
 
     AlertComponent,
+
+    OrdersListAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,6 +102,7 @@ import { AlertService } from './alert.service';
     MatDividerModule,
     MatTableModule,
     MatSnackBarModule,
+    MatRippleModule,
   ],
   exports: [FormsModule, ReactiveFormsModule],
   providers: [AlertService, AlertComponent],

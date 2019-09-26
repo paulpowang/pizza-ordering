@@ -95,4 +95,9 @@ export class OrderService {
   getUserId() {
     return this.userId;
   }
+
+  getAllOrders(): Observable<Object> {
+    const ordersApi = 'http://localhost:8080/api/orders/getAllOrders';
+    return this.http.get(ordersApi);
+  }
 }

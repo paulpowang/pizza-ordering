@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+p {
+  margin: 10px 0;
+}
+
+.detail {
+  overflow: hidden;
+  display: flex;
+}

@@ -1,0 +1,60 @@
+<h1>All orders</h1>
+<table mat-table [dataSource]="orders" class="mat-elevation-z8">
+  <!-- Order id -->
+  <ng-container matColumnDef="orderId">
+    <th mat-header-cell *matHeaderCellDef>Order Id</th>
+    <td mat-cell *matCellDef="let order">{{ order.orderId }}</td>
+  </ng-container>
+
+  <!-- Credit card -->
+  <ng-container matColumnDef="creditCard">
+    <th mat-header-cell *matHeaderCellDef>Credit Card</th>
+    <td mat-cell *matCellDef="let order">
+      <p><strong>Id: </strong>{{ order.creditCardDetail.creditCardId }}</p>
+      <p><strong>Number:</strong> {{ order.creditCardDetail.creditCardNumber }}</p>
+      <p><strong>Expiration date:</strong> {{ order.creditCardDetail.validTo }}</p>
+    </td>
+  </ng-container>
+
+  <!-- Credit card -->
+  <ng-container matColumnDef="shipmentDetail">
+    <th mat-header-cell *matHeaderCellDef>Shipment Details</th>
+    <td mat-cell *matCellDef="let order">
+      <p><strong>Id: </strong>{{ order.shipmentDetails.shippingId }}</p>
+      <p>
+        <strong>Address:</strong>
+        {{
+          order.shipmentDetails.address +
+            ', ' +
+            order.shipmentDetails.city +
+            ' ' +
+            order.shipmentDetails.state
+        }}
+      </p>
+      <p><strong>Expiration date:</strong> {{ order.creditCardDetail.validTo }}</p>
+    </td>
+  </ng-container>
+
+  <!-- Credit card -->
+  <ng-container matColumnDef="shoppingCart">
+    <th mat-header-cell *matHeaderCellDef>Shopping Cart</th>
+    <td mat-cell *matCellDef="let order">
+      <p *ngFor="let item of order.shoppingCart.shoppingCartItems">
+        {{ item.quantity }} units of {{ item.foodItem.name }}
+      </p>
+    </td>
+  </ng-container>
+
+  <!-- Total price -->
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let order">
+      <p>
+        {{ getTotalPrice(order.shoppingCart) | currency: 'USD' }}
+      </p>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns" class="order-row"></tr>
+</table>

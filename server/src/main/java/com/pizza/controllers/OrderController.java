@@ -11,11 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("/api/orders")
 @CrossOrigin(origins = "http://localhost:4200")
 public class OrderController {
 
@@ -24,6 +26,15 @@ public class OrderController {
 
   @Autowired
   UserCredentialRepository userCredentialRepository;
+
+  @GetMapping(path = "/getAllOrders")
+  public ResponseEntity<List<Order>> getAllOrders() {
+    Iterable<Order> source = orderRepository.findAll();
+    List<Order> target = new ArrayList<>();
+    for (Order o : source)
+      target.add(o);
+    return new ResponseEntity<>(target, HttpStatus.OK);
+  }
 
   @PostMapping(path = "/add")
   public ResponseEntity createOrder(@RequestBody @Valid Order order, @RequestParam String userId) {
