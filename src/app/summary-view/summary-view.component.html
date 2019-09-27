@@ -1,92 +1,87 @@
 <div id="content" #content>
 <form class="form" style="width: 100%;">
+  <!-- Header -->
+  <div class="form-header" style="text-align: center">
+    <h1 color="accent">Summary of Order</h1>
+  </div>
+  <mat-divider></mat-divider>
 
-        <!-- Header -->
-        <div class="form-header" style="text-align: center"> 
-            <h1 color="accent">Summary of Order</h1>
-        </div>
-        <mat-divider></mat-divider>
-    
-        <!-- Column 1 -->
-        <div class="column">
-            <br>
-            <b> Customer </b> <br>
-            {{username}}
-        </div>
-      
-        <!-- Column 2 -->
-        <div class="column">
-            <br>
-            <b> Shipping Address </b> <br>
-            {{shipment.address}} <br>
-            {{shipment.city}}, {{shipment.state}}, {{shipment.pin}}
-        </div>
-    
-        <!-- Column 3 -->
-        <div class="column">
-            <br>
-            <b> Contact </b> <br>
-            Mobile: <br>
-            {{shipment.mobileNumber}} <br>
-            Landline: <br>
-            {{shipment.landline}} <br>
-            Email: <br>
-            {{email}}
-        </div>
-    
-        <!-- Column 4 -->
-        <div class="column">
-            <br>
-            <b> Payment Method </b> <br>
-            Card Holder's Name: {{creditcard.cardHolderName}}<br>
-            Card Ending in {{creditcard.creditCardNumber.slice(-4)}}<br>
-            Card Valid to: {{creditcard.validTo}}
-        </div>
-    
-    </form>
-    
-    
-    <table mat-table [dataSource]="shoppingCartItems" class="mat-elevation-z8" style="width: 100%; margin-top: 200px;">
-    
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef> Price </th>
-        <td mat-cell *matCellDef="let element"> {{element.price}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="qty">
-        <th mat-header-cell *matHeaderCellDef> Qty </th>
-        <td mat-cell *matCellDef="let element"> {{element.qty}} </td>
-      </ng-container>
-    
-      <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef> Total </th>
-        <td mat-cell *matCellDef="let element"> {{element.total}} </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+  <!-- Column 1 -->
+  <div class="column">
+    <br />
+    <b> Customer </b> <br />
+    {{ username }}
+  </div>
 
-    <!-- end of #contain -->
-  </div> <br> <br> <br>
+  <!-- Column 2 -->
+  <div class="column">
+    <br />
+    <b> Shipping Address </b> <br />
+    {{ shipment.address }} <br />
+    {{ shipment.city }}, {{ shipment.state }}, {{ shipment.pin }}
+  </div>
+
+  <!-- Column 3 -->
+  <div class="column">
+    <br />
+    <b> Contact </b> <br />
+    Mobile: <br />
+    {{ shipment.mobileNumber }} <br />
+    Landline: <br />
+    {{ shipment.landline }} <br />
+    Email: <br />
+    {{ email }}
+  </div>
+
+  <!-- Column 4 -->
+  <div class="column">
+    <br />
+    <b> Payment Method </b> <br />
+    Card Holder's Name: {{ creditcard.cardHolderName }}<br />
+    Card Ending in {{ creditcard.creditCardNumber.slice(-4) }}<br />
+    Card Valid to: {{ creditcard.validTo }}
+  </div>
+</form>
+
+<table
+  mat-table
+  [dataSource]="shoppingCartItems"
+  class="mat-elevation-z8"
+  style="width: 100%; margin-top: 200px;"
+>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.price | currency: 'USD' }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="qty">
+    <th mat-header-cell *matHeaderCellDef>Qty</th>
+    <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="total">
+    <th mat-header-cell *matHeaderCellDef>Total</th>
+    <td mat-cell *matCellDef="let element">{{ element.total | currency: 'USD' }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+
+</div> <br> <br> <br>
   <button (click)="toPrintPdf()">Print Order Summary</button>
-  
 
-    
-    <div style=" text-align: right;">
-        <br>
-        <b> Total: </b> {{total}}
-        <button mat-raised-button color="warn" style="margin-left: 10px" (click)="back()">Cancel</button>
-        <button mat-raised-button color="primary" style="margin-left: 10px" (click)="toPlaceOrder()">Confirm</button>
-    </div>
+<div style=" text-align: right;">
+  <br />
+  <b> Total: </b> {{ total | currency: 'USD' }}
+  <button mat-raised-button color="warn" style="margin-left: 10px" (click)="back()">Cancel</button>
+  <button mat-raised-button color="primary" style="margin-left: 10px" (click)="toPlaceOrder()">
+    Confirm
+  </button>
+</div>
 
-    
-    
-    
-    
-    
