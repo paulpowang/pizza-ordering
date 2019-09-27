@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import 'rxjs/add/observable/of';
 
 import { ShoppingCart } from '../models/shopping-cart';
 import { FoodItem } from '../models/food-item';
@@ -36,6 +37,10 @@ export class OrderService {
     });
   }
 
+  refreshUserInfo() {
+    return this.http.get(`${this.userApi}/${this.userId}`);
+  }
+
   /**
    * Update creditCardDetails
    */
@@ -58,31 +63,13 @@ export class OrderService {
       });
   }
 
-  addShipmentDetail(shipmentDetail: ShipmentDetail) {
-    this.http.post(`${this.userApi}/${this.userId}/addShipmentDetail`, shipmentDetail).subscribe(
-      () => {
-        this.shipmentDetails.push(shipmentDetail);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+  addShipmentDetail(shipmentDetail: ShipmentDetail): Observable<Object> {
+    return this.http.post(`${this.userApi}/${this.userId}/addShipmentDetail`, shipmentDetail);
   }
 
   addCreditCardDetail(creditCardDetail: CreditCardDetail) {
-    this.http
-      .post(`${this.userApi}/${this.userId}/addCreditCardDetail`, creditCardDetail)
-      .subscribe(
-        () => {
-          this.creditCardDetails.push(creditCardDetail);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    return this.http.post(`${this.userApi}/${this.userId}/addCreditCardDetail`, creditCardDetail);
   }
-
-  
 
   setFoodItemQuantity(foodItem: FoodItem, quantity: number): void {
     this.shoppingCart.setShoppingCartItemQuantity(foodItem, quantity);
@@ -98,10 +85,14 @@ export class OrderService {
   }
 
   save(): Observable<any> {
-    return this.http.post(`${this.userApi}/user/${this.userId}/addOrder`, this.shoppingCart, {
+    return this.http.post(`${this.userApi}/${this.userId}/addOrder`, this.shoppingCart, {
       params: new HttpParams()
         .set('creditCardId', this.creditCardId.toString())
         .set('shippingId', this.shippingId.toString()),
     });
+  }
+
+  getUserId() {
+    return this.userId;
   }
 }

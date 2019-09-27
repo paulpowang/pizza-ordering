@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Shipment } from '../shipment';
 import { ShipmentService } from '../shipment.service';
 import { Location } from '@angular/common';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-shipment-edit',
@@ -13,7 +14,7 @@ export class ShipmentEditComponent implements OnInit {
 
   @Input() shipment: Shipment;
   submitted = false;
-  constructor(private router: Router, private route: ActivatedRoute,private service: ShipmentService,private location: Location) { }
+  constructor(private orderService: OrderService, private router: Router, private route: ActivatedRoute,private service: ShipmentService,private location: Location) { }
 
   ngOnInit() {
     // Get Id
@@ -41,12 +42,15 @@ export class ShipmentEditComponent implements OnInit {
         console.log(data);
         this.shipment = data as Shipment;
         this.submitted = true;
+        this.orderService.fetchUserInfo(this.orderService.getUserId());
+
       },
       error => console.log(error)
     );
 
     setTimeout(() => 
     {
+
       this.router.navigate(['/checkout']);
     },
     250);
@@ -57,6 +61,7 @@ export class ShipmentEditComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
+          this.orderService.fetchUserInfo(this.orderService.getUserId());
         },
         error => console.log(error)
       );

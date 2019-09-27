@@ -1,31 +1,43 @@
-<form class="form">
+<form class="form" [formGroup]="storeDetailsForm">
 
-    <div class="form-header">
-        <h1 color="accent">Create Store</h1>
-    </div>
-
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Store Name" 
-      required [ngModel]="store?.storeName" (ngModelChange)="store.storeName = $event" name="name" >
-    </mat-form-field>
-  
-    <mat-form-field class="full-width">
-        <input matInput placeholder="City" 
-        required [ngModel]="store?.city" (ngModelChange)="store.city = $event" name="city" >
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-        <input matInput placeholder="State" 
-        required [ngModel]="store?.state" (ngModelChange)="store.state = $event" name="state" >
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-        <input matInput placeholder="Zip Code" 
-        required [ngModel]="store?.zipCode" (ngModelChange)="store.zipCode = $event" name="zipCode" maxlength="5" >
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" (click)="back()">Back</button>
-    <button mat-raised-button color="primary" (click)=onSubmit() style="margin-left: 10px">Create Store</button>
-
+        <div class="form-header">
+            <h1 color="accent">Create Store</h1>
+        </div>
+    
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Store Name" formControlName="name" required>
+            <mat-error *ngFor="let validation of validation_messages.name">
+                <mat-error class="error-message" *ngIf="storeDetailsForm.get('name').hasError(validation.type) && (storeDetailsForm.get('name').dirty || storeDetailsForm.get('name').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+            <input matInput placeholder="City" formControlName="city" required>
+            <mat-error *ngFor="let validation of validation_messages.city">
+                <mat-error class="error-message" *ngIf="storeDetailsForm.get('city').hasError(validation.type) && (storeDetailsForm.get('city').dirty || storeDetailsForm.get('city').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+            <input matInput placeholder="State" formControlName="state" required>
+            <mat-error *ngFor="let validation of validation_messages.state">
+                <mat-error class="error-message" *ngIf="storeDetailsForm.get('state').hasError(validation.type) && (storeDetailsForm.get('state').dirty || storeDetailsForm.get('state').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+            <input matInput placeholder="Zip Code" formControlName="zipCode" required maxlength="5">
+            <mat-error *ngFor="let validation of validation_messages.zipCode">
+                <mat-error class="error-message" *ngIf="storeDetailsForm.get('zipCode').hasError(validation.type) && (storeDetailsForm.get('zipCode').dirty || storeDetailsForm.get('zipCode').touched)">{{validation.message}}</mat-error>
+            </mat-error>
+        </mat-form-field>
+    
+        <button class="submit-btn" color="primary" mat-raised-button (click)="back()">
+                Back
+        </button>
+    
+        <button class="submit-btn" color="primary" mat-raised-button (click)=onSubmit() [disabled]="!storeDetailsForm.valid" style="margin-left: 10px">
+                Create
+        </button>
+    
 </form>
-

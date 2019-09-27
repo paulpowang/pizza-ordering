@@ -1,0 +1,56 @@
+<h3>My Cart</h3>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Food Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sc of shoppingCartItems">
+        <td>{{ sc.foodItem.name }}</td>
+        <td>{{ sc.quantity }}</td>
+        <td>{{ sc.foodItem.price | currency }}</td>
+        <td>{{ sc.foodItem.price * sc.quantity | currency }}</td>
+        <td>
+            <div class="example-button-row">
+                <button 
+                mat-stroked-button color="warn"
+                (click)="deleteItem(sc)"
+                >Delete</button>
+                <button 
+                mat-stroked-button color="primary"
+                (click)="modifyItem(sc)"
+                >Modify</button>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<hr>
+<button 
+  (click)="submit()" 
+  class="btn btn-primary" 
+  >
+  Continue shopping
+</button>
+<div *ngIf="modifyActivated">
+          <form (ngSubmit)="onSubmit()">
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Enter New Quantity</label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      id="formGroupExampleInput" 
+                      name="oldQuantity"
+                      [(ngModel)] = "oldQuantity"
+                      placeholder="{{ oldQuantity }}"
+                      required>
+                  </div>
+              <button class="btn btn-success" type="submit">Save</button>
+          </form>
+</div>

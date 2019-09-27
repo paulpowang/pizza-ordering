@@ -3,8 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FoodItemsService } from '../services/food-items.service';
 import { FoodItem } from '../models/food-item';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { OrderService } from '../services/order.service';
 import { ShoppingCartItem } from '../models/shopping-cart-item';
 
@@ -68,7 +67,6 @@ export class FoodItemFormComponent implements OnInit {
     }
   }
 }
-
 
 //-----------------STOPPED HERE--------------------//
 //Used to Create Pop-Up Window
